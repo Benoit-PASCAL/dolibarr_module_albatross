@@ -16,11 +16,11 @@ jobs:
         id: check_file
         run: |
           echo "Checking for modifications in phpunit.junit.xml"
-          if git log -1 --pretty=format: --name-only | grep "test/phpunit.junit.xml"; then
-            echo "File phpunit.junit.xml was modified."
+          if git diff --name-only HEAD^ HEAD | grep -q "test/phpunit.junit.xml"; then
+            echo "File phpunit.junit.xml was modified in the last commit."
             echo "file_modified=true" >> $GITHUB_OUTPUT
           else
-            echo "File phpunit.junit.xml was NOT modified."
+            echo "File phpunit.junit.xml was NOT modified in the last commit."
             echo "file_modified=false" >> $GITHUB_OUTPUT
           fi
         shell: bash
@@ -30,7 +30,7 @@ jobs:
         run: |
           echo "Checking test results in phpunit.junit.xml"
           cat test/phpunit.junit.xml
-          if grep 'failures="0"' test/phpunit.junit.xml; then
+          if grep -q 'failures="0"' test/phpunit.junit.xml; then
             echo "All tests passed!"
           else
             echo "Some tests failed."
@@ -41,6 +41,6 @@ jobs:
       - name: Fail if file not modified
         if: steps.check_file.outputs.file_modified != 'true'
         run: |
-          echo "File phpunit.junit.xml was NOT modified in the pull request."
+          echo "File phpunit.junit.xml was NOT modified in the last commit."
           exit 1
         shell: bash
