@@ -1,6 +1,6 @@
 name: Check PHPUnit Results
 
-on: [ push, pull_request ]
+on: [ pull_request ]
 
 jobs:
   check-results:
@@ -13,7 +13,7 @@ jobs:
       - name: Get date of the second last commit
         id: get_commit_date
         run: |
-          COMMIT_DATE=$(git log -2 --pretty=format:"%ci" | tail -n 1)
+          COMMIT_DATE=$(git log -1 --pretty=format:"%ci" | tail -n 1)
           echo "::set-output name=date::$COMMIT_DATE"
 
       - name: Get date of phpunit.junit.xml
