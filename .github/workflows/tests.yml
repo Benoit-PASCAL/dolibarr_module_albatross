@@ -1,6 +1,6 @@
-name: Check PHPUnit Results (should fail)
+name: Check PHPUnit Results
 
-on: [ pull_request ]
+on: [ push ]
 
 jobs:
   check-results:
@@ -15,8 +15,9 @@ jobs:
       - name: Check if phpunit.junit.xml was modified
         id: check_file
         run: |
-          echo "Checking for modifications in phpunit.junit.xml"
-          if git diff --name-only HEAD^ HEAD | grep -q "test/phpunit.junit.xml"; then
+          LAST_COMMIT=$(git rev-parse HEAD)
+          PREVIOUS_COMMIT=$(git rev-parse HEAD^)
+          if git diff --name-only $PREVIOUS_COMMIT $LAST_COMMIT | grep -q "test/phpunit.junit.xml"; then
             echo "File phpunit.junit.xml was modified in the last commit."
             echo "file_modified=true" >> $GITHUB_OUTPUT
           else
@@ -29,7 +30,6 @@ jobs:
         if: steps.check_file.outputs.file_modified == 'true'
         run: |
           echo "Checking test results in phpunit.junit.xml"
-          cat test/phpunit.junit.xml
           if grep -q 'failures="0"' test/phpunit.junit.xml; then
             echo "All tests passed!"
           else
@@ -41,6 +41,6 @@ jobs:
       - name: Fail if file not modified
         if: steps.check_file.outputs.file_modified != 'true'
         run: |
-          echo "File phpunit.junit.xml was NOT modified in the last commit."
+          echo "Error: File phpunit.junit.xml was NOT modified in the last commit."
           exit 1
         shell: bash
