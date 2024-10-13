@@ -1,0 +1,26 @@
+name: PHPCS Linting
+
+on:
+  pull_request:
+
+jobs:
+  phpcs:
+    name: PHPCS Linting - ${{ github.event_name }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          extensions: gmp
+          tools: composer
+
+      - name: Install composer packages
+        run: composer install --no-scripts
+
+      - name: Run PHPCS
+        run: vendor/bin/phpcs --standard=PSR12 --extensions=php src/
