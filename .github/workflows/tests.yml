@@ -10,7 +10,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Get date of the second last commit
+      - name: Get date of the last commit
         id: get_commit_date
         run: |
           COMMIT_DATE=$(git log -1 --pretty=format:"%ci" | tail -n 1)
@@ -19,7 +19,7 @@ jobs:
       - name: Get date of phpunit.junit.xml
         id: get_file_date
         run: |
-          FILE_DATE=$(stat -c %y test/phpunit.junit.xml)
+          FILE_DATE=$(xmllint --xpath 'string(//testsuites/@generated)' test/phpunit.junit.xml)
           echo "::set-output name=date::$FILE_DATE"
 
       - name: Compare dates
@@ -32,6 +32,11 @@ jobs:
           else
             echo "The file phpunit.junit.xml is newer than the last commit."
           fi
+
+      - name: Add timestamp to phpunit.junit.xml
+        run: |
+          TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
+          sed -i "s|<testsuites>|<testsuites generated=\"$TIMESTAMP\">|" test/phpunit.junit.xml
 
       - name: Check test results
         run: |
