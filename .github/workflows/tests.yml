@@ -35,7 +35,7 @@ jobs:
 
       - name: Check test results
         run: |
-          if grep -q 'failures="0"' custom/albatross/test/phpunit.junit.xml; then
+          if grep -q 'failures="0"' test/phpunit.junit.xml; then
             echo "All tests passed!"
           else
             echo "Some tests failed."
