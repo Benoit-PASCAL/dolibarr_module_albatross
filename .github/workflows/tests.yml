@@ -15,8 +15,8 @@ jobs:
       - name: Check if phpunit.junit.xml was modified
         id: check_file
         run: |
-          git fetch origin ${{ github.base_ref }}
-          if git diff --name-only origin/${{ github.base_ref }}..HEAD | grep -q "test/phpunit.junit.xml"; then
+          git fetch origin ${{ github.head_ref }}
+          if git diff --name-only origin/${{ github.head_ref }}..HEAD | grep -q "test/phpunit.junit.xml"; then
             echo "file_modified=true" >> $GITHUB_OUTPUT
             echo "File phpunit.junit.xml was modified in the pull request."
           else
