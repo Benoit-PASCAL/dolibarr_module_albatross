@@ -25,6 +25,7 @@ use Albatross\ProjectDTO;
 use Albatross\ProjectDTOMapper;
 use Albatross\ServiceDTO;
 use Albatross\TaskDTO;
+use Albatross\TaskDTOMapper;
 use Albatross\ThirdpartyDTO;
 use Albatross\ThirdpartyDTOMapper;
 use Albatross\TicketDTO;
@@ -33,8 +34,11 @@ use Albatross\UserDTO;
 use Albatross\UserDTOMapper;
 use Albatross\UserGroupDTO;
 use Albatross\UserGroupDTOMapper;
-use ExtraFields;
+use Exception;
 use modCommande;
+use modFacture;
+use modProjet;
+use modTicket;
 use User;
 
 class DoliDBManager implements intDBManager
@@ -74,13 +78,13 @@ class DoliDBManager implements intDBManager
         $tmpUserGroup = $userGroupDTOMapper->toUserGroup($userGroupDTO);
         $res = $tmpUserGroup->create($user);
 
-		if ($res <= 0) {
-			throw new \Exception($res . $tmpUserGroup->error);
-		}
+        if ($res <= 0) {
+            throw new Exception($res . $tmpUserGroup->error);
+        }
 
-		foreach ($userGroupDTO->getEntities() as $entity) {
-			$tmpUserGroup->addrights('', 'allmodules', '', $entity);
-		}
+        foreach ($userGroupDTO->getEntities() as $entity) {
+            $tmpUserGroup->addrights('', 'allmodules', '', $entity);
+        }
 
         return $res;
     }
@@ -93,9 +97,13 @@ class DoliDBManager implements intDBManager
 
         $thirdpartyDTOMapper = new ThirdpartyDTOMapper();
         $tmpCustomer = $thirdpartyDTOMapper->toCustomer($thirdpartyDTO);
-        $tmpCustomer->create($user);
+        $res = $tmpCustomer->create($user);
 
-        return $tmpCustomer->id ?? 0;
+        if ($res <= 0) {
+            throw new Exception($res . $tmpCustomer->error);
+        }
+
+        return $tmpCustomer->id;
     }
 
     public function createSupplier(ThirdpartyDTO $thirdpartyDTO): int
@@ -108,7 +116,11 @@ class DoliDBManager implements intDBManager
         $tmpSupplier = $thirdpartyDTOMapper->toSupplier($thirdpartyDTO);
         $res = $tmpSupplier->create($user);
 
-        return $tmpSupplier->id ?? $res;
+        if ($res <= 0) {
+            throw new Exception($res . $tmpSupplier->error);
+        }
+
+        return $tmpSupplier->id;
     }
 
     public function createProduct(ProductDTO $productDTO): int
@@ -141,7 +153,7 @@ class DoliDBManager implements intDBManager
         global $conf, $db, $user;
         $user->id = 1;
 
-        $isModEnabled = (int) DOL_VERSION >= 16 ? isModEnabled('commande') : $conf->commande->enabled;
+        $isModEnabled = (int)DOL_VERSION >= 16 ? isModEnabled('commande') : $conf->commande->enabled;
         if (!$isModEnabled) {
             // We enable the module
             require_once DOL_DOCUMENT_ROOT . '/core/modules/modCommande.class.php';
@@ -154,7 +166,7 @@ class DoliDBManager implements intDBManager
         $res = $order->create($user);
 
         if ($res <= 0) {
-            throw new \Exception($res . $order->error);
+            throw new Exception($res . $order->error);
         }
 
         // TODO: Move to fixtures
@@ -170,7 +182,7 @@ class DoliDBManager implements intDBManager
         global $conf, $db, $user;
         $user->id = 1;
 
-        $isModEnabled = (int) DOL_VERSION >= 16 ? isModEnabled('facture') : $conf->facture->enabled;
+        $isModEnabled = (int)DOL_VERSION >= 16 ? isModEnabled('facture') : $conf->facture->enabled;
         if (!$isModEnabled) {
             // We enable the module
             require_once DOL_DOCUMENT_ROOT . '/core/modules/modFacture.class.php';
@@ -183,7 +195,9 @@ class DoliDBManager implements intDBManager
         $res = $invoice->create($user);
 
         if ($res <= 0) {
-            throw new \Exception($res . $invoice->error);
+            $query = new Exception($db->lastqueryerror());
+            $dbError = new Exception($db->lasterror(), 500, $query);
+            throw new Exception($res . $invoice->error, 500, $dbError);
         }
 
         if ($invoiceDTO->getStatus() === InvoiceStatus::VALIDATED) {
@@ -199,11 +213,11 @@ class DoliDBManager implements intDBManager
         dol_syslog(get_class($this) . '::createTicket', LOG_INFO);
         global $conf, $db, $user;
 
-        $isModEnabled = (int) DOL_VERSION >= 16 ? isModEnabled('ticket') : $conf->ticket->enabled;
+        $isModEnabled = (int)DOL_VERSION >= 16 ? isModEnabled('ticket') : $conf->ticket->enabled;
         if (!$isModEnabled) {
             // We enable the module
             require_once DOL_DOCUMENT_ROOT . '/core/modules/modTicket.class.php';
-            $mod = new \modTicket($db);
+            $mod = new modTicket($db);
             $mod->init();
         }
 
@@ -220,11 +234,11 @@ class DoliDBManager implements intDBManager
 
         global $conf, $db, $user;
 
-        $isModEnabled = (int) DOL_VERSION >= 16 ? isModEnabled('projet') : $conf->projet->enabled;
+        $isModEnabled = (int)DOL_VERSION >= 16 ? isModEnabled('projet') : $conf->projet->enabled;
         if (!$isModEnabled) {
             // We enable the module
             require_once DOL_DOCUMENT_ROOT . '/core/modules/modProjet.class.php';
-            $mod = new \modProjet($db);
+            $mod = new modProjet($db);
             $mod->init();
         }
 
@@ -233,7 +247,7 @@ class DoliDBManager implements intDBManager
         $res = $project->create($user);
 
         if ($res <= 0) {
-            throw new \Exception($res . $project->error);
+            throw new Exception($res . $project->error);
         }
 
         if (rand(0, 1)) {
@@ -245,9 +259,28 @@ class DoliDBManager implements intDBManager
 
     public function createTask(TaskDTO $taskDTO): int
     {
-        // TODO: Implement createTask() method.
+        dol_syslog(__METHOD__, LOG_INFO);
 
-        return 1;
+        global $conf, $db, $user;
+
+        $isModEnabled = (int)DOL_VERSION >= 16 ? isModEnabled('projet') : $conf->projet->enabled;
+        if (!$isModEnabled) {
+            // We enable the module
+            require_once DOL_DOCUMENT_ROOT . '/core/modules/modProjet.class.php';
+            $mod = new modProjet($db);
+            $mod->init();
+        }
+
+        $taskDTOMapper = new TaskDTOMapper();
+        $task = $taskDTOMapper->toTask($taskDTO);
+
+        $res = $task->create($user);
+
+        if ($res <= 0) {
+            throw new Exception($res . $task->error);
+        }
+
+        return $task->id;
     }
 
     public function createEntity(EntityDTO $entityDTO, array $params = []): int
@@ -271,11 +304,11 @@ class DoliDBManager implements intDBManager
         $id = $actionsMulticompany->doAdminActions($action);
         $action = 'view';
 
-        if(is_null($id) || $id <= 1) {
+        if (is_null($id) || $id <= 1) {
             return 0;
         }
 
-        if($entityDTO->isEndPatternsWithId()) {
+        if ($entityDTO->isEndPatternsWithId()) {
             $entityDTO->setInvoicePattern($entityDTO->getReplacementInvoicePattern() . $id);
             $entityDTO->setReplacementInvoicePattern($entityDTO->getReplacementInvoicePattern() . $id);
             $entityDTO->setCreditNotePattern($entityDTO->getCreditNotePattern() . $id);
@@ -293,35 +326,83 @@ class DoliDBManager implements intDBManager
         dol_syslog(get_class($this) . '::configEntity entity:' . $entityDTO->getName(), LOG_INFO);
         global $db;
 
-        if($entityDTO->getInvoicePattern() !== null) {
+        if ($entityDTO->getInvoicePattern() !== null) {
             dolibarr_set_const($db, 'FACTURE_ADDON', 'mod_facture_mercure', 'chaine', 0, '', $entityId);
-            dolibarr_set_const($db, 'FACTURE_MERCURE_MASK_INVOICE', $entityDTO->getInvoicePattern(), 'chaine', 0, '', $entityId);
+            dolibarr_set_const(
+                $db,
+                'FACTURE_MERCURE_MASK_INVOICE',
+                $entityDTO->getInvoicePattern(),
+                'chaine',
+                0,
+                '',
+                $entityId
+            );
         }
-        if($entityDTO->getReplacementInvoicePattern() !== null) {
+        if ($entityDTO->getReplacementInvoicePattern() !== null) {
             dolibarr_set_const($db, 'FACTURE_ADDON', 'mod_facture_mercure', 'chaine', 0, '', $entityId);
-            dolibarr_set_const($db, 'FACTURE_MERCURE_MASK_REPLACEMENT', $entityDTO->getReplacementInvoicePattern(), 'chaine', 0, '', $entityId);
+            dolibarr_set_const(
+                $db,
+                'FACTURE_MERCURE_MASK_REPLACEMENT',
+                $entityDTO->getReplacementInvoicePattern(),
+                'chaine',
+                0,
+                '',
+                $entityId
+            );
         }
-        if($entityDTO->getCreditNotePattern() !== null) {
+        if ($entityDTO->getCreditNotePattern() !== null) {
             dolibarr_set_const($db, 'FACTURE_ADDON', 'mod_facture_mercure', 'chaine', 0, '', $entityId);
-            dolibarr_set_const($db, 'FACTURE_MERCURE_MASK_CREDIT', $entityDTO->getCreditNotePattern(), 'chaine', 0, '', $entityId);
+            dolibarr_set_const(
+                $db,
+                'FACTURE_MERCURE_MASK_CREDIT',
+                $entityDTO->getCreditNotePattern(),
+                'chaine',
+                0,
+                '',
+                $entityId
+            );
         }
-        if($entityDTO->getDownPaymentInvoicePattern() !== null) {
+        if ($entityDTO->getDownPaymentInvoicePattern() !== null) {
             dolibarr_set_const($db, 'FACTURE_ADDON', 'mod_facture_mercure', 'chaine', 0, '', $entityId);
-            dolibarr_set_const($db, 'FACTURE_MERCURE_MASK_DEPOSIT', $entityDTO->getDownPaymentInvoicePattern(), 'chaine', 0, '', $entityId);
+            dolibarr_set_const(
+                $db,
+                'FACTURE_MERCURE_MASK_DEPOSIT',
+                $entityDTO->getDownPaymentInvoicePattern(),
+                'chaine',
+                0,
+                '',
+                $entityId
+            );
         }
 
-        if($entityDTO->getPropalPattern() !== null) {
+        if ($entityDTO->getPropalPattern() !== null) {
             dolibarr_set_const($db, 'PROPALE_ADDON', 'mod_propale_saphir', 'chaine', 0, '', $entityId);
             dolibarr_set_const($db, 'PROPALE_SAPHIR_MASK', $entityDTO->getPropalPattern(), 'chaine', 0, '', $entityId);
         }
 
-        if($entityDTO->getCustomerCodePattern() !== null) {
+        if ($entityDTO->getCustomerCodePattern() !== null) {
             dolibarr_set_const($db, 'SOCIETE_CODECLIENT_ADDON', 'mod_codeclient_elephant', 'chaine', 0, '', $entityId);
-            dolibarr_set_const($db, 'COMPANY_ELEPHANT_MASK_CUSTOMER', $entityDTO->getCustomerCodePattern(), 'chaine', 0, '', $entityId);
+            dolibarr_set_const(
+                $db,
+                'COMPANY_ELEPHANT_MASK_CUSTOMER',
+                $entityDTO->getCustomerCodePattern(),
+                'chaine',
+                0,
+                '',
+                $entityId
+            );
         }
-        if($entityDTO->getSupplierCodePattern() !== null) {
+        if ($entityDTO->getSupplierCodePattern() !== null) {
             dolibarr_set_const($db, 'SOCIETE_CODECLIENT_ADDON', 'mod_codeclient_elephant', 'chaine', 0, '', $entityId);
-            dolibarr_set_const($db, 'COMPANY_ELEPHANT_MASK_SUPPLIER', $entityDTO->getSupplierCodePattern(), 'chaine', 0, '', $entityId);
+            dolibarr_set_const(
+                $db,
+                'COMPANY_ELEPHANT_MASK_SUPPLIER',
+                $entityDTO->getSupplierCodePattern(),
+                'chaine',
+                0,
+                '',
+                $entityId
+            );
         }
     }
 
@@ -389,7 +470,7 @@ class DoliDBManager implements intDBManager
 
         $sql = $sql = 'SELECT 1 FROM information_schema.tables WHERE table_schema = DATABASE() AND table_name = "' . MAIN_DB_PREFIX . 'entity_extrafields"';
         $resql = $db->query($sql);
-        if($resql && $db->num_rows($resql) > 0) {
+        if ($resql && $db->num_rows($resql) > 0) {
             $sql = 'DELETE FROM ' . MAIN_DB_PREFIX . 'entity_extrafields';
             $sql .= ' WHERE fk_object > 1';
             $resql = $db->query($sql);

@@ -10,7 +10,7 @@
         stopOnFailure="false">
     <testsuites>
         <testsuite name="Albatross Test Suite">
-            <directory>./phpunit/</directory>
+            <directory>./functionnal/</directory>
         </testsuite>
     </testsuites>
     <coverage>

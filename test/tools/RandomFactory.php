@@ -1,10 +1,11 @@
 <?php
 
-require_once dirname(__DIR__, 2).'/inc/models/index.php';
+require_once dirname(__DIR__, 2) . '/inc/models/index.php';
 
 use Albatross\InvoiceLineDTO;
 use Albatross\OrderLineDTO;
 use Albatross\ProjectDTO;
+use Albatross\TaskDTO;
 use Albatross\UserDTO;
 use Albatross\UserGroupDTO;
 use Albatross\ThirdpartyDTO;
@@ -35,7 +36,7 @@ class RandomFactory
     {
         $userGroupDTO = new UserGroupDTO();
         $userGroupDTO
-			->setLabel('Admin');
+            ->setLabel('Admin');
 
         return $userGroupDTO;
     }
@@ -153,6 +154,16 @@ class RandomFactory
             ->setLabel('Test Project');
 
         return $projectDTO;
+    }
+
+    public static function getRandomTask(): TaskDTO
+    {
+        $taskDTO = new TaskDTO();
+        $taskDTO
+            ->setTitle('Test Task')
+            ->setDescription('This is a test task');
+
+        return $taskDTO;
     }
 
     public static function getRandomTicket(): TicketDTO

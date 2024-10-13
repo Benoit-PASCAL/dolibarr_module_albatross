@@ -7,7 +7,7 @@ if (!defined('TEST_ENV_SETUP')) {
     require_once dirname(__FILE__) . '/_setup.php';
 }
 
-require_once dirname(__DIR__, 2) . '/inc/mappers/ProductDTOMapper.class.php';
+require_once MODULE_ROOT . '/inc/mappers/ProductDTOMapper.class.php';
 
 use Albatross\ProductDTO;
 use Albatross\ProductDTOMapper;
