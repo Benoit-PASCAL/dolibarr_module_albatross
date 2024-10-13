@@ -10,22 +10,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install xmllint
+        run: sudo apt-get install -y libxml2-utils
+
       - name: Get date of the last commit
         id: get_commit_date
         run: |
           COMMIT_DATE=$(git log -1 --pretty=format:"%ci" | tail -n 1)
-          echo "::set-output name=date::$COMMIT_DATE"
+          echo "commit_date=$COMMIT_DATE" >> $GITHUB_ENV
 
       - name: Get date of phpunit.junit.xml
         id: get_file_date
         run: |
-          FILE_DATE=$(xmllint --xpath 'string(//testsuites/@generated)' test/phpunit.junit.xml)
-          echo "::set-output name=date::$FILE_DATE"
+          FILE_DATE=$(xmllint --xpath 'string(//testsuites/@generated)' custom/albatross/test/phpunit.junit.xml)
+          echo "file_date=$FILE_DATE" >> $GITHUB_ENV
 
       - name: Compare dates
         run: |
-          COMMIT_DATE=$(date -d "${{ steps.get_commit_date.outputs.date }}" +%s)
-          FILE_DATE=$(date -d "${{ steps.get_file_date.outputs.date }}" +%s)
+          COMMIT_DATE=$(date -d "${{ env.commit_date }}" +%s)
+          FILE_DATE=$(date -d "${{ env.file_date }}" +%s)
           if [ $FILE_DATE -le $COMMIT_DATE ]; then
             echo "The file phpunit.junit.xml is not newer than the last commit."
             exit 1
