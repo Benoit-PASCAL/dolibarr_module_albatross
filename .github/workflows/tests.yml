@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Check if phpunit.junit.xml was modified
         id: check_file
@@ -21,12 +23,39 @@ jobs:
               repo: context.repo.repo,
               pull_number: pr.number,
             });
+            
+            // Vérifier si le fichier a été modifié
             const fileModified = files.some(file => file.filename === 'test/phpunit.junit.xml');
-            core.exportVariable('file_modified', fileModified);
+
             if (!fileModified) {
-              core.setFailed('File phpunit.junit.xml was NOT modified in the pull request.');
+              // Si le fichier n'a pas été modifié, vérifie si son contenu a changé
+              const { data: commit1 } = await github.repos.getCommit({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: pr.base.sha
+              });
+
+              const { data: commit2 } = await github.repos.getCommit({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: pr.head.sha
+              });
+
+              const file1 = commit1.files.find(file => file.filename === 'test/phpunit.junit.xml');
+              const file2 = commit2.files.find(file => file.filename === 'test/phpunit.junit.xml');
+
+              // Comparer le contenu des fichiers
+              if (file1 && file2 && file1.patch !== file2.patch) {
+                core.exportVariable('file_modified', true);
+              } else {
+                core.exportVariable('file_modified', false);
+                core.setFailed('File phpunit.junit.xml was NOT modified in the pull request.');
+              }
+            } else {
+              core.exportVariable('file_modified', true);
             }
 
+      # Étape pour vérifier les résultats de PHPUnit si le fichier a été modifié
       - name: Check test results
         if: env.file_modified == 'true'
         run: |
@@ -36,6 +65,9 @@ jobs:
             echo "Some tests failed."
             exit 1  # Forcer l'échec si des tests ont échoué
           fi
-        shell: /usr/bin/bash -e {0}
-        env:
-          file_modified: true
+
+      # Étape finale pour s'assurer qu'une erreur est retournée si nécessaire
+      - name: Fail the workflow if file wasn't modified or tests failed
+        if: failure()  # Vérifie si l'une des étapes précédentes a échoué
+        run: |
+          echo "The workflow failed due to file modification or test failures."
