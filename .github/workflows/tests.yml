@@ -9,20 +9,23 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
 
       - name: Check if phpunit.junit.xml was modified
         id: check_file
-        run: |
-          if git log -1 --pretty=format: --name-only | grep -q 'test/phpunit.junit'; then
-            echo "File phpunit.junit.xml was modified in the last commit."
-            echo "file_modified=true" >> $GITHUB_ENV
-          else
-            echo "File phpunit.junit.xml was NOT modified in the last commit."
-            echo "file_modified=false" >> $GITHUB_ENV
-            exit 1  # Forcer l'échec si le fichier n'a pas été modifié
-          fi
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const { data: files } = await github.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number,
+            });
+            const fileModified = files.some(file => file.filename === 'test/phpunit.junit.xml');
+            core.exportVariable('file_modified', fileModified);
+            if (!fileModified) {
+              core.setFailed('File phpunit.junit.xml was NOT modified in the pull request.');
+            }
 
       - name: Check test results
         if: env.file_modified == 'true'
@@ -32,7 +35,6 @@ jobs:
           else
             echo "Some tests failed."
             exit 1  # Forcer l'échec si des tests ont échoué
-          fi
 
       - name: Fail the workflow if file wasn't modified or tests failed
         if: failure()
