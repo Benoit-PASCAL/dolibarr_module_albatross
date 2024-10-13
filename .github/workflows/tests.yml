@@ -15,7 +15,7 @@ jobs:
       - name: Check if phpunit.junit.xml was modified
         id: check_file
         run: |
-          if git log -1 --pretty=format: --name-only | grep -q 'test/phpunit.junit.xml'; then
+          if git log -1 --pretty=format: --name-only | grep -q 'test/phpunit.junit'; then
             echo "File phpunit.junit.xml was modified in the last commit."
             echo "file_modified=true" >> $GITHUB_ENV
           else
