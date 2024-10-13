@@ -9,24 +9,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Check if phpunit.junit.xml was modified
         id: check_file
-        uses: actions/github-script@v4
-        with:
-          script: |
-            const pr = context.payload.pull_request;
-            const { data: files } = await github.pulls.listFiles({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: pr.number,
-            });
-            const fileModified = files.some(file => file.filename === 'test/phpunit.junit.xml');
-            core.setOutput('file_modified', fileModified.toString());
-            console.log(`File modified: ${fileModified}`);
-            if (!fileModified) {
-              console.log('File phpunit.junit.xml was NOT modified in the pull request.');
-            }
+        run: |
+          git fetch origin ${{ github.base_ref }}
+          if git diff --name-only origin/${{ github.base_ref }}..HEAD | grep -q "test/phpunit.junit.xml"; then
+            echo "file_modified=true" >> $GITHUB_OUTPUT
+            echo "File phpunit.junit.xml was modified in the pull request."
+          else
+            echo "file_modified=false" >> $GITHUB_OUTPUT
+            echo "File phpunit.junit.xml was NOT modified in the pull request."
+          fi
+        shell: bash
 
       - name: Check test results
         if: steps.check_file.outputs.file_modified == 'true'
