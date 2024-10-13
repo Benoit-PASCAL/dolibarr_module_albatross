@@ -15,12 +15,9 @@ jobs:
       - name: Check if phpunit.junit.xml was modified
         id: check_file
         run: |
-          echo "Fetching branch: ${{ github.head_ref }}"
-          git fetch origin ${{ github.head_ref }}
-
           echo "Checking for modifications in phpunit.junit.xml"
-          git diff --name-only origin/${{ github.head_ref }}..HEAD
-          if git diff --name-only origin/${{ github.head_ref }}..HEAD | grep "test/phpunit.junit.xml"; then
+          git diff --name-only HEAD~1 HEAD
+          if git diff --name-only HEAD~1 HEAD | grep "test/phpunit.junit.xml"; then
             echo "File phpunit.junit.xml was modified."
             echo "file_modified=true" >> $GITHUB_OUTPUT
           else
