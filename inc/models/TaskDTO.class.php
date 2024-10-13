@@ -33,7 +33,7 @@ class TaskDTO
 
     public function getProjectID(): int
     {
-        return $this->projectID;
+        return $this->projectID ?? 0;
     }
 
     public function setProjectID(int $projectID): TaskDTO
