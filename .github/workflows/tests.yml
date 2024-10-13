@@ -1,4 +1,4 @@
-name: Check PHPUnit Results
+name: Check PHPUnit Results (should fail)
 
 on: [ pull_request ]
 
