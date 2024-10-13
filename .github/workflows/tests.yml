@@ -35,8 +35,7 @@ jobs:
           else
             echo "Some tests failed."
             exit 1  # Forcer l'échec si des tests ont échoué
-
-      - name: Fail the workflow if file wasn't modified or tests failed
-        if: failure()
-        run: |
-          echo "The workflow failed due to file modification or test failures."
+          fi
+        shell: /usr/bin/bash -e {0}
+        env:
+          file_modified: true
