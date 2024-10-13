@@ -1,0 +1,43 @@
+name: Check PHPUnit Results
+
+on: [ push, pull_request ]
+
+jobs:
+  check-results:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get date of the second last commit
+        id: get_commit_date
+        run: |
+          COMMIT_DATE=$(git log -2 --pretty=format:"%ci" | tail -n 1)
+          echo "::set-output name=date::$COMMIT_DATE"
+
+      - name: Get date of phpunit.junit.xml
+        id: get_file_date
+        run: |
+          FILE_DATE=$(stat -c %y test/phpunit.junit.xml)
+          echo "::set-output name=date::$FILE_DATE"
+
+      - name: Compare dates
+        run: |
+          COMMIT_DATE=$(date -d "${{ steps.get_commit_date.outputs.date }}" +%s)
+          FILE_DATE=$(date -d "${{ steps.get_file_date.outputs.date }}" +%s)
+          if [ $FILE_DATE -le $COMMIT_DATE ]; then
+            echo "The file phpunit.junit.xml is not newer than the second last commit."
+            exit 1
+          else
+            echo "The file phpunit.junit.xml is newer than the second last commit."
+          fi
+
+      - name: Check test results
+        run: |
+          if grep -q 'failures="0"' custom/albatross/test/phpunit.junit.xml; then
+            echo "All tests passed!"
+          else
+            echo "Some tests failed."
+            exit 1
+          fi
