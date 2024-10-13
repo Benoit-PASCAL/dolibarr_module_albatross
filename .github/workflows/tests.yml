@@ -22,7 +22,7 @@ jobs:
       - name: Get date of phpunit.junit.xml
         id: get_file_date
         run: |
-          FILE_DATE=$(xmllint --xpath 'string(//testsuites/@generated)' custom/albatross/test/phpunit.junit.xml)
+          FILE_DATE=$(xmllint --xpath 'string(//testsuites/@generated)' test/phpunit.junit.xml)
           echo "file_date=$FILE_DATE" >> $GITHUB_ENV
 
       - name: Compare dates
