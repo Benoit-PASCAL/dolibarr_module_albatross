@@ -27,10 +27,10 @@ jobs:
           COMMIT_DATE=$(date -d "${{ steps.get_commit_date.outputs.date }}" +%s)
           FILE_DATE=$(date -d "${{ steps.get_file_date.outputs.date }}" +%s)
           if [ $FILE_DATE -le $COMMIT_DATE ]; then
-            echo "The file phpunit.junit.xml is not newer than the second last commit."
+            echo "The file phpunit.junit.xml is not newer than the last commit."
             exit 1
           else
-            echo "The file phpunit.junit.xml is newer than the second last commit."
+            echo "The file phpunit.junit.xml is newer than the last commit."
           fi
 
       - name: Check test results
