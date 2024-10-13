@@ -3,11 +3,11 @@
 namespace test\functional;
 
 // Prepare the environment
-if(!defined('TEST_ENV_SETUP')) {
-    require_once dirname(__FILE__).'/_setup.php';
+if (!defined('TEST_ENV_SETUP')) {
+    require_once dirname(__DIR__) . '/_setup.php';
 }
 
-require_once dirname(__DIR__, 2).'/inc/mappers/OrderDTOMapper.class.php';
+require_once MODULE_ROOT . '/inc/mappers/OrderDTOMapper.class.php';
 
 
 use Albatross\OrderDTO;
@@ -24,8 +24,8 @@ class OrderMapperTest extends TestCase
         global $db;
         $order = new Commande($db);
         $order->lines = [
-            (object)['qty' => 10, 'product' => (object) ['id' => 1]],
-            (object)['qty' => 5, 'product' => (object) ['id' => 2]]
+            (object)['qty' => 10, 'product' => (object)['id' => 1]],
+            (object)['qty' => 5, 'product' => (object)['id' => 2]]
         ];
         $order->ref_customer = 100;
         $order->socid = 200;
@@ -93,7 +93,6 @@ class OrderMapperTest extends TestCase
         $this->assertEquals(12.500, $order->lines[1]->subprice);
         $this->assertEquals(5, $order->lines[1]->qty);
         $this->assertEquals(10, $order->lines[1]->remise_percent);
-
     }
 
     public function testOrderDTOMapperHandlesNullOrder()

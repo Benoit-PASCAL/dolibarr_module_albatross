@@ -3,8 +3,8 @@
 const ROOT = '/var/www/html';
 define('NOREDIRECTBYMAINTOLOGIN', 1);
 define('TEST_ENV_SETUP', 1);
-const NOLOGIN = true;
-require_once ROOT .'/main.inc.php';
+//const NOLOGIN = true;
+require_once ROOT . '/main.inc.php';
 
 require_once ROOT . '/core/lib/admin.lib.php';
 

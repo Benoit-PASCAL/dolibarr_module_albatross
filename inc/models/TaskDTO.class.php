@@ -5,14 +5,9 @@ namespace Albatross;
 
 class TaskDTO
 {
-    private $title;
-    private $description;
-    private $dueDate;
-
-    public function __construct()
-    {
-        $this->dueDate = new \DateTime(); // Default to now
-    }
+    private string $title;
+    private string $description;
+    private int $projectID;
 
     public function getTitle(): string
     {
@@ -36,14 +31,14 @@ class TaskDTO
         return $this;
     }
 
-    public function getDueDate(): \DateTime
+    public function getProjectID(): int
     {
-        return $this->dueDate;
+        return $this->projectID;
     }
 
-    public function setDueDate(\DateTime $dueDate): TaskDTO
+    public function setProjectID(int $projectID): TaskDTO
     {
-        $this->dueDate = $dueDate;
+        $this->projectID = $projectID;
         return $this;
     }
 }

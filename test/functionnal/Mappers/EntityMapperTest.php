@@ -4,10 +4,10 @@ namespace test\functional;
 
 // Prepare the environment
 if (!defined('TEST_ENV_SETUP')) {
-    require_once dirname(__FILE__) . '/_setup.php';
+    require_once dirname(__DIR__) . '/_setup.php';
 }
 
-require_once dirname(__DIR__, 2) . '/inc/mappers/EntityDTOMapper.class.php';
+require_once MODULE_ROOT . '/inc/mappers/EntityDTOMapper.class.php';
 
 
 use Albatross\EntityDTO;

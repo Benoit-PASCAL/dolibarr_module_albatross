@@ -4,7 +4,7 @@ namespace test\functional;
 
 // Prepare the environment
 if (!defined('TEST_ENV_SETUP')) {
-    require_once dirname(__FILE__) . '/_setup.php';
+    require_once dirname(__DIR__) . '/_setup.php';
 }
 
 // Require tested class

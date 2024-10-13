@@ -1,15 +1,13 @@
 <?php
 
 // Prepare the environment
-const ROOT = '/var/www/html';
-const NOLOGIN = true;
-require_once ROOT.'/main.inc.php';
-require_once ROOT . '/core/lib/admin.lib.php';
+if (!defined('TEST_ENV_SETUP')) {
+    require_once dirname(__FILE__) . '/_setup.php';
+}
 
 require_once ROOT . '/custom/albatross/inc/models/index.php';
 
 // Require tested class
-const MODULE_ROOT = ROOT . '/custom/albatross';
 require_once MODULE_ROOT . '/inc/tools/doliDBManager.php';
 
 require_once MODULE_ROOT . '/test/tools/RandomFactory.php';
@@ -86,9 +84,9 @@ class DolibarrEntityManagerTest extends TestCase
         $supplierDTO = RandomFactory::getRandomSupplier();
         $productDTO = RandomFactory::getRandomProduct();
 
-        $customerID =  $this->entityManager->createCustomer($customerDTO);
-        $supplierID =  $this->entityManager->createSupplier($supplierDTO);
-        $productID =  $this->entityManager->createProduct($productDTO);
+        $customerID = $this->entityManager->createCustomer($customerDTO);
+        $supplierID = $this->entityManager->createSupplier($supplierDTO);
+        $productID = $this->entityManager->createProduct($productDTO);
 
         // Test
         $orderDTO = RandomFactory::getRandomOrder();
@@ -102,6 +100,11 @@ class DolibarrEntityManagerTest extends TestCase
 
     public function testCreateInvoice()
     {
+        $productDTO_1 = RandomFactory::getRandomProduct();
+        $productID_1 = $this->entityManager->createProduct($productDTO_1);
+        $productDTO_2 = RandomFactory::getRandomProduct();
+        $productID_2 = $this->entityManager->createProduct($productDTO_2);
+
         $supplierDTO = RandomFactory::getRandomSupplier();
         $customerDTO = RandomFactory::getRandomCustomer();
         $supplierID = $this->entityManager->createSupplier($supplierDTO);
@@ -111,6 +114,13 @@ class DolibarrEntityManagerTest extends TestCase
         $invoiceDTO
             ->setSupplierId($supplierID)
             ->setCustomerId($customerID);
+
+        $invoiceDTO
+            ->getInvoiceLines()[0]
+            ->setProductId($productID_1);
+        $invoiceDTO
+            ->getInvoiceLines()[1]
+            ->setProductId($productID_2);
 
         $invoiceID = $this->entityManager->createInvoice($invoiceDTO);
         $this->assertGreaterThan(0, $invoiceID);
@@ -122,6 +132,19 @@ class DolibarrEntityManagerTest extends TestCase
         $projectID = $this->entityManager->createProject($projectDTO);
 
         $this->assertGreaterThan(0, $projectID);
+    }
+
+    public function testCreateTask()
+    {
+        $projectDTO = RandomFactory::getRandomProject();
+        $projectID = $this->entityManager->createProject($projectDTO);
+
+        $taskDTO = RandomFactory::getRandomTask();
+        $taskDTO->setProjectId($projectID);
+
+        $taskID = $this->entityManager->createTask($taskDTO);
+
+        $this->assertGreaterThan(0, $taskID);
     }
 
     public function testCreateTicket()
