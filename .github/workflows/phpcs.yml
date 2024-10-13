@@ -19,8 +19,5 @@ jobs:
           extensions: gmp
           tools: composer
 
-      - name: Install composer packages
-        run: composer install --no-scripts
-
       - name: Run PHPCS
         run: vendor/bin/phpcs --standard=PSR12 --extensions=php src/

@@ -12,16 +12,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Check if file was modified in the last commit
+      - name: Check if phpunit.junit.xml was modified
         id: check_file
         run: |
           if git diff --name-only HEAD~1 HEAD | grep -q 'test/phpunit.junit.xml'; then
             echo "File phpunit.junit.xml was modified in the last commit."
             echo "file_modified=true" >> $GITHUB_ENV
           else
-            echo "File phpunit.junit.xml was not modified in the last commit."
+            echo "File phpunit.junit.xml was NOT modified in the last commit."
             echo "file_modified=false" >> $GITHUB_ENV
-            exit 1
+            exit 1  # Forcer l'échec si le fichier n'a pas été modifié
           fi
 
       - name: Check test results
@@ -31,5 +31,10 @@ jobs:
             echo "All tests passed!"
           else
             echo "Some tests failed."
-            exit 1
+            exit 1  # Forcer l'échec si des tests ont échoué
           fi
+
+      - name: Fail the workflow if file wasn't modified or tests failed
+        if: failure()
+        run: |
+          echo "The workflow failed due to file modification or test failures."
