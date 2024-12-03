@@ -6,7 +6,8 @@ require_once __DIR__ . '/InvoiceLineDTO.class.php';
 use Albatross\InvoiceLineDTO;
 use PhpOffice\PhpSpreadsheet\Calculation\Statistical;
 
-class InvoiceStatus {
+class InvoiceStatus
+{
     const DRAFT = 0;
     const VALIDATED = 1;
     const SENT = 2;

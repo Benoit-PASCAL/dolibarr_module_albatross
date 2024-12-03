@@ -9,7 +9,7 @@ class ProductDTOMapper
 {
     public function toProductDTO(\Product $product): ?ProductDTO
     {
-        if(is_null($product->label)) {
+        if (is_null($product->label)) {
             return null;
         }
 

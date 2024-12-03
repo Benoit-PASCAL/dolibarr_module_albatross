@@ -1,4 +1,5 @@
 <?php
+
 /* Copyright (C) 2004-2018  Laurent Destailleur     <eldy@users.sourceforge.net>
  * Copyright (C) 2018-2019  Nicolas ZABOURI         <info@inovea-conseil.com>
  * Copyright (C) 2019-2020  Frédéric France         <frederic.france@netlogic.fr>
@@ -19,14 +20,15 @@
  */
 
 /**
- * 	\defgroup   albatross     Module Albatross
+ *  \defgroup   albatross     Module Albatross
  *  \brief      Albatross module descriptor.
  *
  *  \file       htdocs/albatross/core/modules/modAlbatross.class.php
  *  \ingroup    albatross
  *  \brief      Description and activation file for module Albatross
  */
-include_once DOL_DOCUMENT_ROOT.'/core/modules/DolibarrModules.class.php';
+
+include_once DOL_DOCUMENT_ROOT . '/core/modules/DolibarrModules.class.php';
 
 /**
  *  Description and activation class for module Albatross
@@ -77,7 +79,7 @@ class modAlbatross extends DolibarrModules
         //$this->url_last_version = 'http://www.example.com/versionmodule.txt';
 
         // Key used in llx_const table to save module status enabled/disabled (where ALBATROSS is value of property name of module in uppercase)
-        $this->const_name = 'MAIN_MODULE_'.strtoupper($this->name);
+        $this->const_name = 'MAIN_MODULE_' . strtoupper($this->name);
 
         $this->langfiles = array('albatross@albatross');
     }

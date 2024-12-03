@@ -14,17 +14,17 @@ class UserGroupDTO
      */
     private $label;
 
-	/**
-	 * @var int[] $entities
-	 */
-	private array $entities;
+    /**
+     * @var int[] $entities
+     */
+    private array $entities;
 
-	public function __construct()
-	{
-		$this->entities = [];
-	}
+    public function __construct()
+    {
+        $this->entities = [];
+    }
 
-	public function getId(): ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -46,14 +46,14 @@ class UserGroupDTO
         return $this;
     }
 
-	public function getEntities(): array
-	{
-		return $this->entities;
-	}
+    public function getEntities(): array
+    {
+        return $this->entities;
+    }
 
-	public function addEntities(array $entities): UserGroupDTO
-	{
-		$this->entities = array_unique(array_merge($this->entities, $entities));
-		return $this;
-	}
+    public function addEntities(array $entities): UserGroupDTO
+    {
+        $this->entities = array_unique(array_merge($this->entities, $entities));
+        return $this;
+    }
 }

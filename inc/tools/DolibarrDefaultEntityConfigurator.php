@@ -74,7 +74,7 @@ class DolibarrDefaultEntityConfigurator implements EntityConfiguratorInterface
         $modFileName = 'mod' . ucfirst($moduleName);
 
         $modPath = DOL_DOCUMENT_ROOT . '/core/modules/' . $modFileName . '.class.php';
-        if(file_exists($modPath)) {
+        if (file_exists($modPath)) {
             return $modPath;
         }
 

@@ -12,7 +12,7 @@ class ProjectDTOMapper
 {
     public function toProjectDTO(\Project $project): ?ProjectDTO
     {
-        if(is_null($project->title)) {
+        if (is_null($project->title)) {
             return null;
         }
 

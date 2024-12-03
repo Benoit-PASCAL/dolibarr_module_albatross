@@ -73,7 +73,7 @@ class ThirdpartyDTO
         $this->email = '';
         $this->phone = '';
         $this->entity = 0;
-		$this->vat_used = true;
+        $this->vat_used = true;
     }
 
     public function getName(): string

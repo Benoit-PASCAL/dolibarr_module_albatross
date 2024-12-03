@@ -2,7 +2,7 @@
 
 namespace Albatross;
 
-include_once dirname(__DIR__) .'/models/UserDTO.class.php';
+include_once dirname(__DIR__) . '/models/UserDTO.class.php';
 
 use User;
 use Albatross\UserDTO;

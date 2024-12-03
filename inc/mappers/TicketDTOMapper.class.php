@@ -25,8 +25,8 @@ class TicketDTOMapper
     public function toTicketDTO(\Ticket $ticket): TicketDTO
     {
         $requiredFields = ['subject', 'description'];
-        foreach($requiredFields as $field) {
-            if(!isset($ticket->$field)) {
+        foreach ($requiredFields as $field) {
+            if (!isset($ticket->$field)) {
                 throw new \Exception("Missing required field: $field");
             }
         }

@@ -1,4 +1,5 @@
 <?php
+
 /* Copyright (C) 2021  John BOTELLA    <john.botella@atm-consulting.fr>
  *
  * This program is free software; you can redistribute it and/or modify
@@ -105,8 +106,8 @@ class FormSetup
     /**
      * Generate an attributes string form an input array
      *
-     * @param 	array 	$attributes 	an array of attributes keys and values,
-     * @return 	string					attribute string
+     * @param   array   $attributes     an array of attributes keys and values,
+     * @return  string                  attribute string
      */
     public static function generateAttributesStringFromArray($attributes)
     {
@@ -116,7 +117,7 @@ class FormSetup
                 if (is_array($value) || is_object($value)) {
                     continue;
                 }
-                $Aattr[] = $attribute.'="'.dol_escape_htmltag($value).'"';
+                $Aattr[] = $attribute . '="' . dol_escape_htmltag($value) . '"';
             }
         }
 
@@ -127,13 +128,13 @@ class FormSetup
     /**
      * generateOutput
      *
-     * @param 	bool 	$editMode 	true will display output on edit mod
-     * @return 	string				html output
+     * @param   bool    $editMode   true will display output on edit mod
+     * @return  string              html output
      */
     public function generateOutput($editMode = false)
     {
         global $hookmanager, $action, $langs;
-        require_once DOL_DOCUMENT_ROOT.'/core/class/html.form.class.php';
+        require_once DOL_DOCUMENT_ROOT . '/core/class/html.form.class.php';
 
         $parameters = array(
             'editMode' => $editMode
@@ -155,7 +156,7 @@ class FormSetup
                 // generate hidden values from $this->formHiddenInputs
                 if (!empty($this->formHiddenInputs) && is_array($this->formHiddenInputs)) {
                     foreach ($this->formHiddenInputs as $hiddenKey => $hiddenValue) {
-                        $out .= '<input type="hidden" name="'.dol_escape_htmltag($hiddenKey).'" value="' . dol_escape_htmltag($hiddenValue) . '">';
+                        $out .= '<input type="hidden" name="' . dol_escape_htmltag($hiddenKey) . '" value="' . dol_escape_htmltag($hiddenValue) . '">';
                     }
                 }
             }
@@ -177,7 +178,7 @@ class FormSetup
                 $out .= $this->htmlOutputMoreButton;
                 $out .= '<input class="button button-save" type="submit" value="' . $this->langs->trans("Save") . '">'; // Todo fix dolibarr style for <button and use <button instead of input
                 $out .= ' &nbsp;&nbsp; ';
-                $out .= '<a class="button button-cancel" type="submit" href="' . $this->formAttributes['action'] . '">'.$langs->trans('Cancel').'</a>';
+                $out .= '<a class="button button-cancel" type="submit" href="' . $this->formAttributes['action'] . '">' . $langs->trans('Cancel') . '</a>';
                 $out .= '</div>';
             }
 
@@ -194,13 +195,13 @@ class FormSetup
     /**
      * generateTableOutput
      *
-     * @param 	bool 	$editMode 	true will display output on edit mod
-     * @return 	string				html output
+     * @param   bool    $editMode   true will display output on edit mod
+     * @return  string              html output
      */
     public function generateTableOutput($editMode = false)
     {
         global $hookmanager, $action;
-        require_once DOL_DOCUMENT_ROOT.'/core/class/html.form.class.php';
+        require_once DOL_DOCUMENT_ROOT . '/core/class/html.form.class.php';
 
         $parameters = array(
             'editMode' => $editMode
@@ -238,8 +239,8 @@ class FormSetup
     /**
      * saveConfFromPost
      *
-     * @param 	bool 		$noMessageInUpdate display event message on errors and success
-     * @return	 int        -1 if KO, 1 if OK
+     * @param   bool        $noMessageInUpdate display event message on errors and success
+     * @return   int        -1 if KO, 1 if OK
      */
     public function saveConfFromPost($noMessageInUpdate = false)
     {
@@ -291,9 +292,9 @@ class FormSetup
     /**
      * generateLineOutput
      *
-     * @param    \albatross\backport\v16\core\class\FormSetupItem 	$item 		the setup item
-     * @param 	bool 			$editMode 	Display as edit mod
-     * @return 	string 						the html output for an setup item
+     * @param    \albatross\backport\v16\core\class\FormSetupItem   $item       the setup item
+     * @param   bool            $editMode   Display as edit mod
+     * @return  string                      the html output for an setup item
      */
     public function generateLineOutput($item, $editMode = false)
     {
@@ -306,11 +307,11 @@ class FormSetup
             }
 
             $this->setupNotEmpty++;
-            $out .= '<tr class="'.$trClass.'">';
+            $out .= '<tr class="' . $trClass . '">';
 
             $out .= '<td class="col-setup-title">';
-            $out .= '<span id="helplink'.$item->confKey.'" class="spanforparamtooltip">';
-            $out .= $this->form->textwithpicto($item->getNameText(), $item->getHelpText(), 1, 'info', '', 0, 3, 'tootips'.$item->confKey);
+            $out .= '<span id="helplink' . $item->confKey . '" class="spanforparamtooltip">';
+            $out .= $this->form->textwithpicto($item->getNameText(), $item->getHelpText(), 1, 'info', '', 0, 3, 'tootips' . $item->confKey);
             $out .= '</span>';
             $out .= '</td>';
 
@@ -338,7 +339,7 @@ class FormSetup
     /**
      * Method used to test  module builder convertion to this form usage
      *
-     * @param array 	$params 	an array of arrays of params from old modulBuilder params
+     * @param array     $params     an array of arrays of params from old modulBuilder params
      * @return null
      */
     public function addItemsFromParamsArray($params)
@@ -356,9 +357,9 @@ class FormSetup
      * From old
      * Method was used to test  module builder convertion to this form usage.
      *
-     * @param 	string 	$confKey 	the conf name to store
-     * @param 	array 	$params 	an array of params from old modulBuilder params
-     * @return 	bool
+     * @param   string  $confKey    the conf name to store
+     * @param   array   $params     an array of params from old modulBuilder params
+     * @return  bool
      */
     public function addItemFromParams($confKey, $params)
     {
@@ -368,7 +369,7 @@ class FormSetup
 
         /*
          * Exemple from old module builder setup page
-         * 	// 'ALBATROSS_MYPARAM1'=>array('type'=>'string', 'css'=>'minwidth500' ,'enabled'=>1),
+         *  // 'ALBATROSS_MYPARAM1'=>array('type'=>'string', 'css'=>'minwidth500' ,'enabled'=>1),
             // 'ALBATROSS_MYPARAM2'=>array('type'=>'textarea','enabled'=>1),
             //'ALBATROSS_MYPARAM3'=>array('type'=>'category:'.Categorie::TYPE_CUSTOMER, 'enabled'=>1),
             //'ALBATROSS_MYPARAM4'=>array('type'=>'emailtemplate:thirdparty', 'enabled'=>1),
@@ -438,9 +439,9 @@ class FormSetup
      * Create a new item
      * the tagret is useful with hooks : that allow externals modules to add setup items on good place
      *
-     * @param string	$confKey 				the conf key used in database
-     * @param string	$targetItemKey    		target item used to place the new item beside
-     * @param bool		$insertAfterTarget		insert before or after target item ?
+     * @param string    $confKey                the conf key used in database
+     * @param string    $targetItemKey          target item used to place the new item beside
+     * @param bool      $insertAfterTarget      insert before or after target item ?
      * @return \albatross\backport\v16\core\class\FormSetupItem the new setup item created
      */
     public function newItem($confKey, $targetItemKey = false, $insertAfterTarget = false)
@@ -515,8 +516,8 @@ class FormSetup
     /**
      * set new max rank if needed
      *
-     * @param 	int 		$rank 	the item rank
-     * @return 	int|void			new max rank
+     * @param   int         $rank   the item rank
+     * @return  int|void            new max rank
      */
     public function setItemMaxRank($rank)
     {
@@ -527,8 +528,8 @@ class FormSetup
     /**
      * get item position rank from item key
      *
-     * @param	string		$itemKey    	the item key
-     * @return	int         				rank on success and -1 on error
+     * @param   string      $itemKey        the item key
+     * @return  int                         rank on success and -1 on error
      */
     public function getLineRank($itemKey)
     {
@@ -542,9 +543,9 @@ class FormSetup
     /**
      *  uasort callback function to Sort params items
      *
-     *  @param    \albatross\backport\v16\core\class\FormSetupItem	$a  formSetup item
-     *  @param    \albatross\backport\v16\core\class\FormSetupItem	$b  formSetup item
-     *  @return	int					Return compare result
+     *  @param    \albatross\backport\v16\core\class\FormSetupItem  $a  formSetup item
+     *  @param    \albatross\backport\v16\core\class\FormSetupItem  $b  formSetup item
+     *  @return int                 Return compare result
      */
     public function itemSort(
         \albatross\backport\v16\core\class\FormSetupItem $a,
@@ -690,7 +691,7 @@ class FormSetupItem
 
     /**
      * Save const value based on htdocs/core/actions_setmoduleoptions.inc.php
-     *	@return     int         			-1 if KO, 1 if OK
+     *  @return     int                     -1 if KO, 1 if OK
      */
     public function saveConfValue()
     {
@@ -745,7 +746,7 @@ class FormSetupItem
 
     /**
      * Save const value based on htdocs/core/actions_setmoduleoptions.inc.php
-     *	@return     int         			-1 if KO, 0  nothing to do , 1 if OK
+     *  @return     int                     -1 if KO, 0  nothing to do , 1 if OK
      */
     public function setValueFromPost()
     {
@@ -828,7 +829,7 @@ class FormSetupItem
 
 
         $this->fieldAttr['name'] = $this->confKey;
-        $this->fieldAttr['id'] = 'setup-'.$this->confKey;
+        $this->fieldAttr['id'] = 'setup-' . $this->confKey;
         $this->fieldAttr['value'] = $this->fieldValue;
 
         $out = '';
@@ -852,7 +853,7 @@ class FormSetupItem
         } elseif (preg_match('/category:/', $this->type)) {
             $out .= $this->generateInputFieldCategories();
         } elseif (preg_match('/thirdparty_type/', $this->type)) {
-            require_once DOL_DOCUMENT_ROOT.'/core/class/html.formcompany.class.php';
+            require_once DOL_DOCUMENT_ROOT . '/core/class/html.formcompany.class.php';
             $formcompany = new FormCompany($this->db);
             $out .= $formcompany->selectProspectCustomerType($this->fieldValue, $this->confKey);
         } elseif ($this->type == 'securekey') {
@@ -876,9 +877,9 @@ class FormSetupItem
     public function generateInputFieldText()
     {
         if (empty($this->fieldAttr)) {
-            $this->fieldAttr['class'] = 'flat '.(empty($this->cssClass) ? 'minwidth200' : $this->cssClass);
+            $this->fieldAttr['class'] = 'flat ' . (empty($this->cssClass) ? 'minwidth200' : $this->cssClass);
         }
-        return '<input '.FormSetup::generateAttributesStringFromArray($this->fieldAttr).' />';
+        return '<input ' . FormSetup::generateAttributesStringFromArray($this->fieldAttr) . ' />';
     }
 
     /**
@@ -887,7 +888,7 @@ class FormSetupItem
      */
     public function generateInputFieldTextarea()
     {
-        $out = '<textarea class="flat" name="'.$this->confKey.'" id="'.$this->confKey.'" cols="50" rows="5" wrap="soft">' . "\n";
+        $out = '<textarea class="flat" name="' . $this->confKey . '" id="' . $this->confKey . '" cols="50" rows="5" wrap="soft">' . "\n";
         $out .= dol_htmlentities($this->fieldValue);
         $out .= "</textarea>\n";
         return $out;
@@ -912,8 +913,8 @@ class FormSetupItem
     public function generateInputFieldCategories()
     {
         global $conf;
-        require_once DOL_DOCUMENT_ROOT.'/categories/class/categorie.class.php';
-        require_once DOL_DOCUMENT_ROOT.'/core/class/html.formother.class.php';
+        require_once DOL_DOCUMENT_ROOT . '/categories/class/categorie.class.php';
+        require_once DOL_DOCUMENT_ROOT . '/core/class/html.formother.class.php';
         $formother = new FormOther($this->db);
 
         $tmp = explode(':', $this->type);
@@ -961,9 +962,9 @@ class FormSetupItem
     public function generateInputFieldSecureKey()
     {
         global $conf;
-        $out = '<input required="required" type="text" class="flat" id="'.$this->confKey.'" name="'.$this->confKey.'" value="'.(GETPOST($this->confKey, 'alpha') ? GETPOST($this->confKey, 'alpha') : $this->fieldValue).'" size="40">';
+        $out = '<input required="required" type="text" class="flat" id="' . $this->confKey . '" name="' . $this->confKey . '" value="' . (GETPOST($this->confKey, 'alpha') ? GETPOST($this->confKey, 'alpha') : $this->fieldValue) . '" size="40">';
         if (!empty($conf->use_javascript_ajax)) {
-            $out .= '&nbsp;'.img_picto($this->langs->trans('Generate'), 'refresh', 'id="generate_token'.$this->confKey.'" class="linkobject"');
+            $out .= '&nbsp;' . img_picto($this->langs->trans('Generate'), 'refresh', 'id="generate_token' . $this->confKey . '" class="linkobject"');
         }
         if (!empty($conf->use_javascript_ajax)) {
             $out .= "\n" . '<script type="text/javascript">';
@@ -1093,7 +1094,7 @@ class FormSetupItem
             }
             $out .= $this->langs->trans($template->label);
         } elseif (preg_match('/category:/', $this->type)) {
-            require_once DOL_DOCUMENT_ROOT.'/categories/class/categorie.class.php';
+            require_once DOL_DOCUMENT_ROOT . '/categories/class/categorie.class.php';
             $c = new Categorie($this->db);
             $result = $c->fetch($this->fieldValue);
             if ($result < 0) {
@@ -1145,7 +1146,7 @@ class FormSetupItem
         if (!empty($TSelected)) {
             foreach ($TSelected as $selected) {
                 if (!empty($this->fieldOptions[$selected])) {
-                    $outPut .= dolGetBadge('', $this->fieldOptions[$selected], 'info').' ';
+                    $outPut .= dolGetBadge('', $this->fieldOptions[$selected], 'info') . ' ';
                 }
             }
         }
@@ -1233,7 +1234,7 @@ class FormSetupItem
      */
     public function setAsEmailTemplate($templateType)
     {
-        $this->type = 'emailtemplate:'.$templateType;
+        $this->type = 'emailtemplate:' . $templateType;
         return $this;
     }
 
@@ -1280,12 +1281,12 @@ class FormSetupItem
     /**
      * Set type of input as a category selector
      * TODO add default value
-     * @param	int		$catType		Type of category ('customer', 'supplier', 'contact', 'product', 'member'). Old mode (0, 1, 2, ...) is deprecated.
+     * @param   int     $catType        Type of category ('customer', 'supplier', 'contact', 'product', 'member'). Old mode (0, 1, 2, ...) is deprecated.
      * @return self
      */
     public function setAsCategory($catType)
     {
-        $this->type = 'category:'.$catType;
+        $this->type = 'category:' . $catType;
         return $this;
     }
 

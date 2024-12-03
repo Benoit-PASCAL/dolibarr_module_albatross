@@ -23,7 +23,7 @@ class OrderDTOMapper
                 ->setDescription($line->desc ?? '')
                 ->setDiscount($line->remise_percent ?? 0);
 
-            if(!is_null($line->product) && !is_null($line->product->id)) {
+            if (!is_null($line->product) && !is_null($line->product->id)) {
                 $orderLineDTO->setProductId($line->product->id);
             }
 
