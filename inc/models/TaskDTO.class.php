@@ -2,7 +2,6 @@
 
 namespace Albatross;
 
-
 class TaskDTO
 {
     private string $title;

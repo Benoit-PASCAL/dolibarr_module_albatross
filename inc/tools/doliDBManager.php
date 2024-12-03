@@ -492,5 +492,4 @@ class DoliDBManager implements intDBManager
 
         return 1;
     }
-
 }

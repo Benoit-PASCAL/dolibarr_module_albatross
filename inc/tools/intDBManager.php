@@ -43,7 +43,7 @@ interface intDBManager
 
     public function setupEntity(int $entityId = 0, array $params = []): bool;
 
-	public function createTask(TaskDTO $taskDTO): int;
+    public function createTask(TaskDTO $taskDTO): int;
 
     public function removeFixtures(): bool;
 }

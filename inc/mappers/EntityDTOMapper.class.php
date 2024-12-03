@@ -14,8 +14,8 @@ class EntityDTOMapper
     public function toEntityDTO(\DaoMulticompany $entity): ?EntityDTO
     {
         $requiredNotNull = ['label', 'name', 'usetemplate', 'address', 'zipcode', 'city'];
-        foreach($requiredNotNull as $field) {
-            if(is_null($entity->$field)) {
+        foreach ($requiredNotNull as $field) {
+            if (is_null($entity->$field)) {
                 throw new \Exception("Field $field is required and cannot be null");
             }
         }
@@ -38,9 +38,9 @@ class EntityDTOMapper
         $entity = new \DaoMulticompany($db);
 
         $requiredNotNull = ['name'];
-        foreach($requiredNotNull as $field) {
+        foreach ($requiredNotNull as $field) {
             $methodName = 'get' . ucfirst($field);
-            if(is_null($entityDTO->$methodName()) || empty($entityDTO->$methodName())) {
+            if (is_null($entityDTO->$methodName()) || empty($entityDTO->$methodName())) {
                 throw new \Exception("Field $field is required and cannot be null");
             }
         }

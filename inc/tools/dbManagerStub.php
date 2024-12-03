@@ -17,7 +17,7 @@ use Albatross\ProductDTO;
 use Albatross\EntityDTO;
 use Albatross\Tools\intDBManager;
 
-require_once __DIR__.'/intDBManager.php';
+require_once __DIR__ . '/intDBManager.php';
 
 class dbManagerStub implements intDBManager
 {
@@ -86,8 +86,8 @@ class dbManagerStub implements intDBManager
         return 1;
     }
 
-	public function createTask(TaskDTO $taskDTO): int
-	{
-		return 1;
-	}
+    public function createTask(TaskDTO $taskDTO): int
+    {
+        return 1;
+    }
 }
