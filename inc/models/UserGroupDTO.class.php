@@ -61,6 +61,7 @@ class UserGroupDTO
      * @param mixed[] $entities
      */
     public function addEntities($entities): UserGroupDTO
+
     {
         $this->entities = array_unique(array_merge($this->entities, $entities));
         return $this;
