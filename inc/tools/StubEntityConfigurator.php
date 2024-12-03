@@ -6,12 +6,19 @@ require_once __DIR__ . '/EntityConfiguratorInterface.php';
 
 class StubEntityConfigurator implements EntityConfiguratorInterface
 {
-    public function setupEntity(int $entityId = 0, array $params = []): bool
+    /**
+     * @param int $entityId
+     * @param mixed[] $params
+     */
+    public function setupEntity($entityId = 0, $params = []): bool
     {
         return 1;
     }
 
-    public function initModules(array $neededModules): int
+    /**
+     * @param mixed[] $neededModules
+     */
+    public function initModules($neededModules): int
     {
         return 1;
     }

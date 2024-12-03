@@ -7,7 +7,10 @@ require_once dirname(__DIR__, 4) . '/product/class/product.class.php';
 
 class ProductDTOMapper
 {
-    public function toProductDTO(\Product $product): ?ProductDTO
+    /**
+     * @param \Product $product
+     */
+    public function toProductDTO($product): ?ProductDTO
     {
         if (is_null($product->label)) {
             return null;
@@ -21,7 +24,10 @@ class ProductDTOMapper
         return $productDTO;
     }
 
-    public function toProduct(ProductDTO $productDTO): \Product
+    /**
+     * @param \Albatross\ProductDTO $productDTO
+     */
+    public function toProduct($productDTO): \Product
     {
         global $db;
         $product = new \Product($db);

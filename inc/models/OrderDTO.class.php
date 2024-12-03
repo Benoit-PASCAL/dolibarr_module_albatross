@@ -40,7 +40,10 @@ class OrderDTO
         return $this->date;
     }
 
-    public function setDate(\DateTime $date): OrderDTO
+    /**
+     * @param \DateTime $date
+     */
+    public function setDate($date): OrderDTO
     {
         $this->date = $date;
         return $this;
@@ -51,7 +54,10 @@ class OrderDTO
         return $this->customerId;
     }
 
-    public function setCustomerId(int $customerId): OrderDTO
+    /**
+     * @param int $customerId
+     */
+    public function setCustomerId($customerId): OrderDTO
     {
         $this->customerId = $customerId;
         return $this;
@@ -62,7 +68,10 @@ class OrderDTO
         return $this->supplierId;
     }
 
-    public function setSupplierId(int $supplierId): OrderDTO
+    /**
+     * @param int $supplierId
+     */
+    public function setSupplierId($supplierId): OrderDTO
     {
         $this->supplierId = $supplierId;
         return $this;
@@ -76,7 +85,10 @@ class OrderDTO
         return $this->orderLines;
     }
 
-    public function addOrderLine(OrderLineDTO $orderLine): OrderDTO
+    /**
+     * @param \Albatross\OrderLineDTO $orderLine
+     */
+    public function addOrderLine($orderLine): OrderDTO
     {
         $this->orderLines[] = $orderLine;
         return $this;

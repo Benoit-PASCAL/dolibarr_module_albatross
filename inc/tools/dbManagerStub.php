@@ -21,62 +21,99 @@ require_once __DIR__ . '/intDBManager.php';
 
 class dbManagerStub implements intDBManager
 {
-    public function createUser(UserDTO $userDTO): int
+    /**
+     * @param \Albatross\UserDTO $userDTO
+     */
+    public function createUser($userDTO): int
     {
         return 1;
     }
 
-    public function createUserGroup(UserGroupDTO $userGroupDTO): int
+    /**
+     * @param \Albatross\UserGroupDTO $userGroupDTO
+     */
+    public function createUserGroup($userGroupDTO): int
     {
         return 1;
     }
 
-    public function createCustomer(ThirdpartyDTO $thirdpartyDTO): int
+    /**
+     * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
+     */
+    public function createCustomer($thirdpartyDTO): int
     {
         return 1;
     }
 
-    public function createSupplier(ThirdpartyDTO $thirdpartyDTO): int
+    /**
+     * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
+     */
+    public function createSupplier($thirdpartyDTO): int
     {
         return 1;
     }
 
-    public function createProduct(ProductDTO $productDTO): int
+    /**
+     * @param \Albatross\ProductDTO $productDTO
+     */
+    public function createProduct($productDTO): int
     {
         return 1;
     }
 
-    public function createService(ServiceDTO $serviceDTO): int
+    /**
+     * @param \Albatross\ServiceDTO $serviceDTO
+     */
+    public function createService($serviceDTO): int
     {
         return 1;
     }
 
-    public function createOrder(OrderDTO $orderDTO): int
+    /**
+     * @param \Albatross\OrderDTO $orderDTO
+     */
+    public function createOrder($orderDTO): int
     {
         return 1;
     }
 
-    public function createInvoice(InvoiceDTO $invoice): int
+    /**
+     * @param \Albatross\InvoiceDTO $invoice
+     */
+    public function createInvoice($invoice): int
     {
         return 1;
     }
 
-    public function createTicket(TicketDTO $ticketDTO): int
+    /**
+     * @param \Albatross\TicketDTO $ticketDTO
+     */
+    public function createTicket($ticketDTO): int
     {
         return 1;
     }
 
-    public function createEntity(EntityDTO $entityDTO): int
+    /**
+     * @param \Albatross\EntityDTO $entityDTO
+     */
+    public function createEntity($entityDTO): int
     {
         return 1;
     }
 
-    public function createProject(ProjectDTO $projectDTO): int
+    /**
+     * @param \Albatross\ProjectDTO $projectDTO
+     */
+    public function createProject($projectDTO): int
     {
         return 1;
     }
 
-    public function setupEntity(int $entityId = 0, array $params = []): bool
+    /**
+     * @param int $entityId
+     * @param mixed[] $params
+     */
+    public function setupEntity($entityId = 0, $params = []): bool
     {
         return true;
     }
@@ -86,7 +123,10 @@ class dbManagerStub implements intDBManager
         return 1;
     }
 
-    public function createTask(TaskDTO $taskDTO): int
+    /**
+     * @param \Albatross\TaskDTO $taskDTO
+     */
+    public function createTask($taskDTO): int
     {
         return 1;
     }

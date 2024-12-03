@@ -29,7 +29,10 @@ class UserGroupDTO
         return $this->id;
     }
 
-    public function setId(int $id): UserGroupDTO
+    /**
+     * @param int $id
+     */
+    public function setId($id): UserGroupDTO
     {
         $this->id = $id;
         return $this;
@@ -40,7 +43,10 @@ class UserGroupDTO
         return $this->label;
     }
 
-    public function setLabel(string $label): UserGroupDTO
+    /**
+     * @param string $label
+     */
+    public function setLabel($label): UserGroupDTO
     {
         $this->label = $label;
         return $this;
@@ -51,7 +57,10 @@ class UserGroupDTO
         return $this->entities;
     }
 
-    public function addEntities(array $entities): UserGroupDTO
+    /**
+     * @param mixed[] $entities
+     */
+    public function addEntities($entities): UserGroupDTO
     {
         $this->entities = array_unique(array_merge($this->entities, $entities));
         return $this;

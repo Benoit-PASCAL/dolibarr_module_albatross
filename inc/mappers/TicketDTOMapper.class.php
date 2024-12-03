@@ -10,7 +10,10 @@ use Albatross\TicketDTO;
 
 class TicketDTOMapper
 {
-    public function toTicket(TicketDTO $ticketDTO): \Ticket
+    /**
+     * @param \Albatross\TicketDTO $ticketDTO
+     */
+    public function toTicket($ticketDTO): \Ticket
     {
         global $db;
 
@@ -22,7 +25,10 @@ class TicketDTOMapper
 
         return $ticket;
     }
-    public function toTicketDTO(\Ticket $ticket): TicketDTO
+    /**
+     * @param \Ticket $ticket
+     */
+    public function toTicketDTO($ticket): TicketDTO
     {
         $requiredFields = ['subject', 'description'];
         foreach ($requiredFields as $field) {

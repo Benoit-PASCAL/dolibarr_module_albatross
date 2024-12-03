@@ -10,7 +10,7 @@ class DolibarrDefaultEntityConfigurator implements EntityConfiguratorInterface
      * Initialize needed Dolibarr Modules
      * @param string[] $modules
      */
-    public function initModules(array $modules): int
+    public function initModules($modules): int
     {
         try {
             dol_syslog(get_class($this) . '::initModules count:' . count($modules), LOG_INFO);
@@ -62,13 +62,20 @@ class DolibarrDefaultEntityConfigurator implements EntityConfiguratorInterface
         }
     }
 
-    public function setupEntity(int $entityId = 0, array $params = []): bool
+    /**
+     * @param int $entityId
+     * @param mixed[] $params
+     */
+    public function setupEntity($entityId = 0, $params = []): bool
     {
         // TODO: Implement setupEntity() method.
         return 1;
     }
 
-    public function getModulePath(string $moduleName)
+    /**
+     * @param string $moduleName
+     */
+    public function getModulePath($moduleName)
     {
         $lowercaseModule = strtolower($moduleName);
         $modFileName = 'mod' . ucfirst($moduleName);
@@ -86,7 +93,10 @@ class DolibarrDefaultEntityConfigurator implements EntityConfiguratorInterface
         throw new \Exception('Module ' . $moduleName . ' not found');
     }
 
-    public function getModuleClassName(string $moduleName)
+    /**
+     * @param string $moduleName
+     */
+    public function getModuleClassName($moduleName)
     {
         return 'mod' . ucfirst($moduleName);
     }

@@ -10,7 +10,10 @@ use Task;
 
 class TaskDTOMapper
 {
-    public function toTask(TaskDTO $taskDTO): Task
+    /**
+     * @param \Albatross\TaskDTO $taskDTO
+     */
+    public function toTask($taskDTO): Task
     {
         global $db;
 
@@ -23,7 +26,10 @@ class TaskDTOMapper
         return $task;
     }
 
-    public function toTaskDTO(Task $task): TaskDTO
+    /**
+     * @param \Task $task
+     */
+    public function toTaskDTO($task): TaskDTO
     {
         $requiredFields = ['label'];
         foreach ($requiredFields as $field) {

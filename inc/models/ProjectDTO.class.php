@@ -11,7 +11,10 @@ class ProjectDTO
         return $this->label;
     }
 
-    public function setLabel(string $label): ProjectDTO
+    /**
+     * @param string $label
+     */
+    public function setLabel($label): ProjectDTO
     {
         $this->label = $label;
         return $this;

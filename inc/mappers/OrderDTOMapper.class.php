@@ -7,7 +7,10 @@ require_once dirname(__DIR__, 4) . '/commande/class/commande.class.php';
 
 class OrderDTOMapper
 {
-    public function toOrderDTO(\Commande $order): OrderDTO
+    /**
+     * @param \Commande $order
+     */
+    public function toOrderDTO($order): OrderDTO
     {
         $orderDTO = new OrderDTO();
         $orderDTO
@@ -33,7 +36,10 @@ class OrderDTOMapper
         return $orderDTO;
     }
 
-    public function toOrder(OrderDTO $orderDTO): \Commande
+    /**
+     * @param \Albatross\OrderDTO $orderDTO
+     */
+    public function toOrder($orderDTO): \Commande
     {
         global $db, $user;
 

@@ -19,7 +19,10 @@ class ProductDTO
         return $this->label;
     }
 
-    public function setLabel(string $label): ProductDTO
+    /**
+     * @param string $label
+     */
+    public function setLabel($label): ProductDTO
     {
         $this->label = $label;
         return $this;
@@ -30,7 +33,10 @@ class ProductDTO
         return (float) $this->taxFreePrice / 100;
     }
 
-    public function setTaxFreePrice(float $taxFreePrice): ProductDTO
+    /**
+     * @param float $taxFreePrice
+     */
+    public function setTaxFreePrice($taxFreePrice): ProductDTO
     {
         $this->taxFreePrice = (int) $taxFreePrice * 100;
         return $this;

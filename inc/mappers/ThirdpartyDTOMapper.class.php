@@ -7,7 +7,10 @@ require_once dirname(__DIR__, 4) . '/societe/class/societe.class.php';
 
 class ThirdpartyDTOMapper
 {
-    public function toThirdpartyDTO(\Societe $thirdparty): ThirdpartyDTO
+    /**
+     * @param \Societe $thirdparty
+     */
+    public function toThirdpartyDTO($thirdparty): ThirdpartyDTO
     {
         $thirdpartyDTO = new ThirdpartyDTO();
         $thirdpartyDTO
@@ -23,7 +26,10 @@ class ThirdpartyDTOMapper
         return $thirdpartyDTO;
     }
 
-    public function toSupplier(ThirdpartyDTO $thirdpartyDTO): \Societe
+    /**
+     * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
+     */
+    public function toSupplier($thirdpartyDTO): \Societe
     {
         global $conf, $db;
 
@@ -50,7 +56,10 @@ class ThirdpartyDTOMapper
         return $thirdparty;
     }
 
-    public function toCustomer(ThirdpartyDTO $thirdpartyDTO): \Societe
+    /**
+     * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
+     */
+    public function toCustomer($thirdpartyDTO): \Societe
     {
         global $conf, $db;
 

@@ -81,7 +81,10 @@ class ThirdpartyDTO
         return $this->name;
     }
 
-    public function setName(string $name): ThirdpartyDTO
+    /**
+     * @param string $name
+     */
+    public function setName($name): ThirdpartyDTO
     {
         $this->name = $name;
         return $this;
@@ -92,7 +95,10 @@ class ThirdpartyDTO
         return $this->siret ?? '';
     }
 
-    public function setSiret(string $siret): ThirdpartyDTO
+    /**
+     * @param string $siret
+     */
+    public function setSiret($siret): ThirdpartyDTO
     {
         $this->siret = $siret;
         return $this;
@@ -103,7 +109,10 @@ class ThirdpartyDTO
         return $this->address;
     }
 
-    public function setAddress(string $address): ThirdpartyDTO
+    /**
+     * @param string $address
+     */
+    public function setAddress($address): ThirdpartyDTO
     {
         $this->address = $address;
         return $this;
@@ -114,7 +123,10 @@ class ThirdpartyDTO
         return $this->zipCode;
     }
 
-    public function setZipCode(string $zipCode): ThirdpartyDTO
+    /**
+     * @param string $zipCode
+     */
+    public function setZipCode($zipCode): ThirdpartyDTO
     {
         $this->zipCode = $zipCode;
         return $this;
@@ -125,7 +137,10 @@ class ThirdpartyDTO
         return $this->city;
     }
 
-    public function setCity(string $city): ThirdpartyDTO
+    /**
+     * @param string $city
+     */
+    public function setCity($city): ThirdpartyDTO
     {
         $this->city = $city;
         return $this;
@@ -136,7 +151,10 @@ class ThirdpartyDTO
         return $this->email;
     }
 
-    public function setEmail(string $email): ThirdpartyDTO
+    /**
+     * @param string $email
+     */
+    public function setEmail($email): ThirdpartyDTO
     {
         $this->email = $email;
         return $this;
@@ -147,7 +165,10 @@ class ThirdpartyDTO
         return $this->phone;
     }
 
-    public function setPhone(string $phone): ThirdpartyDTO
+    /**
+     * @param string $phone
+     */
+    public function setPhone($phone): ThirdpartyDTO
     {
         $this->phone = $phone;
         return $this;
@@ -158,7 +179,10 @@ class ThirdpartyDTO
         return $this->entity;
     }
 
-    public function setEntity(int $entity): ThirdpartyDTO
+    /**
+     * @param int $entity
+     */
+    public function setEntity($entity): ThirdpartyDTO
     {
         $this->entity = $entity;
         return $this;
@@ -169,7 +193,10 @@ class ThirdpartyDTO
         return $this->iban ?? '';
     }
 
-    public function setIban(string $iban): ThirdpartyDTO
+    /**
+     * @param string $iban
+     */
+    public function setIban($iban): ThirdpartyDTO
     {
         $this->iban = $iban;
         return $this;
@@ -191,7 +218,10 @@ class ThirdpartyDTO
         return $this->accountOwner ?? '';
     }
 
-    public function setAccountOwner(string $accountOwner): ThirdpartyDTO
+    /**
+     * @param string $accountOwner
+     */
+    public function setAccountOwner($accountOwner): ThirdpartyDTO
     {
         $this->accountOwner = $accountOwner;
         return $this;
@@ -202,7 +232,10 @@ class ThirdpartyDTO
         return $this->vat_used;
     }
 
-    public function setVatUsed(bool $vat_used = true): ThirdpartyDTO
+    /**
+     * @param bool $vat_used
+     */
+    public function setVatUsed($vat_used = true): ThirdpartyDTO
     {
         $this->vat_used = $vat_used;
         return $this;

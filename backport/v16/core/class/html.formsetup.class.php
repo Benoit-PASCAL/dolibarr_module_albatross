@@ -548,8 +548,8 @@ class FormSetup
      *  @return int                 Return compare result
      */
     public function itemSort(
-        \albatross\backport\v16\core\class\FormSetupItem $a,
-        \albatross\backport\v16\core\class\FormSetupItem $b
+		$a,
+		$b
     ) {
         if (empty($a->rank)) {
             $a->rank = 0;
@@ -729,7 +729,7 @@ class FormSetupItem
      * @param callable $callBack a callable function
      * @return void
      */
-    public function setSaveCallBack(callable $callBack)
+	public function setSaveCallBack($callBack)
     {
         $this->saveCallBack = $callBack;
     }
@@ -739,7 +739,7 @@ class FormSetupItem
      * @param callable $callBack a callable function
      * @return void
      */
-    public function setValueFromPostCallBack(callable $callBack)
+	public function setValueFromPostCallBack($callBack)
     {
         $this->setValueFromPostCallBack = $callBack;
     }

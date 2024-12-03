@@ -57,7 +57,10 @@ class InvoiceDTO
         return $this->date;
     }
 
-    public function setDate(\DateTime $date): InvoiceDTO
+    /**
+     * @param \DateTime $date
+     */
+    public function setDate($date): InvoiceDTO
     {
         $this->date = $date;
         return $this;
@@ -68,7 +71,10 @@ class InvoiceDTO
         return $this->status;
     }
 
-    public function setStatus(int $status): InvoiceDTO
+    /**
+     * @param int $status
+     */
+    public function setStatus($status): InvoiceDTO
     {
         $this->status = $status;
         return $this;
@@ -79,7 +85,10 @@ class InvoiceDTO
         return $this->customerId;
     }
 
-    public function setCustomerId(int $customerId): InvoiceDTO
+    /**
+     * @param int $customerId
+     */
+    public function setCustomerId($customerId): InvoiceDTO
     {
         $this->customerId = $customerId;
         return $this;
@@ -90,7 +99,10 @@ class InvoiceDTO
         return $this->supplierId;
     }
 
-    public function setSupplierId(int $supplierId): InvoiceDTO
+    /**
+     * @param int $supplierId
+     */
+    public function setSupplierId($supplierId): InvoiceDTO
     {
         $this->supplierId = $supplierId;
         return $this;
@@ -104,7 +116,10 @@ class InvoiceDTO
         return $this->invoiceLines;
     }
 
-    public function addInvoiceLine(InvoiceLineDTO $invoiceLine): InvoiceDTO
+    /**
+     * @param \Albatross\InvoiceLineDTO $invoiceLine
+     */
+    public function addInvoiceLine($invoiceLine): InvoiceDTO
     {
         $this->invoiceLines[] = $invoiceLine;
         return $this;
@@ -115,7 +130,10 @@ class InvoiceDTO
         return $this->project;
     }
 
-    public function setProject(int $project): InvoiceDTO
+    /**
+     * @param int $project
+     */
+    public function setProject($project): InvoiceDTO
     {
         $this->project = $project;
         return $this;

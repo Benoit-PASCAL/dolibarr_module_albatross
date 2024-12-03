@@ -13,7 +13,10 @@ class TaskDTO
         return $this->title;
     }
 
-    public function setTitle(string $title): TaskDTO
+    /**
+     * @param string $title
+     */
+    public function setTitle($title): TaskDTO
     {
         $this->title = $title;
         return $this;
@@ -24,7 +27,10 @@ class TaskDTO
         return $this->description;
     }
 
-    public function setDescription(string $description): TaskDTO
+    /**
+     * @param string $description
+     */
+    public function setDescription($description): TaskDTO
     {
         $this->description = $description;
         return $this;
@@ -35,7 +41,10 @@ class TaskDTO
         return $this->projectID ?? 0;
     }
 
-    public function setProjectID(int $projectID): TaskDTO
+    /**
+     * @param int $projectID
+     */
+    public function setProjectID($projectID): TaskDTO
     {
         $this->projectID = $projectID;
         return $this;
