@@ -29,7 +29,10 @@ class TicketDTO
         return $this->subject;
     }
 
-    public function setSubject(string $subject): TicketDTO
+    /**
+     * @param string $subject
+     */
+    public function setSubject($subject): TicketDTO
     {
         $this->subject = $subject;
         return $this;
@@ -40,7 +43,10 @@ class TicketDTO
         return $this->description;
     }
 
-    public function setDescription(string $description): TicketDTO
+    /**
+     * @param string $description
+     */
+    public function setDescription($description): TicketDTO
     {
         $this->description = $description;
         return $this;
@@ -51,7 +57,10 @@ class TicketDTO
         return $this->creationDate;
     }
 
-    public function setCreationDate(\DateTime $creationDate): TicketDTO
+    /**
+     * @param \DateTime $creationDate
+     */
+    public function setCreationDate($creationDate): TicketDTO
     {
         $this->creationDate = $creationDate;
         return $this;

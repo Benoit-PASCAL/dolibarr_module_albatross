@@ -11,7 +11,10 @@ class Entity extends \DaoMulticompany
 
 class EntityDTOMapper
 {
-    public function toEntityDTO(\DaoMulticompany $entity): ?EntityDTO
+    /**
+     * @param \DaoMulticompany $entity
+     */
+    public function toEntityDTO($entity): ?EntityDTO
     {
         $requiredNotNull = ['label', 'name', 'usetemplate', 'address', 'zipcode', 'city'];
         foreach ($requiredNotNull as $field) {
@@ -32,7 +35,10 @@ class EntityDTOMapper
         return $entityDTO;
     }
 
-    public function toEntity(EntityDTO $entityDTO): \DaoMulticompany
+    /**
+     * @param \Albatross\EntityDTO $entityDTO
+     */
+    public function toEntity($entityDTO): \DaoMulticompany
     {
         global $db;
         $entity = new \DaoMulticompany($db);
@@ -73,7 +79,10 @@ class EntityDTOMapper
         return $entity;
     }
 
-    public function toModel(EntityDTO $entityDTO): \DaoMulticompany
+    /**
+     * @param \Albatross\EntityDTO $entityDTO
+     */
+    public function toModel($entityDTO): \DaoMulticompany
     {
         global $db;
         $entity = $this->toEntity($entityDTO);

@@ -11,7 +11,10 @@ require_once dirname(__DIR__, 4) . '/user/class/user.class.php';
 
 class UserDTOMapper
 {
-    public function toUserDTO(User $newUser): UserDTO
+    /**
+     * @param \User $newUser
+     */
+    public function toUserDTO($newUser): UserDTO
     {
         $userDTO = new UserDTO();
         $userDTO
@@ -26,7 +29,10 @@ class UserDTOMapper
         return $userDTO;
     }
 
-    public function toUser(UserDTO $userDTO): User
+    /**
+     * @param \Albatross\UserDTO $userDTO
+     */
+    public function toUser($userDTO): User
     {
         global $db;
         $newUser = new User($db);

@@ -40,7 +40,10 @@ class InvoiceLineDTO
         return $this->productId;
     }
 
-    public function setProductId(int $productId): InvoiceLineDTO
+    /**
+     * @param int $productId
+     */
+    public function setProductId($productId): InvoiceLineDTO
     {
         $this->productId = $productId;
         return $this;
@@ -51,7 +54,10 @@ class InvoiceLineDTO
         return $this->quantity;
     }
 
-    public function setQuantity(int $quantity): InvoiceLineDTO
+    /**
+     * @param int $quantity
+     */
+    public function setQuantity($quantity): InvoiceLineDTO
     {
         $this->quantity = $quantity;
         return $this;
@@ -62,7 +68,10 @@ class InvoiceLineDTO
         return $this->description;
     }
 
-    public function setDescription(string $description): InvoiceLineDTO
+    /**
+     * @param string $description
+     */
+    public function setDescription($description): InvoiceLineDTO
     {
         $this->description = $description;
         return $this;
@@ -73,7 +82,10 @@ class InvoiceLineDTO
         return $this->unitprice / 1000;
     }
 
-    public function setUnitprice(float $unitprice): InvoiceLineDTO
+    /**
+     * @param float $unitprice
+     */
+    public function setUnitprice($unitprice): InvoiceLineDTO
     {
         $this->unitprice = $unitprice * 1000;
         return $this;
@@ -84,7 +96,10 @@ class InvoiceLineDTO
         return $this->discount;
     }
 
-    public function setDiscount(int $discount): InvoiceLineDTO
+    /**
+     * @param int $discount
+     */
+    public function setDiscount($discount): InvoiceLineDTO
     {
         $this->discount = $discount;
         return $this;

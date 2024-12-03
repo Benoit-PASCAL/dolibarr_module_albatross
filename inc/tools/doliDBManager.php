@@ -53,7 +53,10 @@ class DoliDBManager implements intDBManager
         $this->currentEntityId = 0;
     }
 
-    public function createUser(UserDTO $userDTO): int
+    /**
+     * @param \Albatross\UserDTO $userDTO
+     */
+    public function createUser($userDTO): int
     {
         dol_syslog(get_class($this) . '::createUser lastname:' . $userDTO->getLastname(), LOG_INFO);
         global $db, $user;
@@ -69,7 +72,10 @@ class DoliDBManager implements intDBManager
         return $res;
     }
 
-    public function createUserGroup(UserGroupDTO $userGroupDTO): int
+    /**
+     * @param \Albatross\UserGroupDTO $userGroupDTO
+     */
+    public function createUserGroup($userGroupDTO): int
     {
         dol_syslog(get_class($this) . '::createUserGroup label:' . $userGroupDTO->getLabel(), LOG_INFO);
         global $user;
@@ -89,7 +95,10 @@ class DoliDBManager implements intDBManager
         return $res;
     }
 
-    public function createCustomer(ThirdpartyDTO $thirdpartyDTO): int
+    /**
+     * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
+     */
+    public function createCustomer($thirdpartyDTO): int
     {
         dol_syslog(get_class($this) . '::createCustomer', LOG_INFO);
 
@@ -106,7 +115,10 @@ class DoliDBManager implements intDBManager
         return $tmpCustomer->id;
     }
 
-    public function createSupplier(ThirdpartyDTO $thirdpartyDTO): int
+    /**
+     * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
+     */
+    public function createSupplier($thirdpartyDTO): int
     {
         dol_syslog(get_class($this) . '::createSupplier', LOG_INFO);
 
@@ -123,7 +135,10 @@ class DoliDBManager implements intDBManager
         return $tmpSupplier->id;
     }
 
-    public function createProduct(ProductDTO $productDTO): int
+    /**
+     * @param \Albatross\ProductDTO $productDTO
+     */
+    public function createProduct($productDTO): int
     {
         dol_syslog(get_class($this) . 'createProduct', LOG_INFO);
         global $db, $user;
@@ -135,7 +150,10 @@ class DoliDBManager implements intDBManager
         return $product->id ?? 0;
     }
 
-    public function createService(ServiceDTO $serviceDTO): int
+    /**
+     * @param \Albatross\ServiceDTO $serviceDTO
+     */
+    public function createService($serviceDTO): int
     {
         dol_syslog(get_class($this) . 'createService', LOG_INFO);
         global $db, $user;
@@ -147,7 +165,10 @@ class DoliDBManager implements intDBManager
         return $product->id ?? 0;
     }
 
-    public function createOrder(OrderDTO $orderDTO): int
+    /**
+     * @param \Albatross\OrderDTO $orderDTO
+     */
+    public function createOrder($orderDTO): int
     {
         dol_syslog(get_class($this) . 'createOrder', LOG_INFO);
         global $conf, $db, $user;
@@ -176,7 +197,10 @@ class DoliDBManager implements intDBManager
         return $order->id ?? 0;
     }
 
-    public function createInvoice(InvoiceDTO $invoiceDTO): int
+    /**
+     * @param \Albatross\InvoiceDTO $invoiceDTO
+     */
+    public function createInvoice($invoiceDTO): int
     {
         dol_syslog(get_class($this) . 'createInvoice', LOG_INFO);
         global $conf, $db, $user;
@@ -208,7 +232,10 @@ class DoliDBManager implements intDBManager
         return $invoice->id ?? 0;
     }
 
-    public function createTicket(TicketDTO $ticketDTO): int
+    /**
+     * @param \Albatross\TicketDTO $ticketDTO
+     */
+    public function createTicket($ticketDTO): int
     {
         dol_syslog(get_class($this) . '::createTicket', LOG_INFO);
         global $conf, $db, $user;
@@ -228,7 +255,10 @@ class DoliDBManager implements intDBManager
         return $ticket->id ?? $res;
     }
 
-    public function createProject(ProjectDTO $projectDTO): int
+    /**
+     * @param \Albatross\ProjectDTO $projectDTO
+     */
+    public function createProject($projectDTO): int
     {
         dol_syslog(__METHOD__, LOG_INFO);
 
@@ -257,7 +287,10 @@ class DoliDBManager implements intDBManager
         return $ticket->id ?? $res;
     }
 
-    public function createTask(TaskDTO $taskDTO): int
+    /**
+     * @param \Albatross\TaskDTO $taskDTO
+     */
+    public function createTask($taskDTO): int
     {
         dol_syslog(__METHOD__, LOG_INFO);
 
@@ -283,7 +316,11 @@ class DoliDBManager implements intDBManager
         return $task->id;
     }
 
-    public function createEntity(EntityDTO $entityDTO, array $params = []): int
+    /**
+     * @param \Albatross\EntityDTO $entityDTO
+     * @param mixed[] $params
+     */
+    public function createEntity($entityDTO, $params = []): int
     {
         dol_syslog(get_class($this) . '::createEntity entity:' . $entityDTO->getName(), LOG_INFO);
         global $db, $user;
@@ -406,7 +443,11 @@ class DoliDBManager implements intDBManager
         }
     }
 
-    public function setupEntity(int $entityId = 0, array $params = []): bool
+    /**
+     * @param int $entityId
+     * @param mixed[] $params
+     */
+    public function setupEntity($entityId = 0, $params = []): bool
     {
         dol_syslog(get_class($this) . '::setupEntity $entityId:' . $entityId, LOG_INFO);
         // TODO: Move to fixtures as it is a specific setup

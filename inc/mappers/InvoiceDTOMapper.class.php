@@ -13,7 +13,10 @@ require_once dirname(__DIR__, 4) . '/compta/facture/class/facture.class.php';
 
 class InvoiceDTOMapper
 {
-    public function toInvoiceDTO(Facture $invoice): InvoiceDTO
+    /**
+     * @param \Facture $invoice
+     */
+    public function toInvoiceDTO($invoice): InvoiceDTO
     {
         $invoiceDTO = new InvoiceDTO();
         $invoiceDTO
@@ -45,7 +48,10 @@ class InvoiceDTOMapper
         return $invoiceDTO;
     }
 
-    public function toInvoice(InvoiceDTO $invoiceDTO): Facture
+    /**
+     * @param \Albatross\InvoiceDTO $invoiceDTO
+     */
+    public function toInvoice($invoiceDTO): Facture
     {
         global $db, $user;
 

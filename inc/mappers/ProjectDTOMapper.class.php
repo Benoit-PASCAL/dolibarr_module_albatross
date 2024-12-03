@@ -10,7 +10,10 @@ require_once dirname(__DIR__, 4) . '/projet/class/project.class.php';
 
 class ProjectDTOMapper
 {
-    public function toProjectDTO(\Project $project): ?ProjectDTO
+    /**
+     * @param \Project $project
+     */
+    public function toProjectDTO($project): ?ProjectDTO
     {
         if (is_null($project->title)) {
             return null;
@@ -23,7 +26,10 @@ class ProjectDTOMapper
         return $projectDTO;
     }
 
-    public function toProject(ProjectDTO $projectDTO): \Project
+    /**
+     * @param \Albatross\ProjectDTO $projectDTO
+     */
+    public function toProject($projectDTO): \Project
     {
         global $db;
         $project = new \Project($db);

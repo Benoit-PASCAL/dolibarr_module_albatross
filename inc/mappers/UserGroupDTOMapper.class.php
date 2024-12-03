@@ -10,7 +10,10 @@ require_once dirname(__DIR__, 4) . '/user/class/usergroup.class.php';
 
 class UserGroupDTOMapper
 {
-    public function toUserGroupDTO(\UserGroup $userGroup): UserGroupDTO
+    /**
+     * @param \UserGroup $userGroup
+     */
+    public function toUserGroupDTO($userGroup): UserGroupDTO
     {
         $userGroupDTO = new UserGroupDTO();
         $userGroupDTO
@@ -20,7 +23,10 @@ class UserGroupDTOMapper
         return $userGroupDTO;
     }
 
-    public function toUserGroup(UserGroupDTO $userGroupDTO): \UserGroup
+    /**
+     * @param \Albatross\UserGroupDTO $userGroupDTO
+     */
+    public function toUserGroup($userGroupDTO): \UserGroup
     {
         global $db;
         $newUserGroup = new \UserGroup($db);

@@ -83,7 +83,10 @@ class UserDTO
         return $this->firstname;
     }
 
-    public function setFirstname(string $firstname): UserDTO
+    /**
+     * @param string $firstname
+     */
+    public function setFirstname($firstname): UserDTO
     {
         $this->firstname = $firstname;
         return $this;
@@ -94,7 +97,10 @@ class UserDTO
         return $this->email;
     }
 
-    public function setEmail(string $email): UserDTO
+    /**
+     * @param string $email
+     */
+    public function setEmail($email): UserDTO
     {
         $this->email = $email;
         return $this;
@@ -105,7 +111,10 @@ class UserDTO
         return $this->phone;
     }
 
-    public function setPhone(string $phone): UserDTO
+    /**
+     * @param string $phone
+     */
+    public function setPhone($phone): UserDTO
     {
         $this->phone = $phone;
         return $this;
@@ -116,7 +125,10 @@ class UserDTO
         return $this->address;
     }
 
-    public function setAddress(string $address): UserDTO
+    /**
+     * @param string $address
+     */
+    public function setAddress($address): UserDTO
     {
         $this->address = $address;
         return $this;
@@ -127,7 +139,10 @@ class UserDTO
         return $this->zipCode;
     }
 
-    public function setZipCode(string $zipCode): UserDTO
+    /**
+     * @param string $zipCode
+     */
+    public function setZipCode($zipCode): UserDTO
     {
         $this->zipCode = $zipCode;
         return $this;
@@ -138,7 +153,10 @@ class UserDTO
         return $this->city;
     }
 
-    public function setCity(string $city): UserDTO
+    /**
+     * @param string $city
+     */
+    public function setCity($city): UserDTO
     {
         $this->city = $city;
         return $this;
@@ -149,7 +167,10 @@ class UserDTO
         return $this->gender ?? Gender::UNDEFINED;
     }
 
-    public function setGender(int $gender): UserDTO
+    /**
+     * @param int $gender
+     */
+    public function setGender($gender): UserDTO
     {
         $this->gender = $gender;
         return $this;
@@ -163,13 +184,19 @@ class UserDTO
         return $this->groups;
     }
 
-    public function addGroup(UserGroupDTO $group): UserDTO
+    /**
+     * @param \Albatross\UserGroupDTO $group
+     */
+    public function addGroup($group): UserDTO
     {
         $this->groups[] = $group;
         return $this;
     }
 
-    public function removeGroup(int $groupId): UserDTO
+    /**
+     * @param int $groupId
+     */
+    public function removeGroup($groupId): UserDTO
     {
         foreach ($this->groups as $key => $value) {
             if ($value->getId() === $group) {
@@ -186,7 +213,10 @@ class UserDTO
         return $this->entity_id ?? 1;
     }
 
-    public function setEntity(int $entity_id): UserDTO
+    /**
+     * @param int $entity_id
+     */
+    public function setEntity($entity_id): UserDTO
     {
         $this->entity_id = $entity_id;
         return $this;

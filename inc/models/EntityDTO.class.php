@@ -96,7 +96,10 @@ class EntityDTO
         return $this->label;
     }
 
-    public function setLabel(string $label): EntityDTO
+    /**
+     * @param string $label
+     */
+    public function setLabel($label): EntityDTO
     {
         $this->label = $label;
         return $this;
@@ -107,7 +110,10 @@ class EntityDTO
         return $this->name;
     }
 
-    public function setName(string $name): EntityDTO
+    /**
+     * @param string $name
+     */
+    public function setName($name): EntityDTO
     {
         $this->name = $name;
         return $this;
@@ -118,7 +124,10 @@ class EntityDTO
         return $this->address;
     }
 
-    public function setAddress(string $address): EntityDTO
+    /**
+     * @param string $address
+     */
+    public function setAddress($address): EntityDTO
     {
         $this->address = $address;
         return $this;
@@ -129,7 +138,10 @@ class EntityDTO
         return $this->zipCode;
     }
 
-    public function setZipCode(string $zipCode): EntityDTO
+    /**
+     * @param string $zipCode
+     */
+    public function setZipCode($zipCode): EntityDTO
     {
         $this->zipCode = $zipCode;
         return $this;
@@ -140,7 +152,10 @@ class EntityDTO
         return $this->city;
     }
 
-    public function setCity(string $city): EntityDTO
+    /**
+     * @param string $city
+     */
+    public function setCity($city): EntityDTO
     {
         $this->city = $city;
         return $this;
@@ -151,7 +166,10 @@ class EntityDTO
         return $this->model_id;
     }
 
-    public function setModel(int $model_id): EntityDTO
+    /**
+     * @param int $model_id
+     */
+    public function setModel($model_id): EntityDTO
     {
         $this->model_id = $model_id;
         return $this;
@@ -162,7 +180,10 @@ class EntityDTO
         return $this->model_id;
     }
 
-    public function setModelId(int $model_id): EntityDTO
+    /**
+     * @param int $model_id
+     */
+    public function setModelId($model_id): EntityDTO
     {
         $this->model_id = $model_id;
         return $this;
@@ -194,7 +215,10 @@ class EntityDTO
         return $this->invoice_pattern;
     }
 
-    public function setInvoicePattern(string $invoice_pattern): EntityDTO
+    /**
+     * @param string $invoice_pattern
+     */
+    public function setInvoicePattern($invoice_pattern): EntityDTO
     {
         $this->invoice_pattern = $invoice_pattern;
         return $this;
@@ -205,7 +229,10 @@ class EntityDTO
         return $this->replacement_invoice_pattern;
     }
 
-    public function setReplacementInvoicePattern(string $replacement_invoice_pattern): EntityDTO
+    /**
+     * @param string $replacement_invoice_pattern
+     */
+    public function setReplacementInvoicePattern($replacement_invoice_pattern): EntityDTO
     {
         $this->replacement_invoice_pattern = $replacement_invoice_pattern;
         return $this;
@@ -216,7 +243,10 @@ class EntityDTO
         return $this->credit_note_pattern;
     }
 
-    public function setCreditNotePattern(string $credit_note_pattern): EntityDTO
+    /**
+     * @param string $credit_note_pattern
+     */
+    public function setCreditNotePattern($credit_note_pattern): EntityDTO
     {
         $this->credit_note_pattern = $credit_note_pattern;
         return $this;
@@ -227,7 +257,10 @@ class EntityDTO
         return $this->down_payment_invoice_pattern;
     }
 
-    public function setDownPaymentInvoicePattern(string $down_payment_invoice_pattern): EntityDTO
+    /**
+     * @param string $down_payment_invoice_pattern
+     */
+    public function setDownPaymentInvoicePattern($down_payment_invoice_pattern): EntityDTO
     {
         $this->down_payment_invoice_pattern = $down_payment_invoice_pattern;
         return $this;
@@ -238,7 +271,10 @@ class EntityDTO
         return $this->propal_pattern;
     }
 
-    public function setPropalPattern(string $propal_pattern): EntityDTO
+    /**
+     * @param string $propal_pattern
+     */
+    public function setPropalPattern($propal_pattern): EntityDTO
     {
         $this->propal_pattern = $propal_pattern;
         return $this;
@@ -249,7 +285,10 @@ class EntityDTO
         return $this->customer_code_pattern;
     }
 
-    public function setCustomerCodePattern(string $customer_code_pattern): EntityDTO
+    /**
+     * @param string $customer_code_pattern
+     */
+    public function setCustomerCodePattern($customer_code_pattern): EntityDTO
     {
         $this->customer_code_pattern = $customer_code_pattern;
         return $this;
@@ -260,7 +299,10 @@ class EntityDTO
         return $this->supplier_code_pattern;
     }
 
-    public function setSupplierCodePattern(string $supplier_code_pattern): EntityDTO
+    /**
+     * @param string $supplier_code_pattern
+     */
+    public function setSupplierCodePattern($supplier_code_pattern): EntityDTO
     {
         $this->supplier_code_pattern = $supplier_code_pattern;
         return $this;
@@ -271,7 +313,10 @@ class EntityDTO
         return $this->end_patterns_with_id;
     }
 
-    public function setEndPatternsWithId(bool $end_patterns_with_id): EntityDTO
+    /**
+     * @param bool $end_patterns_with_id
+     */
+    public function setEndPatternsWithId($end_patterns_with_id): EntityDTO
     {
         $this->end_patterns_with_id = $end_patterns_with_id;
         return $this;
