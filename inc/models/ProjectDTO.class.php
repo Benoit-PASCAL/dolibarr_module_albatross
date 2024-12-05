@@ -4,7 +4,10 @@ namespace Albatross;
 
 class ProjectDTO
 {
-    private string $label;
+	/**
+	 * @var string $label
+	 */
+	private $label;
 
     public function getLabel(): string
     {

@@ -21,7 +21,11 @@ class InvoiceDTO
      * @var \DateTime
      */
     private $date;
-    private int $status;
+
+	/**
+	 * @var int $status
+	 */
+	private $status;
 
     /**
      * @var int
@@ -38,7 +42,10 @@ class InvoiceDTO
      */
     private $invoiceLines;
 
-    private ?int $project;
+	/**
+	 * @var ?int
+	 */
+	private $project;
 
     public function __construct()
     {

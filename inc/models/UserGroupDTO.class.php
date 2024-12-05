@@ -17,7 +17,7 @@ class UserGroupDTO
     /**
      * @var int[] $entities
      */
-    private array $entities;
+	private $entities;
 
     public function __construct()
     {

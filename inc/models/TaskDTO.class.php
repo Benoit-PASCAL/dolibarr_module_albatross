@@ -4,9 +4,14 @@ namespace Albatross;
 
 class TaskDTO
 {
-    private string $title;
-    private string $description;
-    private int $projectID;
+	/** @var string $title */
+	private $title;
+
+	/** @var string $description */
+	private $description;
+
+	/** @var int $projectID */
+	private $projectID;
 
     public function getTitle(): string
     {
