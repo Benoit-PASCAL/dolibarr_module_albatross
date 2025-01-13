@@ -7,54 +7,54 @@ require_once dirname(__DIR__, 4) . '/product/class/product.class.php';
 
 class ProductDTOMapper
 {
-    /**
-     * @param \Product $product
-     */
-    public function toProductDTO($product): ?ProductDTO
-    {
-        if (is_null($product->label)) {
-            return null;
-        }
+	/**
+	 * @param \Product $product
+	 */
+	public function toProductDTO($product): ?ProductDTO
+	{
+		if (is_null($product->label)) {
+			return null;
+		}
 
-        $productDTO = new ProductDTO();
-        $productDTO
-            ->setLabel($product->label)
-            ->setTaxFreePrice($product->price ?? 0);
+		$productDTO = new ProductDTO();
+		$productDTO
+			->setLabel($product->label)
+			->setTaxFreePrice($product->price ?? 0);
 
-        return $productDTO;
-    }
+		return $productDTO;
+	}
 
-    /**
-     * @param \Albatross\ProductDTO $productDTO
-     */
-    public function toProduct($productDTO): \Product
-    {
-        global $db;
-        $product = new \Product($db);
+	/**
+	 * @param \Albatross\ProductDTO $productDTO
+	 */
+	public function toProduct($productDTO): \Product
+	{
+		global $db;
+		$product = new \Product($db);
 
-        $product->ref = $productDTO->getLabel();
-        $product->label = $productDTO->getLabel();
-        $product->price = $productDTO->getTaxFreePrice();
-        $product->status = 1;
-        $product->status_buy = 1;
+		$product->ref = $productDTO->getLabel();
+		$product->label = $productDTO->getLabel();
+		$product->price = $productDTO->getTaxFreePrice();
+		$product->status = 1;
+		$product->status_buy = 1;
 
-        return $product;
-    }
+		return $product;
+	}
 
-    /**
-     * @param ProductDTO|\ServiceDTO $productDTO
-     * @return Product
-     */
-    public function toService($productDTO): \Product
-    {
-        global $db;
-        $product = new \Product($db);
-        $product->ref = $productDTO->getLabel();
-        $product->label = $productDTO->getLabel();
-        $product->price = $productDTO->getTaxFreePrice();
-        $product->status = 1;
-        $product->status_buy = 1;
-        $product->type = \Product::TYPE_SERVICE;
-        return $product;
-    }
+	/**
+	 * @param ProductDTO|\ServiceDTO $productDTO
+	 * @return Product
+	 */
+	public function toService($productDTO): \Product
+	{
+		global $db;
+		$product = new \Product($db);
+		$product->ref = $productDTO->getLabel();
+		$product->label = $productDTO->getLabel();
+		$product->price = $productDTO->getTaxFreePrice();
+		$product->status = 1;
+		$product->status_buy = 1;
+		$product->type = \Product::TYPE_SERVICE;
+		return $product;
+	}
 }

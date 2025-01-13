@@ -21,113 +21,113 @@ require_once __DIR__ . '/intDBManager.php';
 
 class dbManagerStub implements intDBManager
 {
-    /**
-     * @param \Albatross\UserDTO $userDTO
-     */
-    public function createUser($userDTO): int
-    {
-        return 1;
-    }
+	/**
+	 * @param \Albatross\UserDTO $userDTO
+	 */
+	public function createUser($userDTO): int
+	{
+		return 1;
+	}
 
-    /**
-     * @param \Albatross\UserGroupDTO $userGroupDTO
-     */
-    public function createUserGroup($userGroupDTO): int
-    {
-        return 1;
-    }
+	/**
+	 * @param \Albatross\UserGroupDTO $userGroupDTO
+	 */
+	public function createUserGroup($userGroupDTO): int
+	{
+		return 1;
+	}
 
-    /**
-     * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
-     */
-    public function createCustomer($thirdpartyDTO): int
-    {
-        return 1;
-    }
+	/**
+	 * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
+	 */
+	public function createCustomer($thirdpartyDTO): int
+	{
+		return 1;
+	}
 
-    /**
-     * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
-     */
-    public function createSupplier($thirdpartyDTO): int
-    {
-        return 1;
-    }
+	/**
+	 * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
+	 */
+	public function createSupplier($thirdpartyDTO): int
+	{
+		return 1;
+	}
 
-    /**
-     * @param \Albatross\ProductDTO $productDTO
-     */
-    public function createProduct($productDTO): int
-    {
-        return 1;
-    }
+	/**
+	 * @param \Albatross\ProductDTO $productDTO
+	 */
+	public function createProduct($productDTO): int
+	{
+		return 1;
+	}
 
-    /**
-     * @param \Albatross\ServiceDTO $serviceDTO
-     */
-    public function createService($serviceDTO): int
-    {
-        return 1;
-    }
+	/**
+	 * @param \Albatross\ServiceDTO $serviceDTO
+	 */
+	public function createService($serviceDTO): int
+	{
+		return 1;
+	}
 
-    /**
-     * @param \Albatross\OrderDTO $orderDTO
-     */
-    public function createOrder($orderDTO): int
-    {
-        return 1;
-    }
+	/**
+	 * @param \Albatross\OrderDTO $orderDTO
+	 */
+	public function createOrder($orderDTO): int
+	{
+		return 1;
+	}
 
-    /**
-     * @param \Albatross\InvoiceDTO $invoice
-     */
-    public function createInvoice($invoice): int
-    {
-        return 1;
-    }
+	/**
+	 * @param \Albatross\InvoiceDTO $invoice
+	 */
+	public function createInvoice($invoice): int
+	{
+		return 1;
+	}
 
-    /**
-     * @param \Albatross\TicketDTO $ticketDTO
-     */
-    public function createTicket($ticketDTO): int
-    {
-        return 1;
-    }
+	/**
+	 * @param \Albatross\TicketDTO $ticketDTO
+	 */
+	public function createTicket($ticketDTO): int
+	{
+		return 1;
+	}
 
-    /**
-     * @param \Albatross\EntityDTO $entityDTO
-     */
-    public function createEntity($entityDTO): int
-    {
-        return 1;
-    }
+	/**
+	 * @param \Albatross\EntityDTO $entityDTO
+	 */
+	public function createEntity($entityDTO): int
+	{
+		return 1;
+	}
 
-    /**
-     * @param \Albatross\ProjectDTO $projectDTO
-     */
-    public function createProject($projectDTO): int
-    {
-        return 1;
-    }
+	/**
+	 * @param \Albatross\ProjectDTO $projectDTO
+	 */
+	public function createProject($projectDTO): int
+	{
+		return 1;
+	}
 
-    /**
-     * @param int $entityId
-     * @param mixed[] $params
-     */
-    public function setupEntity($entityId = 0, $params = []): bool
-    {
-        return true;
-    }
+	/**
+	 * @param int $entityId
+	 * @param mixed[] $params
+	 */
+	public function setupEntity($entityId = 0, $params = []): bool
+	{
+		return true;
+	}
 
-    public function removeFixtures(): bool
-    {
-        return 1;
-    }
+	public function removeFixtures(): bool
+	{
+		return 1;
+	}
 
-    /**
-     * @param \Albatross\TaskDTO $taskDTO
-     */
-    public function createTask($taskDTO): int
-    {
-        return 1;
-    }
+	/**
+	 * @param \Albatross\TaskDTO $taskDTO
+	 */
+	public function createTask($taskDTO): int
+	{
+		return 1;
+	}
 }

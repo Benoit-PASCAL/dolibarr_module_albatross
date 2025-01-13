@@ -9,17 +9,17 @@ class ProjectDTO
 	 */
 	private $label;
 
-    public function getLabel(): string
-    {
-        return $this->label;
-    }
+	public function getLabel(): string
+	{
+		return $this->label;
+	}
 
-    /**
-     * @param string $label
-     */
-    public function setLabel($label): ProjectDTO
-    {
-        $this->label = $label;
-        return $this;
-    }
+	/**
+	 * @param string $label
+	 */
+	public function setLabel($label): ProjectDTO
+	{
+		$this->label = $label;
+		return $this;
+	}
 }

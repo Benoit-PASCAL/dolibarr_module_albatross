@@ -4,66 +4,65 @@ namespace Albatross;
 
 class UserGroupDTO
 {
-    /**
-     * @var ?int id
-     */
-    private $id;
+	/**
+	 * @var ?int id
+	 */
+	private $id;
 
-    /**
-     * @var string label
-     */
-    private $label;
+	/**
+	 * @var string label
+	 */
+	private $label;
 
-    /**
-     * @var int[] $entities
-     */
+	/**
+	 * @var int[] $entities
+	 */
 	private $entities;
 
-    public function __construct()
-    {
-        $this->entities = [];
-    }
+	public function __construct()
+	{
+		$this->entities = [];
+	}
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+	public function getId(): ?int
+	{
+		return $this->id;
+	}
 
-    /**
-     * @param int $id
-     */
-    public function setId($id): UserGroupDTO
-    {
-        $this->id = $id;
-        return $this;
-    }
+	/**
+	 * @param int $id
+	 */
+	public function setId($id): UserGroupDTO
+	{
+		$this->id = $id;
+		return $this;
+	}
 
-    public function getLabel(): string
-    {
-        return $this->label;
-    }
+	public function getLabel(): string
+	{
+		return $this->label;
+	}
 
-    /**
-     * @param string $label
-     */
-    public function setLabel($label): UserGroupDTO
-    {
-        $this->label = $label;
-        return $this;
-    }
+	/**
+	 * @param string $label
+	 */
+	public function setLabel($label): UserGroupDTO
+	{
+		$this->label = $label;
+		return $this;
+	}
 
-    public function getEntities(): array
-    {
-        return $this->entities;
-    }
+	public function getEntities(): array
+	{
+		return $this->entities;
+	}
 
-    /**
-     * @param mixed[] $entities
-     */
-    public function addEntities($entities): UserGroupDTO
-
-    {
-        $this->entities = array_unique(array_merge($this->entities, $entities));
-        return $this;
-    }
+	/**
+	 * @param mixed[] $entities
+	 */
+	public function addEntities($entities): UserGroupDTO
+	{
+		$this->entities = array_unique(array_merge($this->entities, $entities));
+		return $this;
+	}
 }

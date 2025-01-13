@@ -4,16 +4,16 @@ namespace Albatross\Tools;
 
 interface EntityConfiguratorInterface
 {
-    /**
-     * @param int $entityId
-     * @param mixed[] $params
-     */
-    public function setupEntity($entityId = 0, $params = []): bool;
+	/**
+	 * @param int $entityId
+	 * @param mixed[] $params
+	 */
+	public function setupEntity($entityId = 0, $params = []): bool;
 
-    /**
-     * @param mixed[] $neededModules
-     */
-    public function initModules($neededModules): int;
+	/**
+	 * @param mixed[] $neededModules
+	 */
+	public function initModules($neededModules): int;
 
-    public function setSecurity(): void;
+	public function setSecurity(): void;
 }

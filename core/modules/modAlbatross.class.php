@@ -35,52 +35,52 @@ include_once DOL_DOCUMENT_ROOT . '/core/modules/DolibarrModules.class.php';
  */
 class modAlbatross extends DolibarrModules
 {
-    /**
-     * Constructor. Define names, constants, directories, boxes, permissions
-     *
-     * @param DoliDB $db Database handler
-     */
-    public function __construct($db)
-    {
-        global $langs, $conf;
-        $this->db = $db;
+	/**
+	 * Constructor. Define names, constants, directories, boxes, permissions
+	 *
+	 * @param DoliDB $db Database handler
+	 */
+	public function __construct($db)
+	{
+		global $langs, $conf;
+		$this->db = $db;
 
-        // Id for module (must be unique).
-        // Use here a free id (See in Home -> System information -> Dolibarr for list of used modules id).
-        $this->numero = 314151; // TODO Go on page https://wiki.dolibarr.org/index.php/List_of_modules_id to reserve an id number for your module
+		// Id for module (must be unique).
+		// Use here a free id (See in Home -> System information -> Dolibarr for list of used modules id).
+		$this->numero = 314151; // TODO Go on page https://wiki.dolibarr.org/index.php/List_of_modules_id to reserve an id number for your module
 
-        // Key text used to identify module (for permissions, menus, etc...)
-        $this->rights_class = 'albatross';
+		// Key text used to identify module (for permissions, menus, etc...)
+		$this->rights_class = 'albatross';
 
-        // Family can be 'base' (core modules),'crm','financial','hr','projects','products','ecm','technic' (transverse modules),'interface' (link with external tools),'other','...'
-        // It is used to group modules by family in module setup page
-        $this->family = "other";
+		// Family can be 'base' (core modules),'crm','financial','hr','projects','products','ecm','technic' (transverse modules),'interface' (link with external tools),'other','...'
+		// It is used to group modules by family in module setup page
+		$this->family = "other";
 
-        // Module position in the family on 2 digits ('01', '10', '20', ...)
-        $this->module_position = '90';
+		// Module position in the family on 2 digits ('01', '10', '20', ...)
+		$this->module_position = '90';
 
-        // Gives the possibility for the module, to provide his own family info and position of this family (Overwrite $this->family and $this->module_position. Avoid this)
-        //$this->familyinfo = array('myownfamily' => array('position' => '01', 'label' => $langs->trans("MyOwnFamily")));
-        // Module label (no space allowed), used if translation string 'ModuleAlbatrossName' not found (Albatross is name of module).
-        $this->name = preg_replace('/^mod/i', '', get_class($this));
+		// Gives the possibility for the module, to provide his own family info and position of this family (Overwrite $this->family and $this->module_position. Avoid this)
+		//$this->familyinfo = array('myownfamily' => array('position' => '01', 'label' => $langs->trans("MyOwnFamily")));
+		// Module label (no space allowed), used if translation string 'ModuleAlbatrossName' not found (Albatross is name of module).
+		$this->name = preg_replace('/^mod/i', '', get_class($this));
 
-        // Module description, used if translation string 'ModuleAlbatrossDesc' not found (Albatross is name of module).
-        $this->description = "AlbatrossDescription";
-        // Used only if file README.md and README-LL.md not found.
-        $this->descriptionlong = "AlbatrossDescription";
+		// Module description, used if translation string 'ModuleAlbatrossDesc' not found (Albatross is name of module).
+		$this->description = "AlbatrossDescription";
+		// Used only if file README.md and README-LL.md not found.
+		$this->descriptionlong = "AlbatrossDescription";
 
-        // Author
-        $this->editor_name = 'Benoît PASCAL';
-        $this->editor_url = 'www.p-ben.com';
+		// Author
+		$this->editor_name = 'Benoît PASCAL';
+		$this->editor_url = 'www.p-ben.com';
 
-        // Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated' or a version string like 'x.y.z'
-        $this->version = '1.0';
-        // Url to the file with your last numberversion of this module
-        //$this->url_last_version = 'http://www.example.com/versionmodule.txt';
+		// Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated' or a version string like 'x.y.z'
+		$this->version = '1.0';
+		// Url to the file with your last numberversion of this module
+		//$this->url_last_version = 'http://www.example.com/versionmodule.txt';
 
-        // Key used in llx_const table to save module status enabled/disabled (where ALBATROSS is value of property name of module in uppercase)
-        $this->const_name = 'MAIN_MODULE_' . strtoupper($this->name);
+		// Key used in llx_const table to save module status enabled/disabled (where ALBATROSS is value of property name of module in uppercase)
+		$this->const_name = 'MAIN_MODULE_' . strtoupper($this->name);
 
-        $this->langfiles = array('albatross@albatross');
-    }
+		$this->langfiles = array('albatross@albatross');
+	}
 }

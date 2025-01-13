@@ -19,71 +19,71 @@ use Albatross\TaskDTO;
 
 interface intDBManager
 {
-    /**
-     * @param \Albatross\UserDTO $userDTO
-     */
-    public function createUser($userDTO): int;
+	/**
+	 * @param \Albatross\UserDTO $userDTO
+	 */
+	public function createUser($userDTO): int;
 
-    /**
-     * @param \Albatross\UserGroupDTO $userGroupDTO
-     */
-    public function createUserGroup($userGroupDTO): int;
+	/**
+	 * @param \Albatross\UserGroupDTO $userGroupDTO
+	 */
+	public function createUserGroup($userGroupDTO): int;
 
-    /**
-     * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
-     */
-    public function createCustomer($thirdpartyDTO): int;
+	/**
+	 * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
+	 */
+	public function createCustomer($thirdpartyDTO): int;
 
-    /**
-     * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
-     */
-    public function createSupplier($thirdpartyDTO): int;
+	/**
+	 * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
+	 */
+	public function createSupplier($thirdpartyDTO): int;
 
-    /**
-     * @param \Albatross\ProductDTO $productDTO
-     */
-    public function createProduct($productDTO): int;
+	/**
+	 * @param \Albatross\ProductDTO $productDTO
+	 */
+	public function createProduct($productDTO): int;
 
-    /**
-     * @param \Albatross\ServiceDTO $serviceDTO
-     */
-    public function createService($serviceDTO): int;
+	/**
+	 * @param \Albatross\ServiceDTO $serviceDTO
+	 */
+	public function createService($serviceDTO): int;
 
-    /**
-     * @param \Albatross\OrderDTO $orderDTO
-     */
-    public function createOrder($orderDTO): int;
+	/**
+	 * @param \Albatross\OrderDTO $orderDTO
+	 */
+	public function createOrder($orderDTO): int;
 
-    /**
-     * @param \Albatross\InvoiceDTO $invoice
-     */
-    public function createInvoice($invoice): int;
+	/**
+	 * @param \Albatross\InvoiceDTO $invoice
+	 */
+	public function createInvoice($invoice): int;
 
-    /**
-     * @param \Albatross\TicketDTO $ticketDTO
-     */
-    public function createTicket($ticketDTO): int;
+	/**
+	 * @param \Albatross\TicketDTO $ticketDTO
+	 */
+	public function createTicket($ticketDTO): int;
 
-    /**
-     * @param \Albatross\ProjectDTO $projectDTO
-     */
-    public function createProject($projectDTO): int;
+	/**
+	 * @param \Albatross\ProjectDTO $projectDTO
+	 */
+	public function createProject($projectDTO): int;
 
-    /**
-     * @param \Albatross\EntityDTO $entityDTO
-     */
-    public function createEntity($entityDTO): int;
+	/**
+	 * @param \Albatross\EntityDTO $entityDTO
+	 */
+	public function createEntity($entityDTO): int;
 
-    /**
-     * @param int $entityId
-     * @param mixed[] $params
-     */
-    public function setupEntity($entityId = 0, $params = []): bool;
+	/**
+	 * @param int $entityId
+	 * @param mixed[] $params
+	 */
+	public function setupEntity($entityId = 0, $params = []): bool;
 
-    /**
-     * @param \Albatross\TaskDTO $taskDTO
-     */
-    public function createTask($taskDTO): int;
+	/**
+	 * @param \Albatross\TaskDTO $taskDTO
+	 */
+	public function createTask($taskDTO): int;
 
-    public function removeFixtures(): bool;
+	public function removeFixtures(): bool;
 }
