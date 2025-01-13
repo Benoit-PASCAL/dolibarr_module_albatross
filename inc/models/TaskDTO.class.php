@@ -13,45 +13,45 @@ class TaskDTO
 	/** @var int $projectID */
 	private $projectID;
 
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
+	public function getTitle(): string
+	{
+		return $this->title;
+	}
 
-    /**
-     * @param string $title
-     */
-    public function setTitle($title): TaskDTO
-    {
-        $this->title = $title;
-        return $this;
-    }
+	/**
+	 * @param string $title
+	 */
+	public function setTitle($title): TaskDTO
+	{
+		$this->title = $title;
+		return $this;
+	}
 
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
+	public function getDescription(): string
+	{
+		return $this->description;
+	}
 
-    /**
-     * @param string $description
-     */
-    public function setDescription($description): TaskDTO
-    {
-        $this->description = $description;
-        return $this;
-    }
+	/**
+	 * @param string $description
+	 */
+	public function setDescription($description): TaskDTO
+	{
+		$this->description = $description;
+		return $this;
+	}
 
-    public function getProjectID(): int
-    {
-        return $this->projectID ?? 0;
-    }
+	public function getProjectID(): int
+	{
+		return $this->projectID ?? 0;
+	}
 
-    /**
-     * @param int $projectID
-     */
-    public function setProjectID($projectID): TaskDTO
-    {
-        $this->projectID = $projectID;
-        return $this;
-    }
+	/**
+	 * @param int $projectID
+	 */
+	public function setProjectID($projectID): TaskDTO
+	{
+		$this->projectID = $projectID;
+		return $this;
+	}
 }

@@ -11,47 +11,47 @@ require_once dirname(__DIR__, 4) . '/user/class/user.class.php';
 
 class UserDTOMapper
 {
-    /**
-     * @param \User $newUser
-     */
-    public function toUserDTO($newUser): UserDTO
-    {
-        $userDTO = new UserDTO();
-        $userDTO
-            ->setFirstname($newUser->firstname ?? '')
-            ->setLastname($newUser->lastname ?? '')
-            ->setEmail($newUser->email ?? '')
-            ->setPhone($newUser->office_phone ?? '')
-            ->setAddress($newUser->address ?? '')
-            ->setZipCode($newUser->zip ?? '')
-            ->setCity($newUser->town ?? '');
+	/**
+	 * @param \User $newUser
+	 */
+	public function toUserDTO($newUser): UserDTO
+	{
+		$userDTO = new UserDTO();
+		$userDTO
+			->setFirstname($newUser->firstname ?? '')
+			->setLastname($newUser->lastname ?? '')
+			->setEmail($newUser->email ?? '')
+			->setPhone($newUser->office_phone ?? '')
+			->setAddress($newUser->address ?? '')
+			->setZipCode($newUser->zip ?? '')
+			->setCity($newUser->town ?? '');
 
-        return $userDTO;
-    }
+		return $userDTO;
+	}
 
-    /**
-     * @param \Albatross\UserDTO $userDTO
-     */
-    public function toUser($userDTO): User
-    {
-        global $db;
-        $newUser = new User($db);
+	/**
+	 * @param \Albatross\UserDTO $userDTO
+	 */
+	public function toUser($userDTO): User
+	{
+		global $db;
+		$newUser = new User($db);
 
-        $newUser->login = $userDTO->getFirstname();
-        $newUser->firstname = $userDTO->getFirstname();
-        $newUser->lastname = $userDTO->getLastname();
-        $newUser->email = $userDTO->getEmail();
-        $newUser->office_phone = $userDTO->getPhone();
-        $newUser->address = $userDTO->getAddress();
-        $newUser->zip = $userDTO->getZipCode();
-        $newUser->town = $userDTO->getCity();
+		$newUser->login = $userDTO->getFirstname();
+		$newUser->firstname = $userDTO->getFirstname();
+		$newUser->lastname = $userDTO->getLastname();
+		$newUser->email = $userDTO->getEmail();
+		$newUser->office_phone = $userDTO->getPhone();
+		$newUser->address = $userDTO->getAddress();
+		$newUser->zip = $userDTO->getZipCode();
+		$newUser->town = $userDTO->getCity();
 
-        foreach ($userDTO->getGroups() ?? [] as $userGroupDTO) {
-            $newUser->user_group_list[] = $userGroupDTO->getId();
-        }
+		foreach ($userDTO->getGroups() ?? [] as $userGroupDTO) {
+			$newUser->user_group_list[] = $userGroupDTO->getId();
+		}
 
-        $newUser->entity = 1;
+		$newUser->entity = 1;
 
-        return $newUser;
-    }
+		return $newUser;
+	}
 }
