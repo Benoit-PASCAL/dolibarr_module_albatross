@@ -11,9 +11,9 @@ if (!defined('TEST_ENV_SETUP')) {
 require_once MODULE_ROOT . '/inc/mappers/InvoiceDTOMapper.class.php';
 
 
-use Albatross\InvoiceDTO;
-use Albatross\InvoiceDTOMapper;
-use Albatross\InvoiceLineDTO;
+use Albatross\models\InvoiceDTO;
+use Albatross\models\InvoiceDTOMapper;
+use Albatross\models\InvoiceLineDTO;
 use DateTime;
 use Facture;
 use PHPUnit\Framework\TestCase;

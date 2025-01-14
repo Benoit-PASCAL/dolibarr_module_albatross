@@ -10,9 +10,9 @@ if (!defined('TEST_ENV_SETUP')) {
 require_once MODULE_ROOT . '/inc/mappers/OrderDTOMapper.class.php';
 
 
-use Albatross\OrderDTO;
-use Albatross\OrderDTOMapper;
-use Albatross\OrderLineDTO;
+use Albatross\models\OrderDTO;
+use Albatross\models\OrderDTOMapper;
+use Albatross\models\OrderLineDTO;
 use Commande;
 use DateTime;
 use PHPUnit\Framework\TestCase;

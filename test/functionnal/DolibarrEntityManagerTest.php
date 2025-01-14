@@ -13,7 +13,7 @@ require_once MODULE_ROOT . '/inc/tools/doliDBManager.php';
 require_once MODULE_ROOT . '/test/tools/RandomFactory.php';
 
 
-use Albatross\Tools\DoliDBManager;
+use Albatross\models\Tools\DoliDBManager;
 use PHPUnit\Framework\TestCase;
 
 class DolibarrEntityManagerTest extends TestCase

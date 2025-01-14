@@ -9,8 +9,8 @@ if (!defined('TEST_ENV_SETUP')) {
 
 require_once MODULE_ROOT . '/inc/mappers/TaskDTOMapper.class.php';
 
-use Albatross\TaskDTOMapper;
-use Albatross\TaskDTO;
+use Albatross\models\TaskDTOMapper;
+use Albatross\models\TaskDTO;
 
 use Exception;
 use PHPUnit\Framework\TestCase;

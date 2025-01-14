@@ -9,8 +9,8 @@ if (!defined('TEST_ENV_SETUP')) {
 
 require_once MODULE_ROOT . '/inc/mappers/UserDTOMapper.class.php';
 
-use Albatross\UserDTO;
-use Albatross\UserDTOMapper;
+use Albatross\models\UserDTO;
+use Albatross\models\UserDTOMapper;
 use PHPUnit\Framework\TestCase;
 use User;
 

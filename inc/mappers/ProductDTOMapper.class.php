@@ -25,7 +25,7 @@ class ProductDTOMapper
 	}
 
 	/**
-	 * @param \Albatross\ProductDTO $productDTO
+	 * @param \Albatross\models\ProductDTO $productDTO
 	 */
 	public function toProduct($productDTO): \Product
 	{

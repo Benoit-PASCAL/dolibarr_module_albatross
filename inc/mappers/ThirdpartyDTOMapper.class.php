@@ -27,7 +27,7 @@ class ThirdpartyDTOMapper
 	}
 
 	/**
-	 * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
+	 * @param \Albatross\models\ThirdpartyDTO $thirdpartyDTO
 	 */
 	public function toSupplier($thirdpartyDTO): \Societe
 	{
@@ -57,7 +57,7 @@ class ThirdpartyDTOMapper
 	}
 
 	/**
-	 * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
+	 * @param \Albatross\models\ThirdpartyDTO $thirdpartyDTO
 	 */
 	public function toCustomer($thirdpartyDTO): \Societe
 	{

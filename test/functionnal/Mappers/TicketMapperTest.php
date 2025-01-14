@@ -9,7 +9,7 @@ if (!defined('TEST_ENV_SETUP')) {
 
 require_once MODULE_ROOT . '/inc/mappers/TicketDTOMapper.class.php';
 
-use Albatross\TicketDTOMapper;
+use Albatross\models\TicketDTOMapper;
 use DateTime;
 use Exception;
 use PHPUnit\Framework\TestCase;

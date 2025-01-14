@@ -1,28 +1,28 @@
 <?php
 
-namespace Albatross\Tools;
+namespace Albatross\models\Tools;
 
 //require_once dirname(__DIR__).'/models/index.php';
 
-use Albatross\InvoiceDTO;
-use Albatross\OrderDTO;
-use Albatross\ProjectDTO;
-use Albatross\ServiceDTO;
-use Albatross\TaskDTO;
-use Albatross\ThirdpartyDTO;
-use Albatross\TicketDTO;
-use Albatross\UserDTO;
-use Albatross\UserGroupDTO;
-use Albatross\ProductDTO;
-use Albatross\EntityDTO;
-use Albatross\Tools\intDBManager;
+use Albatross\models\InvoiceDTO;
+use Albatross\models\OrderDTO;
+use Albatross\models\ProjectDTO;
+use Albatross\models\ServiceDTO;
+use Albatross\models\TaskDTO;
+use Albatross\models\ThirdpartyDTO;
+use Albatross\models\TicketDTO;
+use Albatross\models\UserDTO;
+use Albatross\models\UserGroupDTO;
+use Albatross\models\ProductDTO;
+use Albatross\models\EntityDTO;
+use Albatross\models\Tools\intDBManager;
 
 require_once __DIR__ . '/intDBManager.php';
 
 class dbManagerStub implements intDBManager
 {
 	/**
-	 * @param \Albatross\UserDTO $userDTO
+	 * @param \Albatross\models\UserDTO $userDTO
 	 */
 	public function createUser($userDTO): int
 	{
@@ -30,7 +30,7 @@ class dbManagerStub implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\UserGroupDTO $userGroupDTO
+	 * @param \Albatross\models\UserGroupDTO $userGroupDTO
 	 */
 	public function createUserGroup($userGroupDTO): int
 	{
@@ -38,7 +38,7 @@ class dbManagerStub implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
+	 * @param \Albatross\models\ThirdpartyDTO $thirdpartyDTO
 	 */
 	public function createCustomer($thirdpartyDTO): int
 	{
@@ -46,7 +46,7 @@ class dbManagerStub implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
+	 * @param \Albatross\models\ThirdpartyDTO $thirdpartyDTO
 	 */
 	public function createSupplier($thirdpartyDTO): int
 	{
@@ -54,7 +54,7 @@ class dbManagerStub implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\ProductDTO $productDTO
+	 * @param \Albatross\models\ProductDTO $productDTO
 	 */
 	public function createProduct($productDTO): int
 	{
@@ -62,7 +62,7 @@ class dbManagerStub implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\ServiceDTO $serviceDTO
+	 * @param \Albatross\models\ServiceDTO $serviceDTO
 	 */
 	public function createService($serviceDTO): int
 	{
@@ -70,7 +70,7 @@ class dbManagerStub implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\OrderDTO $orderDTO
+	 * @param \Albatross\models\OrderDTO $orderDTO
 	 */
 	public function createOrder($orderDTO): int
 	{
@@ -78,7 +78,7 @@ class dbManagerStub implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\InvoiceDTO $invoice
+	 * @param \Albatross\models\InvoiceDTO $invoice
 	 */
 	public function createInvoice($invoice): int
 	{
@@ -86,7 +86,7 @@ class dbManagerStub implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\TicketDTO $ticketDTO
+	 * @param \Albatross\models\TicketDTO $ticketDTO
 	 */
 	public function createTicket($ticketDTO): int
 	{
@@ -94,7 +94,7 @@ class dbManagerStub implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\EntityDTO $entityDTO
+	 * @param \Albatross\models\EntityDTO $entityDTO
 	 */
 	public function createEntity($entityDTO): int
 	{
@@ -102,7 +102,7 @@ class dbManagerStub implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\ProjectDTO $projectDTO
+	 * @param \Albatross\models\ProjectDTO $projectDTO
 	 */
 	public function createProject($projectDTO): int
 	{
@@ -124,7 +124,7 @@ class dbManagerStub implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\TaskDTO $taskDTO
+	 * @param \Albatross\models\TaskDTO $taskDTO
 	 */
 	public function createTask($taskDTO): int
 	{

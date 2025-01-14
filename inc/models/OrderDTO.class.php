@@ -3,7 +3,8 @@
 namespace Albatross;
 
 require_once __DIR__ . '/OrderLineDTO.class.php';
-use Albatross\OrderLineDTO;
+
+use Albatross\models\OrderLineDTO;
 
 class OrderDTO
 {
@@ -86,7 +87,7 @@ class OrderDTO
 	}
 
 	/**
-	 * @param \Albatross\OrderLineDTO $orderLine
+	 * @param \Albatross\models\OrderLineDTO $orderLine
 	 */
 	public function addOrderLine($orderLine): OrderDTO
 	{

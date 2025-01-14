@@ -2,19 +2,19 @@
 
 require_once dirname(__DIR__, 2) . '/inc/models/index.php';
 
-use Albatross\InvoiceLineDTO;
-use Albatross\OrderLineDTO;
-use Albatross\ProjectDTO;
-use Albatross\TaskDTO;
-use Albatross\UserDTO;
-use Albatross\UserGroupDTO;
-use Albatross\ThirdpartyDTO;
-use Albatross\ProductDTO;
-use Albatross\ServiceDTO;
-use Albatross\OrderDTO;
-use Albatross\InvoiceDTO;
-use Albatross\TicketDTO;
-use Albatross\EntityDTO;
+use Albatross\models\InvoiceLineDTO;
+use Albatross\models\OrderLineDTO;
+use Albatross\models\ProjectDTO;
+use Albatross\models\TaskDTO;
+use Albatross\models\UserDTO;
+use Albatross\models\UserGroupDTO;
+use Albatross\models\ThirdpartyDTO;
+use Albatross\models\ProductDTO;
+use Albatross\models\ServiceDTO;
+use Albatross\models\OrderDTO;
+use Albatross\models\InvoiceDTO;
+use Albatross\models\TicketDTO;
+use Albatross\models\EntityDTO;
 
 class RandomFactory
 {

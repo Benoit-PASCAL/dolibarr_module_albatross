@@ -36,7 +36,7 @@ class EntityDTOMapper
 	}
 
 	/**
-	 * @param \Albatross\EntityDTO $entityDTO
+	 * @param \Albatross\models\EntityDTO $entityDTO
 	 */
 	public function toEntity($entityDTO): \DaoMulticompany
 	{
@@ -80,7 +80,7 @@ class EntityDTOMapper
 	}
 
 	/**
-	 * @param \Albatross\EntityDTO $entityDTO
+	 * @param \Albatross\models\EntityDTO $entityDTO
 	 */
 	public function toModel($entityDTO): \DaoMulticompany
 	{

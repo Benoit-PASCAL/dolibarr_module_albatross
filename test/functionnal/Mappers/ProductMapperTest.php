@@ -9,8 +9,8 @@ if (!defined('TEST_ENV_SETUP')) {
 
 require_once MODULE_ROOT . '/inc/mappers/ProductDTOMapper.class.php';
 
-use Albatross\ProductDTO;
-use Albatross\ProductDTOMapper;
+use Albatross\models\ProductDTO;
+use Albatross\models\ProductDTOMapper;
 use PHPUnit\Framework\TestCase;
 use Product;
 

@@ -10,8 +10,8 @@ if (!defined('TEST_ENV_SETUP')) {
 require_once MODULE_ROOT . '/inc/mappers/EntityDTOMapper.class.php';
 
 
-use Albatross\EntityDTO;
-use Albatross\EntityDTOMapper;
+use Albatross\models\EntityDTO;
+use Albatross\models\EntityDTOMapper;
 
 use DaoMulticompany;
 use PHPUnit\Framework\TestCase;

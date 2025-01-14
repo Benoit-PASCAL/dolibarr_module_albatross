@@ -4,7 +4,7 @@ namespace Albatross;
 
 include_once dirname(__DIR__) . '/models/UserGroupDTO.class.php';
 
-use Albatross\UserGroupDTO;
+use Albatross\models\UserGroupDTO;
 
 require_once dirname(__DIR__, 4) . '/user/class/usergroup.class.php';
 
@@ -24,7 +24,7 @@ class UserGroupDTOMapper
 	}
 
 	/**
-	 * @param \Albatross\UserGroupDTO $userGroupDTO
+	 * @param \Albatross\models\UserGroupDTO $userGroupDTO
 	 */
 	public function toUserGroup($userGroupDTO): \UserGroup
 	{

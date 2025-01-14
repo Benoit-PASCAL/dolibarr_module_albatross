@@ -9,8 +9,8 @@ if (!defined('TEST_ENV_SETUP')) {
 
 require_once MODULE_ROOT . '/inc/mappers/UserGroupDTOMapper.class.php';
 
-use Albatross\UserGroupDTO;
-use Albatross\UserGroupDTOMapper;
+use Albatross\models\UserGroupDTO;
+use Albatross\models\UserGroupDTOMapper;
 use PHPUnit\Framework\TestCase;
 use UserGroup;
 

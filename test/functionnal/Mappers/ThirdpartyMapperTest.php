@@ -9,8 +9,8 @@ if (!defined('TEST_ENV_SETUP')) {
 
 require_once MODULE_ROOT . '/inc/mappers/ThirdpartyDTOMapper.class.php';
 
-use Albatross\ThirdpartyDTO;
-use Albatross\ThirdpartyDTOMapper;
+use Albatross\models\ThirdpartyDTO;
+use Albatross\models\ThirdpartyDTOMapper;
 use PHPUnit\Framework\TestCase;
 use Societe;
 
