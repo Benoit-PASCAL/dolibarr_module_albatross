@@ -1,276 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="52" assertions="221" errors="5" warnings="0" failures="2" skipped="0" time="0.585583">
-    <testsuite name="Albatross Test Suite" tests="52" assertions="221" errors="5" warnings="0" failures="2" skipped="0" time="0.585583">
-      <testsuite name="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" tests="12" assertions="7" errors="5" warnings="0" failures="1" skipped="0" time="0.560150">
-        <testcase name="testCreateUser" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="29" assertions="1" time="0.243849">
-          <system-out>&gt; Error detected:
-/var/www/utils/phpunit/vendor/phpunit/phpunit/phpunit
-&lt;b&gt;Modules/Applications:&lt;/b&gt; user, api, projet, agenda, scrumproject, sparks&lt;br&gt;
-&gt; Database type manager:
-mysqli
-&gt; Latest database access request error:
-DELETE FROM llx_usergroup
-&gt; Return code for latest database access request error:
-DB_ERROR_CHILD_EXISTS
-&gt; Information for latest database access request error:
-Cannot delete or update a parent row: a foreign key constraint fails (`dolibarr2`.`llx_scrumproject_scrumsprint`, CONSTRAINT `llx_scrumproject_scrumsprint_fk_team` FOREIGN KEY (`fk_team`) REFERENCES `llx_usergroup` (`rowid`))
-</system-out>
-        </testcase>
-        <testcase name="testCreateUserGroup" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="44" assertions="0" time="0.011831">
-          <error type="Exception">DolibarrEntityManagerTest::testCreateUserGroup
-Exception: -1
-
-/var/www/html/custom/albatross/inc/tools/doliDBManager.php:88
-/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php:47</error>
-          <system-out>&gt; Error detected:
-/var/www/utils/phpunit/vendor/phpunit/phpunit/phpunit
-&lt;b&gt;Modules/Applications:&lt;/b&gt; user, api, projet, agenda, scrumproject, sparks&lt;br&gt;
-&gt; Database type manager:
-mysqli
-&gt; Latest database access request error:
-DELETE FROM llx_usergroup
-&gt; Return code for latest database access request error:
-DB_ERROR_CHILD_EXISTS
-&gt; Information for latest database access request error:
-Cannot delete or update a parent row: a foreign key constraint fails (`dolibarr2`.`llx_scrumproject_scrumsprint`, CONSTRAINT `llx_scrumproject_scrumsprint_fk_team` FOREIGN KEY (`fk_team`) REFERENCES `llx_usergroup` (`rowid`))
-</system-out>
-        </testcase>
-        <testcase name="testCreateCustomer" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="52" assertions="0" time="0.004920">
-          <error type="PHPUnit\Framework\Error\Warning">DolibarrEntityManagerTest::testCreateCustomer
-Undefined property: mod_codeclient_leopard::$prefixIsRequired
-
-/var/www/html/societe/class/societe.class.php:3371
-/var/www/html/societe/class/societe.class.php:932
-/var/www/html/custom/albatross/inc/tools/doliDBManager.php:109
-/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php:55</error>
-          <system-out>&gt; Error detected:
-/var/www/utils/phpunit/vendor/phpunit/phpunit/phpunit
-&lt;b&gt;Modules/Applications:&lt;/b&gt; user, api, projet, agenda, scrumproject, sparks&lt;br&gt;
-&gt; Database type manager:
-mysqli
-&gt; Latest database access request error:
-DELETE FROM llx_usergroup
-&gt; Return code for latest database access request error:
-DB_ERROR_CHILD_EXISTS
-&gt; Information for latest database access request error:
-Cannot delete or update a parent row: a foreign key constraint fails (`dolibarr2`.`llx_scrumproject_scrumsprint`, CONSTRAINT `llx_scrumproject_scrumsprint_fk_team` FOREIGN KEY (`fk_team`) REFERENCES `llx_usergroup` (`rowid`))
-</system-out>
-        </testcase>
-        <testcase name="testCreateSupplier" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="59" assertions="1" time="0.018288">
-          <system-out>&gt; Error detected:
-/var/www/utils/phpunit/vendor/phpunit/phpunit/phpunit
-&lt;b&gt;Modules/Applications:&lt;/b&gt; user, api, projet, agenda, scrumproject, sparks&lt;br&gt;
-&gt; Database type manager:
-mysqli
-&gt; Latest database access request error:
-DELETE FROM llx_usergroup
-&gt; Return code for latest database access request error:
-DB_ERROR_CHILD_EXISTS
-&gt; Information for latest database access request error:
-Cannot delete or update a parent row: a foreign key constraint fails (`dolibarr2`.`llx_scrumproject_scrumsprint`, CONSTRAINT `llx_scrumproject_scrumsprint_fk_team` FOREIGN KEY (`fk_team`) REFERENCES `llx_usergroup` (`rowid`))
-</system-out>
-        </testcase>
-        <testcase name="testCreateProduct" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="66" assertions="1" time="0.010528">
-          <system-out>&gt; Error detected:
-/var/www/utils/phpunit/vendor/phpunit/phpunit/phpunit
-&lt;b&gt;Modules/Applications:&lt;/b&gt; user, api, projet, agenda, scrumproject, sparks&lt;br&gt;
-&gt; Database type manager:
-mysqli
-&gt; Latest database access request error:
-DELETE FROM llx_usergroup
-&gt; Return code for latest database access request error:
-DB_ERROR_CHILD_EXISTS
-&gt; Information for latest database access request error:
-Cannot delete or update a parent row: a foreign key constraint fails (`dolibarr2`.`llx_scrumproject_scrumsprint`, CONSTRAINT `llx_scrumproject_scrumsprint_fk_team` FOREIGN KEY (`fk_team`) REFERENCES `llx_usergroup` (`rowid`))
-</system-out>
-        </testcase>
-        <testcase name="testCreateService" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="73" assertions="1" time="0.006583">
-          <system-out>&gt; Error detected:
-/var/www/utils/phpunit/vendor/phpunit/phpunit/phpunit
-&lt;b&gt;Modules/Applications:&lt;/b&gt; user, api, projet, agenda, scrumproject, sparks&lt;br&gt;
-&gt; Database type manager:
-mysqli
-&gt; Latest database access request error:
-DELETE FROM llx_usergroup
-&gt; Return code for latest database access request error:
-DB_ERROR_CHILD_EXISTS
-&gt; Information for latest database access request error:
-Cannot delete or update a parent row: a foreign key constraint fails (`dolibarr2`.`llx_scrumproject_scrumsprint`, CONSTRAINT `llx_scrumproject_scrumsprint_fk_team` FOREIGN KEY (`fk_team`) REFERENCES `llx_usergroup` (`rowid`))
-</system-out>
-        </testcase>
-        <testcase name="testCreateOrder" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="80" assertions="0" time="0.001482">
-          <error type="PHPUnit\Framework\Error\Warning">DolibarrEntityManagerTest::testCreateOrder
-Undefined property: mod_codeclient_leopard::$prefixIsRequired
-
-/var/www/html/societe/class/societe.class.php:3371
-/var/www/html/societe/class/societe.class.php:932
-/var/www/html/custom/albatross/inc/tools/doliDBManager.php:109
-/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php:87</error>
-          <system-out>&gt; Error detected:
-/var/www/utils/phpunit/vendor/phpunit/phpunit/phpunit
-&lt;b&gt;Modules/Applications:&lt;/b&gt; user, api, projet, agenda, scrumproject, sparks&lt;br&gt;
-&gt; Database type manager:
-mysqli
-&gt; Latest database access request error:
-DELETE FROM llx_usergroup
-&gt; Return code for latest database access request error:
-DB_ERROR_CHILD_EXISTS
-&gt; Information for latest database access request error:
-Cannot delete or update a parent row: a foreign key constraint fails (`dolibarr2`.`llx_scrumproject_scrumsprint`, CONSTRAINT `llx_scrumproject_scrumsprint_fk_team` FOREIGN KEY (`fk_team`) REFERENCES `llx_usergroup` (`rowid`))
-</system-out>
-        </testcase>
-        <testcase name="testCreateInvoice" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="101" assertions="0" time="0.011736">
-          <error type="PHPUnit\Framework\Error\Warning">DolibarrEntityManagerTest::testCreateInvoice
-Undefined property: mod_codeclient_leopard::$prefixIsRequired
-
-/var/www/html/societe/class/societe.class.php:3371
-/var/www/html/societe/class/societe.class.php:932
-/var/www/html/custom/albatross/inc/tools/doliDBManager.php:109
-/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php:111</error>
-          <system-out>&gt; Error detected:
-/var/www/utils/phpunit/vendor/phpunit/phpunit/phpunit
-&lt;b&gt;Modules/Applications:&lt;/b&gt; user, api, projet, agenda, scrumproject, sparks&lt;br&gt;
-&gt; Database type manager:
-mysqli
-&gt; Latest database access request error:
-DELETE FROM llx_usergroup
-&gt; Return code for latest database access request error:
-DB_ERROR_CHILD_EXISTS
-&gt; Information for latest database access request error:
-Cannot delete or update a parent row: a foreign key constraint fails (`dolibarr2`.`llx_scrumproject_scrumsprint`, CONSTRAINT `llx_scrumproject_scrumsprint_fk_team` FOREIGN KEY (`fk_team`) REFERENCES `llx_usergroup` (`rowid`))
-</system-out>
-        </testcase>
-        <testcase name="testCreateProject" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="129" assertions="1" time="0.010390">
-          <system-out>&gt; Error detected:
-/var/www/utils/phpunit/vendor/phpunit/phpunit/phpunit
-&lt;b&gt;Modules/Applications:&lt;/b&gt; user, api, projet, agenda, scrumproject, sparks&lt;br&gt;
-&gt; Database type manager:
-mysqli
-&gt; Latest database access request error:
-DELETE FROM llx_usergroup
-&gt; Return code for latest database access request error:
-DB_ERROR_CHILD_EXISTS
-&gt; Information for latest database access request error:
-Cannot delete or update a parent row: a foreign key constraint fails (`dolibarr2`.`llx_scrumproject_scrumsprint`, CONSTRAINT `llx_scrumproject_scrumsprint_fk_team` FOREIGN KEY (`fk_team`) REFERENCES `llx_usergroup` (`rowid`))
-</system-out>
-        </testcase>
-        <testcase name="testCreateTask" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="137" assertions="0" time="0.013044">
-          <error type="Exception">DolibarrEntityManagerTest::testCreateTask
-Exception: -1Error Cannot add or update a child row: a foreign key constraint fails (`dolibarr2`.`llx_projet_task`, CONSTRAINT `fk_projet_task_fk_user_creat` FOREIGN KEY (`fk_user_creat`) REFERENCES `llx_user` (`rowid`))
-
-/var/www/html/custom/albatross/inc/tools/doliDBManager.php:313
-/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php:145</error>
-          <system-out>&gt; Error detected:
-/var/www/utils/phpunit/vendor/phpunit/phpunit/phpunit
-&lt;b&gt;Modules/Applications:&lt;/b&gt; user, api, projet, agenda, scrumproject, sparks&lt;br&gt;
-&gt; Database type manager:
-mysqli
-&gt; Latest database access request error:
-DELETE FROM llx_usergroup
-&gt; Return code for latest database access request error:
-DB_ERROR_CHILD_EXISTS
-&gt; Information for latest database access request error:
-Cannot delete or update a parent row: a foreign key constraint fails (`dolibarr2`.`llx_scrumproject_scrumsprint`, CONSTRAINT `llx_scrumproject_scrumsprint_fk_team` FOREIGN KEY (`fk_team`) REFERENCES `llx_usergroup` (`rowid`))
-</system-out>
-        </testcase>
-        <testcase name="testCreateTicket" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="150" assertions="1" time="0.225191">
-          <system-out>&gt; Error detected:
-/var/www/utils/phpunit/vendor/phpunit/phpunit/phpunit
-&lt;b&gt;Modules/Applications:&lt;/b&gt; user, api, projet, agenda, scrumproject, sparks&lt;br&gt;
-&gt; Database type manager:
-mysqli
-&gt; Latest database access request error:
-DELETE FROM llx_usergroup
-&gt; Return code for latest database access request error:
-DB_ERROR_CHILD_EXISTS
-&gt; Information for latest database access request error:
-Cannot delete or update a parent row: a foreign key constraint fails (`dolibarr2`.`llx_scrumproject_scrumsprint`, CONSTRAINT `llx_scrumproject_scrumsprint_fk_team` FOREIGN KEY (`fk_team`) REFERENCES `llx_usergroup` (`rowid`))
-</system-out>
-        </testcase>
-        <testcase name="testCreateEntity" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="157" assertions="1" time="0.002308">
+  <testsuite name="" tests="55" assertions="232" errors="0" warnings="0" failures="2" skipped="0" time="0.285053">
+    <testsuite name="Albatross Test Suite" tests="55" assertions="232" errors="0" warnings="0" failures="2" skipped="0" time="0.285053">
+      <testsuite name="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" tests="13" assertions="13" errors="0" warnings="0" failures="1" skipped="0" time="0.282873">
+        <testcase name="testCreateUser" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="29" assertions="1" time="0.045953"/>
+        <testcase name="testCreateUserGroup" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="44" assertions="1" time="0.017395"/>
+        <testcase name="testCreateCustomer" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="52" assertions="1" time="0.017543"/>
+        <testcase name="testCreateSupplier" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="59" assertions="1" time="0.013052"/>
+        <testcase name="testCreateProduct" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="66" assertions="1" time="0.015444"/>
+        <testcase name="testCreateService" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="73" assertions="1" time="0.015542"/>
+        <testcase name="testCreateOrder" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="80" assertions="1" time="0.043680"/>
+        <testcase name="testCreateInvoice" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="101" assertions="1" time="0.052305"/>
+        <testcase name="testCreateProject" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="129" assertions="1" time="0.020920"/>
+        <testcase name="testCreateTask" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="137" assertions="1" time="0.017839"/>
+        <testcase name="testCreateTicket" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="150" assertions="1" time="0.010975"/>
+        <testcase name="testCreateBank" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="158" assertions="1" time="0.010248"/>
+        <testcase name="testCreateEntity" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="167" assertions="1" time="0.001976">
           <failure type="PHPUnit\Framework\ExpectationFailedException">DolibarrEntityManagerTest::testCreateEntity
 Failed asserting that 0 is greater than 0.
 
-/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php:161</failure>
-          <system-out>&gt; Error detected:
-/var/www/utils/phpunit/vendor/phpunit/phpunit/phpunit
-&lt;b&gt;Modules/Applications:&lt;/b&gt; user, api, projet, agenda, scrumproject, sparks&lt;br&gt;
-&gt; Database type manager:
-mysqli
-&gt; Latest database access request error:
-DELETE FROM llx_usergroup
-&gt; Return code for latest database access request error:
-DB_ERROR_CHILD_EXISTS
-&gt; Information for latest database access request error:
-Cannot delete or update a parent row: a foreign key constraint fails (`dolibarr2`.`llx_scrumproject_scrumsprint`, CONSTRAINT `llx_scrumproject_scrumsprint_fk_team` FOREIGN KEY (`fk_team`) REFERENCES `llx_usergroup` (`rowid`))
-</system-out>
+/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php:171</failure>
         </testcase>
       </testsuite>
-      <testsuite name="test\functional\EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" tests="4" assertions="13" errors="0" warnings="0" failures="0" skipped="0" time="0.008072">
-        <testcase name="testEntityMapperConvertsToEntity" class="test\functional\EntityMapperTest" classname="test.functional.EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" line="21" assertions="6" time="0.003145"/>
-        <testcase name="testEntityDTOMapperHandlesEmptyEntity" class="test\functional\EntityMapperTest" classname="test.functional.EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" line="43" assertions="1" time="0.001646"/>
-        <testcase name="testEntityDTOMapperHandlesEmptyEntityDTO" class="test\functional\EntityMapperTest" classname="test.functional.EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" line="54" assertions="1" time="0.002015"/>
-        <testcase name="testEntityDTOMapperHandlesEntityDTOWithMinimumValue" class="test\functional\EntityMapperTest" classname="test.functional.EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" line="72" assertions="5" time="0.001266"/>
+      <testsuite name="test\functional\BankMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/BankMapperTest.php" tests="2" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.000207">
+        <testcase name="testBankDTOMapperConvertsToBankDTO" class="test\functional\BankMapperTest" classname="test.functional.BankMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/BankMapperTest.php" line="18" assertions="1" time="0.000152"/>
+        <testcase name="testBankDTOMapperConvertsToBank" class="test\functional\BankMapperTest" classname="test.functional.BankMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/BankMapperTest.php" line="31" assertions="2" time="0.000055"/>
       </testsuite>
-      <testsuite name="test\functional\InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" tests="5" assertions="35" errors="0" warnings="0" failures="0" skipped="0" time="0.001980">
-        <testcase name="testInvoiceDTOMapperConvertsToInvoiceDTO" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="23" assertions="7" time="0.000134"/>
-        <testcase name="testInvoiceDTOMapperConvertsToInvoice" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="50" assertions="13" time="0.000070"/>
-        <testcase name="testInvoiceDTOMapperHandlesNullInvoice" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="99" assertions="3" time="0.000039"/>
-        <testcase name="testInvoiceDTOMapperHandlesNullInvoiceDTO" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="121" assertions="4" time="0.000036"/>
-        <testcase name="testInvoiceDTOMapperHandlesInvalidInvoiceLine" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="135" assertions="8" time="0.001701"/>
+      <testsuite name="test\functional\EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" tests="4" assertions="13" errors="0" warnings="0" failures="0" skipped="0" time="0.000308">
+        <testcase name="testEntityMapperConvertsToEntity" class="test\functional\EntityMapperTest" classname="test.functional.EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" line="17" assertions="6" time="0.000048"/>
+        <testcase name="testEntityDTOMapperHandlesEmptyEntity" class="test\functional\EntityMapperTest" classname="test.functional.EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" line="39" assertions="1" time="0.000097"/>
+        <testcase name="testEntityDTOMapperHandlesEmptyEntityDTO" class="test\functional\EntityMapperTest" classname="test.functional.EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" line="50" assertions="1" time="0.000080"/>
+        <testcase name="testEntityDTOMapperHandlesEntityDTOWithMinimumValue" class="test\functional\EntityMapperTest" classname="test.functional.EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" line="68" assertions="5" time="0.000083"/>
       </testsuite>
-      <testsuite name="test\functional\IsolationTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/IsolationTest.php" tests="2" assertions="20" errors="0" warnings="0" failures="0" skipped="0" time="0.007681">
-        <testcase name="testDTOIsolation" class="test\functional\IsolationTest" classname="test.functional.IsolationTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/IsolationTest.php" line="9" assertions="14" time="0.007488"/>
-        <testcase name="testToolsIsolation" class="test\functional\IsolationTest" classname="test.functional.IsolationTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/IsolationTest.php" line="37" assertions="6" time="0.000192"/>
+      <testsuite name="test\functional\InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" tests="5" assertions="35" errors="0" warnings="0" failures="0" skipped="0" time="0.000279">
+        <testcase name="testInvoiceDTOMapperConvertsToInvoiceDTO" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="19" assertions="7" time="0.000079"/>
+        <testcase name="testInvoiceDTOMapperConvertsToInvoice" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="46" assertions="13" time="0.000048"/>
+        <testcase name="testInvoiceDTOMapperHandlesNullInvoice" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="95" assertions="3" time="0.000030"/>
+        <testcase name="testInvoiceDTOMapperHandlesNullInvoiceDTO" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="117" assertions="4" time="0.000029"/>
+        <testcase name="testInvoiceDTOMapperHandlesInvalidInvoiceLine" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="131" assertions="8" time="0.000092"/>
       </testsuite>
-      <testsuite name="MapperListingTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/MapperListingTest.php" tests="2" assertions="17" errors="0" warnings="0" failures="0" skipped="0" time="0.002450">
-        <testcase name="testMappersIsolation" class="MapperListingTest" classname="MapperListingTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/MapperListingTest.php" line="12" assertions="11" time="0.002343"/>
-        <testcase name="testToolsIsolation" class="MapperListingTest" classname="MapperListingTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/MapperListingTest.php" line="41" assertions="6" time="0.000108"/>
+      <testsuite name="test\functional\IsolationTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/IsolationTest.php" tests="2" assertions="21" errors="0" warnings="0" failures="0" skipped="0" time="0.000341">
+        <testcase name="testDTOIsolation" class="test\functional\IsolationTest" classname="test.functional.IsolationTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/IsolationTest.php" line="9" assertions="15" time="0.000240"/>
+        <testcase name="testToolsIsolation" class="test\functional\IsolationTest" classname="test.functional.IsolationTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/IsolationTest.php" line="37" assertions="6" time="0.000101"/>
       </testsuite>
-      <testsuite name="test\functional\OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" tests="5" assertions="35" errors="0" warnings="0" failures="0" skipped="0" time="0.000359">
-        <testcase name="testOrderDTOMapperConvertsToOrderDTO" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="22" assertions="7" time="0.000133"/>
-        <testcase name="testOrderDTOMapperConvertsToOrder" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="49" assertions="13" time="0.000060"/>
-        <testcase name="testOrderDTOMapperHandlesNullOrder" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="98" assertions="3" time="0.000053"/>
-        <testcase name="testOrderDTOMapperHandlesNullOrderDTO" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="120" assertions="4" time="0.000033"/>
-        <testcase name="testOrderDTOMapperHandlesInvalidOrderLine" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="134" assertions="8" time="0.000080"/>
+      <testsuite name="MapperListingTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/MapperListingTest.php" tests="2" assertions="18" errors="0" warnings="0" failures="0" skipped="0" time="0.000113">
+        <testcase name="testMappersIsolation" class="MapperListingTest" classname="MapperListingTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/MapperListingTest.php" line="12" assertions="12" time="0.000081"/>
+        <testcase name="testToolsIsolation" class="MapperListingTest" classname="MapperListingTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/MapperListingTest.php" line="41" assertions="6" time="0.000031"/>
       </testsuite>
-      <testsuite name="test\functional\ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" tests="4" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="0.000126">
-        <testcase name="testProductDTOMapperConvertsToProductDTO" class="test\functional\ProductMapperTest" classname="test.functional.ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" line="19" assertions="2" time="0.000052"/>
-        <testcase name="testProductDTOMapperConvertsToProduct" class="test\functional\ProductMapperTest" classname="test.functional.ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" line="33" assertions="2" time="0.000026"/>
-        <testcase name="testProductDTOMapperHandlesEmptyProduct" class="test\functional\ProductMapperTest" classname="test.functional.ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" line="47" assertions="1" time="0.000023"/>
-        <testcase name="testProductDTOMapperConvertsToService" class="test\functional\ProductMapperTest" classname="test.functional.ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" line="60" assertions="3" time="0.000025"/>
+      <testsuite name="test\functional\OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" tests="5" assertions="35" errors="0" warnings="0" failures="0" skipped="0" time="0.000219">
+        <testcase name="testOrderDTOMapperConvertsToOrderDTO" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="18" assertions="7" time="0.000064"/>
+        <testcase name="testOrderDTOMapperConvertsToOrder" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="45" assertions="13" time="0.000049"/>
+        <testcase name="testOrderDTOMapperHandlesNullOrder" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="94" assertions="3" time="0.000029"/>
+        <testcase name="testOrderDTOMapperHandlesNullOrderDTO" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="116" assertions="4" time="0.000029"/>
+        <testcase name="testOrderDTOMapperHandlesInvalidOrderLine" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="130" assertions="8" time="0.000049"/>
       </testsuite>
-      <testsuite name="test\functional\TaskMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TaskMapperTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.000130">
-        <testcase name="testTaskDTOMapperConvertsToTaskDTO" class="test\functional\TaskMapperTest" classname="test.functional.TaskMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TaskMapperTest.php" line="29" assertions="2" time="0.000051"/>
-        <testcase name="testTaskDTOMapperConvertsToTask" class="test\functional\TaskMapperTest" classname="test.functional.TaskMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TaskMapperTest.php" line="42" assertions="2" time="0.000032"/>
-        <testcase name="testTaskDTOMapperHandlesEmptyTask" class="test\functional\TaskMapperTest" classname="test.functional.TaskMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TaskMapperTest.php" line="55" assertions="1" time="0.000048"/>
+      <testsuite name="test\functional\ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" tests="4" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="0.000089">
+        <testcase name="testProductDTOMapperConvertsToProductDTO" class="test\functional\ProductMapperTest" classname="test.functional.ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" line="19" assertions="2" time="0.000028"/>
+        <testcase name="testProductDTOMapperConvertsToProduct" class="test\functional\ProductMapperTest" classname="test.functional.ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" line="33" assertions="2" time="0.000021"/>
+        <testcase name="testProductDTOMapperHandlesEmptyProduct" class="test\functional\ProductMapperTest" classname="test.functional.ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" line="47" assertions="1" time="0.000019"/>
+        <testcase name="testProductDTOMapperConvertsToService" class="test\functional\ProductMapperTest" classname="test.functional.ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" line="60" assertions="3" time="0.000021"/>
       </testsuite>
-      <testsuite name="test\functional\ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" tests="5" assertions="43" errors="0" warnings="0" failures="0" skipped="0" time="0.004084">
-        <testcase name="testThirdpartyDTOMapperConvertsToThirdpartyDTO" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="19" assertions="8" time="0.003672"/>
-        <testcase name="testThirdpartyDTOMapperConvertsToSupplier" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="45" assertions="9" time="0.000173"/>
-        <testcase name="testThirdpartyDTOMapperConvertsToCustomer" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="71" assertions="9" time="0.000084"/>
-        <testcase name="testThirdpartyDTOMapperHandlesEmptyThirdparty" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="97" assertions="8" time="0.000083"/>
-        <testcase name="testThirdpartyDTOMapperHandlesEmptyThirdpartyDTO" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="115" assertions="9" time="0.000073"/>
+      <testsuite name="test\functional\TaskMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TaskMapperTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.000081">
+        <testcase name="testTaskDTOMapperConvertsToTaskDTO" class="test\functional\TaskMapperTest" classname="test.functional.TaskMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TaskMapperTest.php" line="25" assertions="2" time="0.000028"/>
+        <testcase name="testTaskDTOMapperConvertsToTask" class="test\functional\TaskMapperTest" classname="test.functional.TaskMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TaskMapperTest.php" line="38" assertions="2" time="0.000023"/>
+        <testcase name="testTaskDTOMapperHandlesEmptyTask" class="test\functional\TaskMapperTest" classname="test.functional.TaskMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TaskMapperTest.php" line="51" assertions="1" time="0.000030"/>
       </testsuite>
-      <testsuite name="test\functional\TicketMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TicketMapperTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.000227">
-        <testcase name="testTicketDTOMapperConvertsToTicketDTO" class="test\functional\TicketMapperTest" classname="test.functional.TicketMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TicketMapperTest.php" line="20" assertions="3" time="0.000138"/>
-        <testcase name="testTicketDTOMapperHandlesEmptyTicket" class="test\functional\TicketMapperTest" classname="test.functional.TicketMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TicketMapperTest.php" line="36" assertions="1" time="0.000089"/>
+      <testsuite name="test\functional\ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" tests="5" assertions="43" errors="0" warnings="0" failures="0" skipped="0" time="0.000216">
+        <testcase name="testThirdpartyDTOMapperConvertsToThirdpartyDTO" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="15" assertions="8" time="0.000090"/>
+        <testcase name="testThirdpartyDTOMapperConvertsToSupplier" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="41" assertions="9" time="0.000037"/>
+        <testcase name="testThirdpartyDTOMapperConvertsToCustomer" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="67" assertions="9" time="0.000030"/>
+        <testcase name="testThirdpartyDTOMapperHandlesEmptyThirdparty" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="93" assertions="8" time="0.000031"/>
+        <testcase name="testThirdpartyDTOMapperHandlesEmptyThirdpartyDTO" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="111" assertions="9" time="0.000029"/>
       </testsuite>
-      <testsuite name="test\functional\UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" tests="4" assertions="6" errors="0" warnings="0" failures="1" skipped="0" time="0.000168">
-        <testcase name="testUserGroupDTOMapperConvertsToUserGroupDTO" class="test\functional\UserGroupMapperTest" classname="test.functional.UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" line="19" assertions="2" time="0.000063"/>
-        <testcase name="testUserGroupDTOMapperConvertsToUserGroup" class="test\functional\UserGroupMapperTest" classname="test.functional.UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" line="34" assertions="2" time="0.000030"/>
-        <testcase name="testUserGroupDTOMapperHandlesEmptyUserGroup" class="test\functional\UserGroupMapperTest" classname="test.functional.UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" line="48" assertions="1" time="0.000042">
+      <testsuite name="test\functional\TicketMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TicketMapperTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.000079">
+        <testcase name="testTicketDTOMapperConvertsToTicketDTO" class="test\functional\TicketMapperTest" classname="test.functional.TicketMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TicketMapperTest.php" line="16" assertions="3" time="0.000053"/>
+        <testcase name="testTicketDTOMapperHandlesEmptyTicket" class="test\functional\TicketMapperTest" classname="test.functional.TicketMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TicketMapperTest.php" line="32" assertions="1" time="0.000026"/>
+      </testsuite>
+      <testsuite name="test\functional\UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" tests="4" assertions="6" errors="0" warnings="0" failures="1" skipped="0" time="0.000112">
+        <testcase name="testUserGroupDTOMapperConvertsToUserGroupDTO" class="test\functional\UserGroupMapperTest" classname="test.functional.UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" line="15" assertions="2" time="0.000027"/>
+        <testcase name="testUserGroupDTOMapperConvertsToUserGroup" class="test\functional\UserGroupMapperTest" classname="test.functional.UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" line="30" assertions="2" time="0.000021"/>
+        <testcase name="testUserGroupDTOMapperHandlesEmptyUserGroup" class="test\functional\UserGroupMapperTest" classname="test.functional.UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" line="44" assertions="1" time="0.000034">
           <failure type="PHPUnit\Framework\ExpectationFailedException">test\functional\UserGroupMapperTest::testUserGroupDTOMapperHandlesEmptyUserGroup
-Failed asserting that exception of type "Error" is thrown.</failure>
+Failed asserting that exception of type "Throwable" is thrown.</failure>
         </testcase>
-        <testcase name="testUserGroupDTOMapperHandlesEmptyUserGroupDTO" class="test\functional\UserGroupMapperTest" classname="test.functional.UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" line="59" assertions="1" time="0.000034"/>
+        <testcase name="testUserGroupDTOMapperHandlesEmptyUserGroupDTO" class="test\functional\UserGroupMapperTest" classname="test.functional.UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" line="55" assertions="1" time="0.000031"/>
       </testsuite>
-      <testsuite name="test\functional\UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" tests="4" assertions="28" errors="0" warnings="0" failures="0" skipped="0" time="0.000156">
-        <testcase name="testUserDTOMapperConvertsToUserDTO" class="test\functional\UserMapperTest" classname="test.functional.UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" line="19" assertions="7" time="0.000047"/>
-        <testcase name="testUserDTOMapperConvertsToUser" class="test\functional\UserMapperTest" classname="test.functional.UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" line="43" assertions="7" time="0.000036"/>
-        <testcase name="testUserDTOMapperHandlesEmptyUser" class="test\functional\UserMapperTest" classname="test.functional.UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" line="66" assertions="7" time="0.000039"/>
-        <testcase name="testUserDTOMapperHandlesEmptyUserDTO" class="test\functional\UserMapperTest" classname="test.functional.UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" line="83" assertions="7" time="0.000034"/>
+      <testsuite name="test\functional\UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" tests="4" assertions="28" errors="0" warnings="0" failures="0" skipped="0" time="0.000136">
+        <testcase name="testUserDTOMapperConvertsToUserDTO" class="test\functional\UserMapperTest" classname="test.functional.UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" line="15" assertions="7" time="0.000050"/>
+        <testcase name="testUserDTOMapperConvertsToUser" class="test\functional\UserMapperTest" classname="test.functional.UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" line="39" assertions="7" time="0.000031"/>
+        <testcase name="testUserDTOMapperHandlesEmptyUser" class="test\functional\UserMapperTest" classname="test.functional.UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" line="62" assertions="7" time="0.000028"/>
+        <testcase name="testUserDTOMapperHandlesEmptyUserDTO" class="test\functional\UserMapperTest" classname="test.functional.UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" line="79" assertions="7" time="0.000026"/>
       </testsuite>
     </testsuite>
   </testsuite>

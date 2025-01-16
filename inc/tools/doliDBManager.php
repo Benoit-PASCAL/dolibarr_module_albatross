@@ -4,7 +4,7 @@ namespace Albatross\Tools;
 
 require_once __DIR__ . '/intDBManager.php';
 require_once DOL_DOCUMENT_ROOT . '/user/class/user.class.php';
-require_once DOL_DOCUMENT_ROOT . '/societe/class/societe.class.php';
+//require_once DOL_DOCUMENT_ROOT . '/societe/class/societe.class.php';
 require_once DOL_DOCUMENT_ROOT . '/core/lib/admin.lib.php';
 require_once DOL_DOCUMENT_ROOT . '/custom/albatross/inc/models/index.php';
 require_once DOL_DOCUMENT_ROOT . '/custom/albatross/inc/mappers/index.php';
@@ -12,6 +12,7 @@ require_once DOL_DOCUMENT_ROOT . '/custom/multicompany/class/dao_multicompany.cl
 require_once DOL_DOCUMENT_ROOT . '/custom/multicompany/class/actions_multicompany.class.php';
 
 use ActionsMulticompany;
+use Albatross\BankDTOMapper;
 use Albatross\EntityDTO;
 use Albatross\EntityDTOMapper;
 use Albatross\InvoiceStatus;
@@ -35,9 +36,11 @@ use Albatross\UserDTOMapper;
 use Albatross\UserGroupDTO;
 use Albatross\UserGroupDTOMapper;
 use Exception;
+use modBanque;
 use modCommande;
 use modFacture;
 use modProjet;
+use modSociete;
 use modTicket;
 use User;
 
@@ -85,7 +88,7 @@ class DoliDBManager implements intDBManager
 		$res = $tmpUserGroup->create($user);
 
 		if ($res <= 0) {
-			throw new Exception($res . $tmpUserGroup->error);
+			throw new Exception($res . $tmpUserGroup->errors[0]);
 		}
 
 		foreach ($userGroupDTO->getEntities() as $entity) {
@@ -253,6 +256,45 @@ class DoliDBManager implements intDBManager
 		$res = $ticket->create($user);
 
 		return $ticket->id ?? $res;
+	}
+
+	/**
+	 * @param \Albatross\BankDTO $bankDTO
+	 */
+	public function createBank($bankDTO): int
+	{
+		dol_syslog(__METHOD__, LOG_INFO);
+		global $conf, $db, $user;
+
+		$isModEnabled = (int)DOL_VERSION >= 16 ? isModEnabled('bank') : $conf->bank->enabled;
+		if (!$isModEnabled) {
+			// We enable the module
+			require_once DOL_DOCUMENT_ROOT . '/core/modules/modBanque.class.php';
+			$mod = new modBanque($db);
+			$mod->init();
+		}
+
+		$bankDTOMapper = '';
+		$bankDTOMapper = new BankDTOMapper();
+		$bank = $bankDTOMapper->toBank($bankDTO);
+		$res = $bank->create($user);
+
+		if ($res <= 0) {
+			throw new Exception($res . $bank->error);
+		}
+
+		return $bank->id;
+	}
+
+	public function creatBankAccount($bankAccountDTO): int
+	{
+		//modSociete.class.php
+		return 0;
+	}
+
+	public function createPayment($paymentDTO): int
+	{
+		return 0;
 	}
 
 	/**
@@ -496,6 +538,9 @@ class DoliDBManager implements intDBManager
 			'societe_prices',
 			'societe',
 			'ticket',
+			'projet_task_extrafields',
+			'projet_task',
+			'projet_extrafields',
 			'projet'
 		];
 

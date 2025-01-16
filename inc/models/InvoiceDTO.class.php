@@ -3,6 +3,7 @@
 namespace Albatross;
 
 require_once __DIR__ . '/InvoiceLineDTO.class.php';
+
 use Albatross\InvoiceLineDTO;
 use PhpOffice\PhpSpreadsheet\Calculation\Statistical;
 

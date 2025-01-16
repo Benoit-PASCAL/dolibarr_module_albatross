@@ -2,6 +2,7 @@
 
 require_once dirname(__DIR__, 2) . '/inc/models/index.php';
 
+use Albatross\BankDTO;
 use Albatross\InvoiceLineDTO;
 use Albatross\OrderLineDTO;
 use Albatross\ProjectDTO;
@@ -183,5 +184,14 @@ class RandomFactory
 			->setName('Test Entity');
 
 		return $entityDTO;
+	}
+
+	public static function getBank(): BankDTO
+	{
+		$bankDTO = new BankDTO();
+		$bankDTO
+			->setName('Test Bank' . rand(1, 100));
+
+		return $bankDTO;
 	}
 }

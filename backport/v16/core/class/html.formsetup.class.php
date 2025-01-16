@@ -27,7 +27,7 @@ class FormSetup
 	 */
 	public $db;
 
-	/** @var \albatross\backport\v16\core\class\FormSetupItem[]  */
+	/** @var \Albatross\backport\v16\core\class\FormSetupItem[] */
 	public $items = array();
 
 	/**
@@ -292,7 +292,7 @@ class FormSetup
 	/**
 	 * generateLineOutput
 	 *
-	 * @param    \albatross\backport\v16\core\class\FormSetupItem   $item       the setup item
+	 * @param \Albatross\backport\v16\core\class\FormSetupItem $item the setup item
 	 * @param   bool            $editMode   Display as edit mod
 	 * @return  string                      the html output for an setup item
 	 */
@@ -379,7 +379,7 @@ class FormSetup
 			//'ALBATROSS_MYPARAM7'=>array('type'=>'product', 'enabled'=>1),
 		 */
 
-		$item = new \albatross\backport\v16\core\class\FormSetupItem($confKey);
+		$item = new \Albatross\backport\v16\core\class\FormSetupItem($confKey);
 		// need to be ignored from scrutinizer setTypeFromTypeString was created as deprecated to incite developper to use object oriented usage
 		/** @scrutinizer ignore-deprecated */ $item->setTypeFromTypeString($params['type']);
 
@@ -442,11 +442,11 @@ class FormSetup
 	 * @param string    $confKey                the conf key used in database
 	 * @param string    $targetItemKey          target item used to place the new item beside
 	 * @param bool      $insertAfterTarget      insert before or after target item ?
-	 * @return \albatross\backport\v16\core\class\FormSetupItem the new setup item created
+	 * @return \Albatross\backport\v16\core\class\FormSetupItem the new setup item created
 	 */
 	public function newItem($confKey, $targetItemKey = false, $insertAfterTarget = false)
 	{
-		$item = new \albatross\backport\v16\core\class\FormSetupItem($confKey);
+		$item = new \Albatross\backport\v16\core\class\FormSetupItem($confKey);
 
 		// set item rank if not defined as last item
 		if (empty($item->rank)) {
@@ -543,8 +543,8 @@ class FormSetup
 	/**
 	 *  uasort callback function to Sort params items
 	 *
-	 *  @param    \albatross\backport\v16\core\class\FormSetupItem  $a  formSetup item
-	 *  @param    \albatross\backport\v16\core\class\FormSetupItem  $b  formSetup item
+	 * @param \Albatross\backport\v16\core\class\FormSetupItem $a formSetup item
+	 * @param \Albatross\backport\v16\core\class\FormSetupItem $b formSetup item
 	 *  @return int                 Return compare result
 	 */
 	public function itemSort(

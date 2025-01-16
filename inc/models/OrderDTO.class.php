@@ -3,6 +3,7 @@
 namespace Albatross;
 
 require_once __DIR__ . '/OrderLineDTO.class.php';
+
 use Albatross\OrderLineDTO;
 
 class OrderDTO

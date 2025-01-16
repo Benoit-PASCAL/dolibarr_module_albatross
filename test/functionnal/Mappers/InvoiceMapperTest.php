@@ -2,10 +2,6 @@
 
 namespace test\functional;
 
-// Prepare the environment
-if (!defined('TEST_ENV_SETUP')) {
-	require_once dirname(__DIR__) . '/_setup.php';
-}
 
 // Require tested class
 require_once MODULE_ROOT . '/inc/mappers/InvoiceDTOMapper.class.php';
