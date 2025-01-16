@@ -4,7 +4,7 @@ namespace Albatross;
 
 require_once __DIR__ . '/InvoiceLineDTO.class.php';
 
-use Albatross\models\InvoiceLineDTO;
+use Albatross\InvoiceLineDTO;
 use PhpOffice\PhpSpreadsheet\Calculation\Statistical;
 
 class InvoiceStatus
@@ -125,7 +125,7 @@ class InvoiceDTO
 	}
 
 	/**
-	 * @param \Albatross\models\InvoiceLineDTO $invoiceLine
+	 * @param \Albatross\InvoiceLineDTO $invoiceLine
 	 */
 	public function addInvoiceLine($invoiceLine): InvoiceDTO
 	{

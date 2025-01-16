@@ -13,7 +13,7 @@ require_once MODULE_ROOT . '/inc/tools/doliDBManager.php';
 require_once MODULE_ROOT . '/test/tools/RandomFactory.php';
 
 
-use Albatross\models\Tools\DoliDBManager;
+use Albatross\Tools\DoliDBManager;
 use PHPUnit\Framework\TestCase;
 
 class DolibarrEntityManagerTest extends TestCase
@@ -152,6 +152,16 @@ class DolibarrEntityManagerTest extends TestCase
 		$ticketDTO = RandomFactory::getRandomTicket();
 		$ticketID = $this->entityManager->createTicket($ticketDTO);
 		$this->assertGreaterThan(0, $ticketID);
+	}
+
+
+	public function testCreateBank()
+	{
+		// Prepare needed group
+		$bankDTO = RandomFactory::getBank();
+		$bankID = $this->entityManager->createBank($bankDTO);
+
+		$this->assertGreaterThan(0, $bankID);
 	}
 
 	public function testCreateEntity()

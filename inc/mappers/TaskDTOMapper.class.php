@@ -11,7 +11,7 @@ use Task;
 class TaskDTOMapper
 {
 	/**
-	 * @param \Albatross\models\TaskDTO $taskDTO
+	 * @param \Albatross\TaskDTO $taskDTO
 	 */
 	public function toTask($taskDTO): Task
 	{

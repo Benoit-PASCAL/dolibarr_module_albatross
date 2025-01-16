@@ -2,17 +2,13 @@
 
 namespace test\functional;
 
-// Prepare the environment
-if (!defined('TEST_ENV_SETUP')) {
-	require_once dirname(__DIR__) . '/_setup.php';
-}
 
 require_once MODULE_ROOT . '/inc/mappers/OrderDTOMapper.class.php';
 
 
-use Albatross\models\OrderDTO;
-use Albatross\models\OrderDTOMapper;
-use Albatross\models\OrderLineDTO;
+use Albatross\OrderDTO;
+use Albatross\OrderDTOMapper;
+use Albatross\OrderLineDTO;
 use Commande;
 use DateTime;
 use PHPUnit\Framework\TestCase;

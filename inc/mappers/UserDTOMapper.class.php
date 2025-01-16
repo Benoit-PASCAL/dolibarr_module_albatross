@@ -5,7 +5,7 @@ namespace Albatross;
 include_once dirname(__DIR__) . '/models/UserDTO.class.php';
 
 use User;
-use Albatross\models\UserDTO;
+use Albatross\UserDTO;
 
 require_once dirname(__DIR__, 4) . '/user/class/user.class.php';
 
@@ -30,7 +30,7 @@ class UserDTOMapper
 	}
 
 	/**
-	 * @param \Albatross\models\UserDTO $userDTO
+	 * @param \Albatross\UserDTO $userDTO
 	 */
 	public function toUser($userDTO): User
 	{

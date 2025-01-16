@@ -1,76 +1,76 @@
 <?php
 
-namespace Albatross\models\Tools;
+namespace Albatross\Tools;
 
 require_once dirname(__DIR__) . '/models/index.php';
 //require_once dirname(__DIR__) . '/mappers/index.php';
 
-use Albatross\models\InvoiceDTO;
-use Albatross\models\OrderDTO;
-use Albatross\models\ProductDTO;
-use Albatross\models\ProjectDTO;
-use Albatross\models\ServiceDTO;
-use Albatross\models\ThirdpartyDTO;
-use Albatross\models\TicketDTO;
-use Albatross\models\UserDTO;
-use Albatross\models\EntityDTO;
-use Albatross\models\UserGroupDTO;
-use Albatross\models\TaskDTO;
+use Albatross\InvoiceDTO;
+use Albatross\OrderDTO;
+use Albatross\ProductDTO;
+use Albatross\ProjectDTO;
+use Albatross\ServiceDTO;
+use Albatross\ThirdpartyDTO;
+use Albatross\TicketDTO;
+use Albatross\UserDTO;
+use Albatross\EntityDTO;
+use Albatross\UserGroupDTO;
+use Albatross\TaskDTO;
 
 interface intDBManager
 {
 	/**
-	 * @param \Albatross\models\UserDTO $userDTO
+	 * @param \Albatross\UserDTO $userDTO
 	 */
 	public function createUser($userDTO): int;
 
 	/**
-	 * @param \Albatross\models\UserGroupDTO $userGroupDTO
+	 * @param \Albatross\UserGroupDTO $userGroupDTO
 	 */
 	public function createUserGroup($userGroupDTO): int;
 
 	/**
-	 * @param \Albatross\models\ThirdpartyDTO $thirdpartyDTO
+	 * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
 	 */
 	public function createCustomer($thirdpartyDTO): int;
 
 	/**
-	 * @param \Albatross\models\ThirdpartyDTO $thirdpartyDTO
+	 * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
 	 */
 	public function createSupplier($thirdpartyDTO): int;
 
 	/**
-	 * @param \Albatross\models\ProductDTO $productDTO
+	 * @param \Albatross\ProductDTO $productDTO
 	 */
 	public function createProduct($productDTO): int;
 
 	/**
-	 * @param \Albatross\models\ServiceDTO $serviceDTO
+	 * @param \Albatross\ServiceDTO $serviceDTO
 	 */
 	public function createService($serviceDTO): int;
 
 	/**
-	 * @param \Albatross\models\OrderDTO $orderDTO
+	 * @param \Albatross\OrderDTO $orderDTO
 	 */
 	public function createOrder($orderDTO): int;
 
 	/**
-	 * @param \Albatross\models\InvoiceDTO $invoice
+	 * @param \Albatross\InvoiceDTO $invoice
 	 */
 	public function createInvoice($invoice): int;
 
 	/**
-	 * @param \Albatross\models\TicketDTO $ticketDTO
+	 * @param \Albatross\TicketDTO $ticketDTO
 	 */
 	public function createTicket($ticketDTO): int;
 
 	/**
-	 * @param \Albatross\models\ProjectDTO $projectDTO
+	 * @param \Albatross\ProjectDTO $projectDTO
 	 */
 	public function createProject($projectDTO): int;
 
 	/**
-	 * @param \Albatross\models\EntityDTO $entityDTO
+	 * @param \Albatross\EntityDTO $entityDTO
 	 */
 	public function createEntity($entityDTO): int;
 
@@ -81,7 +81,7 @@ interface intDBManager
 	public function setupEntity($entityId = 0, $params = []): bool;
 
 	/**
-	 * @param \Albatross\models\TaskDTO $taskDTO
+	 * @param \Albatross\TaskDTO $taskDTO
 	 */
 	public function createTask($taskDTO): int;
 

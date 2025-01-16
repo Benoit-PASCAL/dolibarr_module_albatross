@@ -2,8 +2,8 @@
 
 namespace Albatross;
 
-use Albatross\models\Project;
-use Albatross\models\ProjectDTO;
+use Albatross\Project;
+use Albatross\ProjectDTO;
 
 include_once dirname(__DIR__) . '/models/ProjectDTO.class.php';
 require_once dirname(__DIR__, 4) . '/projet/class/project.class.php';
@@ -27,7 +27,7 @@ class ProjectDTOMapper
 	}
 
 	/**
-	 * @param \Albatross\models\ProjectDTO $projectDTO
+	 * @param \Albatross\ProjectDTO $projectDTO
 	 */
 	public function toProject($projectDTO): \Project
 	{

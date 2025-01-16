@@ -1,6 +1,6 @@
 <?php
 
-namespace Albatross\models\Tools;
+namespace Albatross\Tools;
 
 require_once __DIR__ . '/EntityConfiguratorInterface.php';
 

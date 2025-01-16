@@ -2,14 +2,10 @@
 
 namespace test\functional;
 
-// Prepare the environment
-if (!defined('TEST_ENV_SETUP')) {
-	require_once dirname(__DIR__) . '/_setup.php';
-}
 
 require_once MODULE_ROOT . '/inc/mappers/TicketDTOMapper.class.php';
 
-use Albatross\models\TicketDTOMapper;
+use Albatross\TicketDTOMapper;
 use DateTime;
 use Exception;
 use PHPUnit\Framework\TestCase;

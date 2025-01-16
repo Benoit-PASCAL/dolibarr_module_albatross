@@ -5,81 +5,96 @@ namespace Albatross;
 class BankDTO
 {
 	/**
-	 * @var string
+	 * @var ?string
 	 */
 	private $name;
 
 	/**
-	 * @var string
+	 * @var ?string
 	 */
 	private $rib;
 
 	/**
-	 * @var string
+	 * @var ?string
 	 */
 	private $address;
 
 
 	/**
-	 * @var string
+	 * @var ?string
 	 */
 	private $zipCode;
 
 	/**
-	 * @var string
+	 * @var ?string
 	 */
 	private $city;
 
-	public function getName(): string
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
 
-	public function setName(string $name): BankDTO
+	/**
+  * @param string $name
+  */
+ public function setName($name): BankDTO
 	{
 		$this->name = $name;
 		return $this;
 	}
 
-	public function getRib(): string
+	public function getRib(): ?string
 	{
 		return $this->rib;
 	}
 
-	public function setRib(string $rib): BankDTO
+	/**
+  * @param string $rib
+  */
+ public function setRib($rib): BankDTO
 	{
 		$this->rib = $rib;
 		return $this;
 	}
 
-	public function getAddress(): string
+	public function getAddress(): ?string
 	{
 		return $this->address;
 	}
 
-	public function setAddress(string $address): BankDTO
+	/**
+  * @param string $address
+  */
+ public function setAddress($address): BankDTO
 	{
 		$this->address = $address;
 		return $this;
 	}
 
-	public function getZipCode(): string
+	public function getZipCode(): ?string
 	{
 		return $this->zipCode;
 	}
 
-	public function setZipCode(string $zipCode): BankDTO
+	/**
+  * @param string $zipCode
+  */
+ public function setZipCode($zipCode): BankDTO
 	{
 		$this->zipCode = $zipCode;
 		return $this;
 	}
 
-	public function getCity(): string
+	public function getCity(): ?string
 	{
 		return $this->city;
 	}
 
-	public function setCity(string $city): BankDTO
+	/**
+  * @param string $city
+  */
+ public function setCity($city): BankDTO
 	{
 		$this->city = $city;
 		return $this;

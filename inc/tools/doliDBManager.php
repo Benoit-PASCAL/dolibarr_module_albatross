@@ -1,6 +1,6 @@
 <?php
 
-namespace Albatross\models\Tools;
+namespace Albatross\Tools;
 
 require_once __DIR__ . '/intDBManager.php';
 require_once DOL_DOCUMENT_ROOT . '/user/class/user.class.php';
@@ -12,28 +12,29 @@ require_once DOL_DOCUMENT_ROOT . '/custom/multicompany/class/dao_multicompany.cl
 require_once DOL_DOCUMENT_ROOT . '/custom/multicompany/class/actions_multicompany.class.php';
 
 use ActionsMulticompany;
-use Albatross\models\EntityDTO;
-use Albatross\models\EntityDTOMapper;
-use Albatross\models\InvoiceStatus;
-use Albatross\models\OrderDTO;
-use Albatross\models\InvoiceDTO;
-use Albatross\models\InvoiceDTOMapper;
-use Albatross\models\OrderDTOMapper;
-use Albatross\models\ProductDTO;
-use Albatross\models\ProductDTOMapper;
-use Albatross\models\ProjectDTO;
-use Albatross\models\ProjectDTOMapper;
-use Albatross\models\ServiceDTO;
-use Albatross\models\TaskDTO;
-use Albatross\models\TaskDTOMapper;
-use Albatross\models\ThirdpartyDTO;
-use Albatross\models\ThirdpartyDTOMapper;
-use Albatross\models\TicketDTO;
-use Albatross\models\TicketDTOMapper;
-use Albatross\models\UserDTO;
-use Albatross\models\UserDTOMapper;
-use Albatross\models\UserGroupDTO;
-use Albatross\models\UserGroupDTOMapper;
+use Albatross\BankDTOMapper;
+use Albatross\EntityDTO;
+use Albatross\EntityDTOMapper;
+use Albatross\InvoiceStatus;
+use Albatross\OrderDTO;
+use Albatross\InvoiceDTO;
+use Albatross\InvoiceDTOMapper;
+use Albatross\OrderDTOMapper;
+use Albatross\ProductDTO;
+use Albatross\ProductDTOMapper;
+use Albatross\ProjectDTO;
+use Albatross\ProjectDTOMapper;
+use Albatross\ServiceDTO;
+use Albatross\TaskDTO;
+use Albatross\TaskDTOMapper;
+use Albatross\ThirdpartyDTO;
+use Albatross\ThirdpartyDTOMapper;
+use Albatross\TicketDTO;
+use Albatross\TicketDTOMapper;
+use Albatross\UserDTO;
+use Albatross\UserDTOMapper;
+use Albatross\UserGroupDTO;
+use Albatross\UserGroupDTOMapper;
 use Exception;
 use modBanque;
 use modCommande;
@@ -56,7 +57,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\models\UserDTO $userDTO
+	 * @param \Albatross\UserDTO $userDTO
 	 */
 	public function createUser($userDTO): int
 	{
@@ -75,7 +76,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\models\UserGroupDTO $userGroupDTO
+	 * @param \Albatross\UserGroupDTO $userGroupDTO
 	 */
 	public function createUserGroup($userGroupDTO): int
 	{
@@ -98,7 +99,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\models\ThirdpartyDTO $thirdpartyDTO
+	 * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
 	 */
 	public function createCustomer($thirdpartyDTO): int
 	{
@@ -118,7 +119,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\models\ThirdpartyDTO $thirdpartyDTO
+	 * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
 	 */
 	public function createSupplier($thirdpartyDTO): int
 	{
@@ -138,7 +139,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\models\ProductDTO $productDTO
+	 * @param \Albatross\ProductDTO $productDTO
 	 */
 	public function createProduct($productDTO): int
 	{
@@ -153,7 +154,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\models\ServiceDTO $serviceDTO
+	 * @param \Albatross\ServiceDTO $serviceDTO
 	 */
 	public function createService($serviceDTO): int
 	{
@@ -168,7 +169,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\models\OrderDTO $orderDTO
+	 * @param \Albatross\OrderDTO $orderDTO
 	 */
 	public function createOrder($orderDTO): int
 	{
@@ -200,7 +201,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\models\InvoiceDTO $invoiceDTO
+	 * @param \Albatross\InvoiceDTO $invoiceDTO
 	 */
 	public function createInvoice($invoiceDTO): int
 	{
@@ -235,7 +236,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\models\TicketDTO $ticketDTO
+	 * @param \Albatross\TicketDTO $ticketDTO
 	 */
 	public function createTicket($ticketDTO): int
 	{
@@ -258,9 +259,9 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\models\BankDTO $bankDTO
+	 * @param \Albatross\BankDTO $bankDTO
 	 */
-	public function creatBank($bankDTO): int
+	public function createBank($bankDTO): int
 	{
 		dol_syslog(__METHOD__, LOG_INFO);
 		global $conf, $db, $user;
@@ -274,11 +275,15 @@ class DoliDBManager implements intDBManager
 		}
 
 		$bankDTOMapper = '';
-		$bankDTOMapper = new $bankDTOMapper();
+		$bankDTOMapper = new BankDTOMapper();
 		$bank = $bankDTOMapper->toBank($bankDTO);
 		$res = $bank->create($user);
 
-		return $bank->id ?? $res;
+		if ($res <= 0) {
+			throw new Exception($res . $bank->error);
+		}
+
+		return $bank->id;
 	}
 
 	public function creatBankAccount($bankAccountDTO): int
@@ -293,7 +298,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\models\ProjectDTO $projectDTO
+	 * @param \Albatross\ProjectDTO $projectDTO
 	 */
 	public function createProject($projectDTO): int
 	{
@@ -325,7 +330,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\models\TaskDTO $taskDTO
+	 * @param \Albatross\TaskDTO $taskDTO
 	 */
 	public function createTask($taskDTO): int
 	{
@@ -354,7 +359,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\models\EntityDTO $entityDTO
+	 * @param \Albatross\EntityDTO $entityDTO
 	 * @param mixed[] $params
 	 */
 	public function createEntity($entityDTO, $params = []): int
@@ -533,6 +538,9 @@ class DoliDBManager implements intDBManager
 			'societe_prices',
 			'societe',
 			'ticket',
+			'projet_task_extrafields',
+			'projet_task',
+			'projet_extrafields',
 			'projet'
 		];
 

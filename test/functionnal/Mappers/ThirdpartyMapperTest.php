@@ -2,15 +2,11 @@
 
 namespace test\functional;
 
-// Prepare the environment
-if (!defined('TEST_ENV_SETUP')) {
-	require_once dirname(__DIR__) . '/_setup.php';
-}
 
 require_once MODULE_ROOT . '/inc/mappers/ThirdpartyDTOMapper.class.php';
 
-use Albatross\models\ThirdpartyDTO;
-use Albatross\models\ThirdpartyDTOMapper;
+use Albatross\ThirdpartyDTO;
+use Albatross\ThirdpartyDTOMapper;
 use PHPUnit\Framework\TestCase;
 use Societe;
 

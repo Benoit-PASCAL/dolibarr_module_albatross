@@ -2,8 +2,8 @@
 
 namespace Albatross;
 
-use Albatross\models\InvoiceDTO;
-use Albatross\models\InvoiceLineDTO;
+use Albatross\InvoiceDTO;
+use Albatross\InvoiceLineDTO;
 use DateTime;
 use Facture;
 use FactureLigne;
@@ -49,7 +49,7 @@ class InvoiceDTOMapper
 	}
 
 	/**
-	 * @param \Albatross\models\InvoiceDTO $invoiceDTO
+	 * @param \Albatross\InvoiceDTO $invoiceDTO
 	 */
 	public function toInvoice($invoiceDTO): Facture
 	{

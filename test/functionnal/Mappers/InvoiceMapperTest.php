@@ -2,18 +2,14 @@
 
 namespace test\functional;
 
-// Prepare the environment
-if (!defined('TEST_ENV_SETUP')) {
-	require_once dirname(__DIR__) . '/_setup.php';
-}
 
 // Require tested class
 require_once MODULE_ROOT . '/inc/mappers/InvoiceDTOMapper.class.php';
 
 
-use Albatross\models\InvoiceDTO;
-use Albatross\models\InvoiceDTOMapper;
-use Albatross\models\InvoiceLineDTO;
+use Albatross\InvoiceDTO;
+use Albatross\InvoiceDTOMapper;
+use Albatross\InvoiceLineDTO;
 use DateTime;
 use Facture;
 use PHPUnit\Framework\TestCase;

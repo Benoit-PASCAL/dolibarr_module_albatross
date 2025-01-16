@@ -1,6 +1,6 @@
 <?php
 
-namespace Albatross\models\Tools;
+namespace Albatross\Tools;
 
 interface EntityConfiguratorInterface
 {

@@ -2,15 +2,11 @@
 
 namespace test\functional;
 
-// Prepare the environment
-if (!defined('TEST_ENV_SETUP')) {
-	require_once dirname(__DIR__) . '/_setup.php';
-}
 
 require_once MODULE_ROOT . '/inc/mappers/TaskDTOMapper.class.php';
 
-use Albatross\models\TaskDTOMapper;
-use Albatross\models\TaskDTO;
+use Albatross\TaskDTOMapper;
+use Albatross\TaskDTO;
 
 use Exception;
 use PHPUnit\Framework\TestCase;

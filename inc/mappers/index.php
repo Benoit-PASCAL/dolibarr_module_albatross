@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . '/BankDTOMapper.class.php';
 require_once __DIR__ . '/EntityDTOMapper.class.php';
 require_once __DIR__ . '/InvoiceDTOMapper.class.php';
 require_once __DIR__ . '/OrderDTOMapper.class.php';

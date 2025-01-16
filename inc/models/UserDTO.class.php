@@ -185,7 +185,7 @@ class UserDTO
 	}
 
 	/**
-	 * @param \Albatross\models\UserGroupDTO $group
+	 * @param \Albatross\UserGroupDTO $group
 	 */
 	public function addGroup($group): UserDTO
 	{

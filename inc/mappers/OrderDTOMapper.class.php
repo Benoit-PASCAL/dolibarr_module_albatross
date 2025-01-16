@@ -37,7 +37,7 @@ class OrderDTOMapper
 	}
 
 	/**
-	 * @param \Albatross\models\OrderDTO $orderDTO
+	 * @param \Albatross\OrderDTO $orderDTO
 	 */
 	public function toOrder($orderDTO): \Commande
 	{

@@ -6,12 +6,12 @@ include_once dirname(__DIR__) . '/models/TicketDTO.class.php';
 require_once dirname(__DIR__, 4) . '/ticket/class/ticket.class.php';
 
 
-use Albatross\models\TicketDTO;
+use Albatross\TicketDTO;
 
 class TicketDTOMapper
 {
 	/**
-	 * @param \Albatross\models\TicketDTO $ticketDTO
+	 * @param \Albatross\TicketDTO $ticketDTO
 	 */
 	public function toTicket($ticketDTO): \Ticket
 	{

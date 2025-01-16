@@ -2,15 +2,11 @@
 
 namespace test\functional;
 
-// Prepare the environment
-if (!defined('TEST_ENV_SETUP')) {
-	require_once dirname(__DIR__) . '/_setup.php';
-}
 
 require_once MODULE_ROOT . '/inc/mappers/UserGroupDTOMapper.class.php';
 
-use Albatross\models\UserGroupDTO;
-use Albatross\models\UserGroupDTOMapper;
+use Albatross\UserGroupDTO;
+use Albatross\UserGroupDTOMapper;
 use PHPUnit\Framework\TestCase;
 use UserGroup;
 
@@ -52,7 +48,7 @@ class UserGroupMapperTest extends TestCase
 		$userGroup = new UserGroup($db);
 
 		$mapper = new UserGroupDTOMapper();
-		$this->expectException('Error');
+		$this->expectException('Throwable');
 		$userGroupDTO = $mapper->toUserGroupDTO($userGroup);
 	}
 
