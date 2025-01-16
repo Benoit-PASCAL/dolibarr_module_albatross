@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . '/BankDTO.class.php';
 require_once __DIR__ . '/EntityDTO.class.php';
 require_once __DIR__ . '/InvoiceDTO.class.php';
 require_once __DIR__ . '/InvoiceLineDTO.class.php';

@@ -12,6 +12,7 @@ require_once DOL_DOCUMENT_ROOT . '/custom/multicompany/class/dao_multicompany.cl
 require_once DOL_DOCUMENT_ROOT . '/custom/multicompany/class/actions_multicompany.class.php';
 
 use ActionsMulticompany;
+use Albatross\BankDTO;
 use Albatross\BankDTOMapper;
 use Albatross\EntityDTO;
 use Albatross\EntityDTOMapper;
@@ -129,6 +130,25 @@ class DoliDBManager implements intDBManager
 
 		$thirdpartyDTOMapper = new ThirdpartyDTOMapper();
 		$tmpSupplier = $thirdpartyDTOMapper->toSupplier($thirdpartyDTO);
+		$res = $tmpSupplier->create($user);
+
+		if ($res <= 0) {
+			throw new Exception($res . $tmpSupplier->error);
+		}
+
+		return $tmpSupplier->id;
+	}
+
+	/**
+	 * @param \Albatross\InvoiceDTO $invoiceDTO
+	 */
+	public function createSupplierInvoice($invoiceDTO): int
+	{
+		dol_syslog(__METHOD__, LOG_INFO);
+		global $db, $user;
+
+		$invoiceDTOMapper = new InvoiceDTOMapper();
+		$tmpSupplier = $invoiceDTOMapper->toSupplierInvoice($invoiceDTO);
 		$res = $tmpSupplier->create($user);
 
 		if ($res <= 0) {
@@ -275,7 +295,7 @@ class DoliDBManager implements intDBManager
 		}
 
 		$bankDTOMapper = '';
-		$bankDTOMapper = new BankDTOMapper();
+		$bankDTOMapper = new $bankDTOMapper();
 		$bank = $bankDTOMapper->toBank($bankDTO);
 		$res = $bank->create($user);
 
@@ -286,7 +306,7 @@ class DoliDBManager implements intDBManager
 		return $bank->id;
 	}
 
-	public function creatBankAccount($bankAccountDTO): int
+	public function createBankAccount($bankAccountDTO): int
 	{
 		//modSociete.class.php
 		return 0;
@@ -517,6 +537,8 @@ class DoliDBManager implements intDBManager
 		}
 
 		$toDrop = [
+			'scrumproject_scrumsprintuser',
+			'scrumproject_scrumsprint',
 			'usergroup_user',
 			'usergroup_rights',
 			'usergroup',

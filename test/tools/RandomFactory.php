@@ -2,7 +2,6 @@
 
 require_once dirname(__DIR__, 2) . '/inc/models/index.php';
 
-use Albatross\BankDTO;
 use Albatross\InvoiceLineDTO;
 use Albatross\OrderLineDTO;
 use Albatross\ProjectDTO;
@@ -16,6 +15,7 @@ use Albatross\OrderDTO;
 use Albatross\InvoiceDTO;
 use Albatross\TicketDTO;
 use Albatross\EntityDTO;
+use Albatross\BankDTO;
 
 class RandomFactory
 {
@@ -118,6 +118,37 @@ class RandomFactory
 	}
 
 	public static function getRandomInvoice(): InvoiceDTO
+	{
+		$date = new DateTime();
+		$invoiceDTO = new InvoiceDTO();
+		$invoiceDTO
+			->setCustomerId(100)
+			->setSupplierId(200)
+			->setDate($date);
+
+		$invoiceLineDTO1 = new InvoiceLineDTO();
+		$invoiceLineDTO1
+			->setQuantity(5)
+			->setProductId(1)
+			->setDescription('Desc')
+			->setUnitprice(10);
+
+		$invoiceLineDTO2 = new InvoiceLineDTO();
+		$invoiceLineDTO2
+			->setQuantity(5)
+			->setProductId(2)
+			->setDescription('Desc')
+			->setUnitprice(10)
+			->setDiscount(10);
+
+		$invoiceDTO
+			->addInvoiceLine($invoiceLineDTO1)
+			->addInvoiceLine($invoiceLineDTO2);
+
+		return $invoiceDTO;
+	}
+
+	public static function getSupplierInvoice(): InvoiceDTO
 	{
 		$date = new DateTime();
 		$invoiceDTO = new InvoiceDTO();

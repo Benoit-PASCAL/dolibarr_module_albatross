@@ -126,6 +126,35 @@ class DolibarrEntityManagerTest extends TestCase
 		$this->assertGreaterThan(0, $invoiceID);
 	}
 
+
+	public function testCreateSupplierInvoice()
+	{
+		$productDTO_1 = RandomFactory::getRandomProduct();
+		$productID_1 = $this->entityManager->createProduct($productDTO_1);
+		$productDTO_2 = RandomFactory::getRandomProduct();
+		$productID_2 = $this->entityManager->createProduct($productDTO_2);
+
+		$supplierDTO = RandomFactory::getRandomSupplier();
+		$customerDTO = RandomFactory::getRandomCustomer();
+
+		$supplierID = $this->entityManager->createSupplier($supplierDTO);
+		$customerID = $this->entityManager->createCustomer($customerDTO);
+
+		$invoiceDTO = RandomFactory::getSupplierInvoice();
+		$invoiceDTO
+			->setSupplierId($supplierID)
+			->setCustomerId($customerID);
+
+		$invoiceDTO
+			->getInvoiceLines()[0]
+			->setProductId($productID_1);
+		$invoiceDTO
+			->getInvoiceLines()[1]
+			->setProductId($productID_2);
+
+		$invoiceID = $this->entityManager->createSupplierInvoice($invoiceDTO);
+		$this->assertGreaterThan(0, $invoiceID);
+	}
 	public function testCreateProject()
 	{
 		$projectDTO = RandomFactory::getRandomProject();
@@ -169,5 +198,12 @@ class DolibarrEntityManagerTest extends TestCase
 		$entityDTO = RandomFactory::getRandomEntity();
 		$entityID = $this->entityManager->createEntity($entityDTO);
 		$this->assertGreaterThan(0, $entityID);
+	}
+
+	public function testCreateBankAccount()
+	{
+		$bankDTO = RandomFactory::getRandomBank();
+		$bankID = $this->entityManager->createBank($bankDTO);
+		$this->assertGreaterThan(0, $bankID);
 	}
 }
