@@ -42,7 +42,7 @@ class BankDTOMapper
 		return $bank;
 	}
 	/**
-	 * @param \Bank $bank
+	 * @param \Account $bank
 	 */
 	public function toBankDTO($bank): BankDTO
 	{
