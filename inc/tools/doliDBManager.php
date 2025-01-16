@@ -294,8 +294,7 @@ class DoliDBManager implements intDBManager
 			$mod->init();
 		}
 
-		$bankDTOMapper = '';
-		$bankDTOMapper = new $bankDTOMapper();
+		$bankDTOMapper = new BankDTOMapper();
 		$bank = $bankDTOMapper->toBank($bankDTO);
 		$res = $bank->create($user);
 

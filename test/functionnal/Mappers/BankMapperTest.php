@@ -30,7 +30,7 @@ class BankMapperTest extends TestCase
 	public function testBankDTOMapperConvertsToBankDTO()
 	{
 		$bank = new Account($this->db);
-		$bank->name = 'Test Bank';
+		$bank->label = 'Test Bank';
 
 		$mapper = new BankDTOMapper();
 		$bankDTO = $mapper->toBankDTO($bank);

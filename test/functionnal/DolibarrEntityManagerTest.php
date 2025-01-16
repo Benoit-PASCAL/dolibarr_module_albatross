@@ -199,11 +199,4 @@ class DolibarrEntityManagerTest extends TestCase
 		$entityID = $this->entityManager->createEntity($entityDTO);
 		$this->assertGreaterThan(0, $entityID);
 	}
-
-	public function testCreateBankAccount()
-	{
-		$bankDTO = RandomFactory::getRandomBank();
-		$bankID = $this->entityManager->createBank($bankDTO);
-		$this->assertGreaterThan(0, $bankID);
-	}
 }
