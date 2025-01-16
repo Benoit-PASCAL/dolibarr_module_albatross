@@ -7,9 +7,11 @@ use Albatross\InvoiceLineDTO;
 use DateTime;
 use Facture;
 use FactureLigne;
+use FactureFournisseur;
 
 include_once dirname(__DIR__) . '/models/InvoiceDTO.class.php';
 require_once dirname(__DIR__, 4) . '/compta/facture/class/facture.class.php';
+require_once dirname(__DIR__, 4) . '/fourn/class/fournisseur.facture.class.php';
 
 class InvoiceDTOMapper
 {
@@ -53,7 +55,7 @@ class InvoiceDTOMapper
 	 */
 	public function toInvoice($invoiceDTO): Facture
 	{
-		global $db, $user;
+		global $db;
 
 		$invoice = new Facture($db);
 
@@ -65,6 +67,35 @@ class InvoiceDTOMapper
 
 		// optional
 		$invoice->fk_project = $invoiceDTO->getProject();
+		foreach ($invoiceDTO->getInvoiceLines() as $invoiceLineDTO) {
+			$invoiceLine = new FactureLigne($db);
+
+			$invoiceLine->fk_product = $invoiceLineDTO->getProductId();
+			$invoiceLine->desc = $invoiceLineDTO->getDescription();
+			$invoiceLine->subprice = $invoiceLineDTO->getUnitprice();
+			$invoiceLine->remise_percent = $invoiceLineDTO->getDiscount();
+			$invoiceLine->qty = $invoiceLineDTO->getQuantity();
+
+			$invoice->lines[] = $invoiceLine;
+		}
+
+		return $invoice;
+	}
+
+	/**
+	 * @param InvoiceDTO $invoiceDTO
+	 * @return FactureFournisseur
+	 */
+	public function toSupplierInvoice(\Albatross\InvoiceDTO $invoiceDTO): FactureFournisseur
+	{
+		global $db;
+
+		$invoice = new FactureFournisseur($db);
+
+		$invoice->date = $invoiceDTO->getDate()->getTimestamp();
+		$invoice->statut = $invoiceDTO->getStatus();
+		$invoice->ref_customer = $invoiceDTO->getCustomerId();
+		$invoice->socid = $invoiceDTO->getSupplierId();
 
 		foreach ($invoiceDTO->getInvoiceLines() as $invoiceLineDTO) {
 			$invoiceLine = new FactureLigne($db);

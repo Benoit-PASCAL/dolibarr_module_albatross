@@ -5,6 +5,7 @@ namespace Albatross\Tools;
 require_once dirname(__DIR__) . '/models/index.php';
 //require_once dirname(__DIR__) . '/mappers/index.php';
 
+use Albatross\BankDTO;
 use Albatross\InvoiceDTO;
 use Albatross\OrderDTO;
 use Albatross\ProductDTO;
@@ -84,6 +85,12 @@ interface intDBManager
 	 * @param \Albatross\TaskDTO $taskDTO
 	 */
 	public function createTask($taskDTO): int;
+
+	/**
+	 * @param BankDTO $bankDTO
+	 * @return int
+	 */
+	public function createBank($bankDTO): int;
 
 	public function removeFixtures(): bool;
 }
