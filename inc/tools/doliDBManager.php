@@ -17,6 +17,7 @@ use Albatross\BankDTOMapper;
 use Albatross\EntityDTO;
 use Albatross\EntityDTOMapper;
 use Albatross\InvoiceStatus;
+use Albatross\QuotationDTOMapper;
 use Albatross\OrderDTO;
 use Albatross\InvoiceDTO;
 use Albatross\InvoiceDTOMapper;
@@ -187,6 +188,23 @@ class DoliDBManager implements intDBManager
 
 		return $product->id ?? 0;
 	}
+
+	/**
+	 * @param \Albatross\QuotationDTO $quotationDTO
+	 */
+	public function createSupplierQuotation($quotationDTO): int
+	{
+		dol_syslog(get_class($this) . 'createQuotation', LOG_INFO);
+		global $db, $user;
+
+		//$isModEnabled = (int) DOL_VERSION <= 14 ? isModEnabled('devis') : $conf->commande->enabled;
+		$quotationDTOMapper = new QuotationDTOMapper();
+		$quotation = $quotationDTOMapper->toQuotation($quotationDTO);
+		$quotation->create($user);
+
+		return $quotation->id ?? 0;
+	}
+
 
 	/**
 	 * @param \Albatross\OrderDTO $orderDTO
