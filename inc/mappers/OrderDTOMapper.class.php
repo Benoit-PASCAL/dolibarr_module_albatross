@@ -2,8 +2,12 @@
 
 namespace Albatross;
 
+
+use FactureLigne;
+
 include_once dirname(__DIR__) . '/models/OrderDTO.class.php';
 require_once dirname(__DIR__, 4) . '/commande/class/commande.class.php';
+
 
 class OrderDTOMapper
 {
@@ -51,6 +55,32 @@ class OrderDTOMapper
 
 		foreach ($orderDTO->getOrderLines() as $orderLineDTO) {
 			$orderLine = new \OrderLine($db);
+
+			$orderLine->fk_product = $orderLineDTO->getProductId();
+			$orderLine->desc = $orderLineDTO->getDescription();
+			$orderLine->subprice = $orderLineDTO->getUnitprice();
+			$orderLine->remise_percent = $orderLineDTO->getDiscount();
+			$orderLine->qty = $orderLineDTO->getQuantity();
+
+			$order->lines[] = $orderLine;
+		}
+
+		return $order;
+	}
+
+
+	public function toSupplierOrder(OrderDTO $orderDTO): \Commande
+	{
+		global $db;
+
+		$order = new \Commande($db);
+
+		$order->date = $orderDTO->getDate()->getTimestamp();
+		$order->ref_customer = $orderDTO->getCustomerId();
+		$order->socid = $orderDTO->getSupplierId();
+
+		foreach ($orderDTO->getOrderLines() as $orderLineDTO) {
+			$orderLine = new FactureLigne($db);
 
 			$orderLine->fk_product = $orderLineDTO->getProductId();
 			$orderLine->desc = $orderLineDTO->getDescription();

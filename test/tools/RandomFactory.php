@@ -2,20 +2,22 @@
 
 require_once dirname(__DIR__, 2) . '/inc/models/index.php';
 
+use Albatross\BankDTO;
+use Albatross\EntityDTO;
+use Albatross\InvoiceDTO;
 use Albatross\InvoiceLineDTO;
+use Albatross\OrderDTO;
 use Albatross\OrderLineDTO;
+use Albatross\ProductDTO;
 use Albatross\ProjectDTO;
+use Albatross\QuotationDTO;
+use Albatross\QuotationLineDTO;
+use Albatross\ServiceDTO;
 use Albatross\TaskDTO;
+use Albatross\ThirdpartyDTO;
+use Albatross\TicketDTO;
 use Albatross\UserDTO;
 use Albatross\UserGroupDTO;
-use Albatross\ThirdpartyDTO;
-use Albatross\ProductDTO;
-use Albatross\ServiceDTO;
-use Albatross\OrderDTO;
-use Albatross\InvoiceDTO;
-use Albatross\TicketDTO;
-use Albatross\EntityDTO;
-use Albatross\BankDTO;
 
 class RandomFactory
 {
@@ -86,7 +88,100 @@ class RandomFactory
 		return $serviceDTO;
 	}
 
+	public static function getRandomQuotation(): QuotationDTO
+	{
+		$date = new DateTime();
+		$quotationDTO = new QuotationDTO();
+		$quotationDTO
+			->setCustomerId(100)
+			->setSupplierId(200)
+			->setDate($date);
+
+		$quotationLineDT01 = new QuotationLineDTO();
+		$quotationLineDT01
+			->setQuantity(10)
+			->setProductId(1)
+			->setDescription('Desc')
+			->setUnitprice(12.5);
+
+		$quotationLineDT02 = new QuotationLineDTO();
+		$quotationLineDT02
+			->setQuantity(5)
+			->setProductId(2)
+			->setDescription('Desc')
+			->setUnitprice(12.5)
+			->setDiscount(10);
+
+		$quotationDTO
+			->addQuotationLine($quotationLineDT01)
+			->addQuotationLine($quotationLineDT02);
+
+		return $quotationDTO;
+	}
+
+	public static function getSupplierQuotation(): QuotationDTO
+	{
+		$date = new DateTime();
+		$quotationDTO = new QuotationDTO();
+		$quotationDTO
+			->setCustomerId(100)
+			->setSupplierId(200)
+			->setDate($date);
+
+		$quotationLineDT01 = new QuotationLineDTO();
+		$quotationLineDT01
+			->setQuantity(10)
+			->setProductId(1)
+			->setDescription('Desc')
+			->setUnitprice(12.5);
+
+		$quotationLineDT02 = new QuotationLineDTO();
+		$quotationLineDT02
+			->setQuantity(5)
+			->setProductId(2)
+			->setDescription('Desc')
+			->setUnitprice(12.5)
+			->setDiscount(10);
+
+		$quotationDTO
+			->addQuotationLine($quotationLineDT01)
+			->addQuotationLine($quotationLineDT02);
+
+		return $quotationDTO;
+	}
+
 	public static function getRandomOrder(): OrderDTO
+	{
+		$date = new DateTime();
+		$orderDTO = new OrderDTO();
+		$orderDTO
+			->setCustomerId(100)
+			->setSupplierId(200)
+			->setDate($date);
+
+		$orderLineDTO1 = new OrderLineDTO();
+		$orderLineDTO1
+			->setQuantity(10)
+			->setProductId(1)
+			->setDescription('Desc')
+			->setUnitprice(12.5);
+
+		$orderLineDTO2 = new OrderLineDTO();
+		$orderLineDTO2
+			->setQuantity(5)
+			->setProductId(2)
+			->setDescription('Desc')
+			->setUnitprice(12.5)
+			->setDiscount(10);
+
+		$orderDTO
+			->addOrderLine($orderLineDTO1)
+			->addOrderLine($orderLineDTO2);
+
+		return $orderDTO;
+	}
+
+	public static function getSupplierOrder(): OrderDTO
 	{
 		$date = new DateTime();
 		$orderDTO = new OrderDTO();
@@ -148,6 +243,7 @@ class RandomFactory
 		return $invoiceDTO;
 	}
 
+
 	public static function getSupplierInvoice(): InvoiceDTO
 	{
 		$date = new DateTime();
@@ -178,6 +274,7 @@ class RandomFactory
 
 		return $invoiceDTO;
 	}
+
 
 	public static function getRandomProject(): ProjectDTO
 	{

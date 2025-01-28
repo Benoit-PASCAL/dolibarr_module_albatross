@@ -12,37 +12,26 @@ require_once DOL_DOCUMENT_ROOT . '/custom/multicompany/class/dao_multicompany.cl
 require_once DOL_DOCUMENT_ROOT . '/custom/multicompany/class/actions_multicompany.class.php';
 
 use ActionsMulticompany;
-use Albatross\BankDTO;
 use Albatross\BankDTOMapper;
 use Albatross\EntityDTO;
 use Albatross\EntityDTOMapper;
-use Albatross\InvoiceStatus;
-use Albatross\QuotationDTOMapper;
-use Albatross\OrderDTO;
-use Albatross\InvoiceDTO;
 use Albatross\InvoiceDTOMapper;
+use Albatross\InvoiceStatus;
+use Albatross\QuotationDTO;
 use Albatross\OrderDTOMapper;
-use Albatross\ProductDTO;
 use Albatross\ProductDTOMapper;
-use Albatross\ProjectDTO;
 use Albatross\ProjectDTOMapper;
-use Albatross\ServiceDTO;
-use Albatross\TaskDTO;
+use Albatross\QuotationDTOMapper;
 use Albatross\TaskDTOMapper;
-use Albatross\ThirdpartyDTO;
 use Albatross\ThirdpartyDTOMapper;
-use Albatross\TicketDTO;
 use Albatross\TicketDTOMapper;
-use Albatross\UserDTO;
 use Albatross\UserDTOMapper;
-use Albatross\UserGroupDTO;
 use Albatross\UserGroupDTOMapper;
 use Exception;
 use modBanque;
 use modCommande;
 use modFacture;
 use modProjet;
-use modSociete;
 use modTicket;
 use User;
 
@@ -140,24 +129,6 @@ class DoliDBManager implements intDBManager
 		return $tmpSupplier->id;
 	}
 
-	/**
-	 * @param \Albatross\InvoiceDTO $invoiceDTO
-	 */
-	public function createSupplierInvoice($invoiceDTO): int
-	{
-		dol_syslog(__METHOD__, LOG_INFO);
-		global $db, $user;
-
-		$invoiceDTOMapper = new InvoiceDTOMapper();
-		$tmpSupplier = $invoiceDTOMapper->toSupplierInvoice($invoiceDTO);
-		$res = $tmpSupplier->create($user);
-
-		if ($res <= 0) {
-			throw new Exception($res . $tmpSupplier->error);
-		}
-
-		return $tmpSupplier->id;
-	}
 
 	/**
 	 * @param \Albatross\ProductDTO $productDTO
@@ -189,10 +160,7 @@ class DoliDBManager implements intDBManager
 		return $product->id ?? 0;
 	}
 
-	/**
-	 * @param \Albatross\QuotationDTO $quotationDTO
-	 */
-	public function createSupplierQuotation($quotationDTO): int
+	public function createQuotation($quotationDTO): int
 	{
 		dol_syslog(get_class($this) . 'createQuotation', LOG_INFO);
 		global $db, $user;
@@ -203,6 +171,25 @@ class DoliDBManager implements intDBManager
 		$quotation->create($user);
 
 		return $quotation->id ?? 0;
+	}
+
+	/**
+	 * @param \Albatross\models\QuotationDTO $quotationDTO
+	 */
+	public function createSupplierQuotation(QuotationDTO $quotationDTO): int
+	{
+		dol_syslog(get_class($this) . 'createSupplierQuotation', LOG_INFO);
+		global $db, $user;
+
+		$quotationDTOMapper = new QuotationDTOMapper();
+		$quotationSupplier = $quotationDTOMapper->toSupplierQuotation($quotationDTO);
+		$res = $quotationSupplier->create($user);
+
+		if ($res <= 0) {
+			throw new Exception($res . $quotationSupplier->error);
+		}
+
+		return $quotationSupplier->id;
 	}
 
 
@@ -239,6 +226,25 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
+	 * @param \Albatross\OrderDTO $orderDTO
+	 */
+	public function createSupplierOrder($orderDTO): int
+	{
+		dol_syslog(get_class($this) . 'createSupplierOrder', LOG_INFO);
+		global $db, $user;
+
+		$orderDTOMapper = new OrderDTOMapper();
+		$orderSupplier = $orderDTOMapper->toSupplierOrder($orderDTO);
+		$res = $orderSupplier->create($user);
+
+		if ($res <= 0) {
+			throw new Exception($res . $orderSupplier->error);
+		}
+
+		return $orderSupplier->id;
+	}
+
+	/**
 	 * @param \Albatross\InvoiceDTO $invoiceDTO
 	 */
 	public function createInvoice($invoiceDTO): int
@@ -272,6 +278,26 @@ class DoliDBManager implements intDBManager
 		// TODO: Move to fixtures
 		return $invoice->id ?? 0;
 	}
+
+	/**
+	 * @param \Albatross\InvoiceDTO $invoiceDTO
+	 */
+	public function createSupplierInvoice($invoiceDTO): int
+	{
+		dol_syslog(__METHOD__, LOG_INFO);
+		global $db, $user;
+
+		$invoiceDTOMapper = new InvoiceDTOMapper();
+		$tmpSupplier = $invoiceDTOMapper->toSupplierInvoice($invoiceDTO);
+		$res = $tmpSupplier->create($user);
+
+		if ($res <= 0) {
+			throw new Exception($res . $tmpSupplier->error);
+		}
+
+		return $tmpSupplier->id;
+	}
+
 
 	/**
 	 * @param \Albatross\TicketDTO $ticketDTO

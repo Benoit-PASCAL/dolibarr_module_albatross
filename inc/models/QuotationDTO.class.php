@@ -2,7 +2,9 @@
 
 namespace Albatross;
 
-use Albatross\InvoiceLineDTO;
+require_once __DIR__ . '/QuotationLineDTO.class.php';
+
+use Albatross\QuotationLineDTO;
 
 class QuotationDTO
 {
@@ -10,11 +12,6 @@ class QuotationDTO
 	 * @var \DateTime
 	 */
 	private $date;
-
-	/**
-	 * @var int $status
-	 */
-	private $status;
 
 	/**
 	 * @var int
@@ -27,25 +24,16 @@ class QuotationDTO
 	private $supplierId;
 
 	/**
-	 * @var \InvoiceLineDTO[]
+	 * @var \QuotationLineDTO[]
 	 */
-	private $invoiceLines;
-
-	/**
-	 * @var ?int
-	 */
-	private $project;
+	private $quotationLines;
 
 	public function __construct()
 	{
 		$this->date = new \DateTime();
-		$this->status = InvoiceStatus::DRAFT;
 		$this->customerId = 0;
 		$this->supplierId = 0;
-		$this->invoiceLines = [];
-
-		// optional
-		$this->project = null;
+		$this->quotationLines = [];
 	}
 
 	public function getDate(): \DateTime
@@ -59,20 +47,6 @@ class QuotationDTO
 	public function setDate($date): QuotationDTO
 	{
 		$this->date = $date;
-		return $this;
-	}
-
-	public function getStatus(): int
-	{
-		return $this->status;
-	}
-
-	/**
-	 * @param int $status
-	 */
-	public function setStatus($status): QuotationDTO
-	{
-		$this->status = $status;
 		return $this;
 	}
 
@@ -105,34 +79,19 @@ class QuotationDTO
 	}
 
 	/**
-	 * @return InvoiceLineDTO[]
+	 * @return QuotationLineDTO[]
 	 */
-	public function getInvoiceLines(): array
+	public function getQuotationLines(): array
 	{
-		return $this->invoiceLines;
+		return $this->quotationLines;
 	}
 
 	/**
-	 * @param \Albatross\InvoiceLineDTO $invoiceLine
+	 * @param \Albatross\QuotationLineDTO $quotationLine
 	 */
-	public function addInvoiceLine($invoiceLine): QuotationDTO
+	public function addQuotationLine($quotationLine): QuotationDTO
 	{
-		$this->invoiceLines[] = $invoiceLine;
-		return $this;
-	}
-
-	public function getProject(): ?int
-	{
-		return $this->project;
-	}
-
-	/**
-	 * @param int $project
-	 */
-	public function setProject($project): QuotationDTO
-	{
-		$this->project = $project;
+		$this->quotationLines[] = $quotationLine;
 		return $this;
 	}
 }
-
