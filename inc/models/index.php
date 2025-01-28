@@ -15,3 +15,5 @@ require_once __DIR__ . '/TicketDTO.class.php';
 require_once __DIR__ . '/UserDTO.class.php';
 require_once __DIR__ . '/UserGroupDTO.class.php';
 require_once __DIR__ . '/QuotationDTO.class.php';
+require_once __DIR__ . '/QuotationLineDTO.class.php';
+

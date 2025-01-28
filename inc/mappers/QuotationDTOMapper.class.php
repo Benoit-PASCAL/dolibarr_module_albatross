@@ -3,7 +3,6 @@
 namespace Albatross;
 
 use Albatross\QuotationDTO;
-use Albatross\InvoiceLineDTO;
 use DateTime;
 use FactureLigne;
 use Propal;
@@ -12,14 +11,43 @@ use Propal;
 include_once dirname(__DIR__) . "/models/QuotationDTO.class.php";
 require_once dirname(__DIR__, 4) . "/comm/propal/class/propal.class.php";
 require_once dirname(__DIR__, 4) . '/fourn/class/fournisseur.facture.class.php';
-require_once dirname(__DIR__, 4) . '/compta/facture/class/factureligne.class.php';
+require_once dirname(__DIR__, 4) . '/compta/facture/class/facture.class.php';
 
 
 class QuotationDTOMapper
 {
-	/**
-	 * @param \Albatross\QuotationDTO $quotationDTO
-	 */
+
+	public function toQuotationDTO($quotation): QuotationDTO
+	{
+		$quotationDTO = new QuotationDTO();
+		$quotationDTO
+			->setDate((new DateTime())->setTimestamp($quotation->date))
+			->setStatus($quotation->statut ?? InvoiceStatus::DRAFT)
+			->setCustomerId($quotation->ref_customer ?? 0)
+			->setSupplierId($quotation->socid ?? 0);
+
+		// optional
+		if ($quotation->fk_project > 0) {
+			$quotationDTO->setProject($quotation->fk_project);
+		}
+
+		foreach ($quotation->lines ?? [] as $line) {
+			$quotationLineDTO = new InvoiceLineDTO();
+			$quotationLineDTO
+				->setUnitprice($line->subprice ?? 0)
+				->setQuantity($line->qty ?? 1)
+				->setDescription($line->desc ?? '')
+				->setDiscount($line->remise_percent ?? 0);
+
+			if (!is_null($line->product) && !is_null($line->product->id)) {
+				$quotationLineDTO->setProductId($line->product->id);
+			}
+
+			$quotationDTO->addInvoiceLine($quotationLineDTO);
+		}
+
+		return $quotationDTO;
+	}
 
 	public function toQuotation($quotationDTO): Propal
 	{
@@ -35,14 +63,14 @@ class QuotationDTOMapper
 
 		// optional
 		$quotation->fk_project = $quotationDTO->getProject();
-		foreach ($quotationDTO->getInvoiceLines() as $invoiceLineDTO) {
+		foreach ($quotationDTO->getInvoiceLines() as $quotationLineDTO) {
 			$quotationLine = new FactureLigne($db);
 
-			$quotationLine->fk_product = $invoiceLineDTO->getProductId();
-			$quotationLine->desc = $invoiceLineDTO->getDescription();
-			$quotationLine->subprice = $invoiceLineDTO->getUnitprice();
-			$quotationLine->remise_percent = $invoiceLineDTO->getDiscount();
-			$quotationLine->qty = $invoiceLineDTO->getQuantity();
+			$quotationLine->fk_product = $quotationLineDTO->getProductId();
+			$quotationLine->desc = $quotationLineDTO->getDescription();
+			$quotationLine->subprice = $quotationLineDTO->getUnitprice();
+			$quotationLine->remise_percent = $quotationLineDTO->getDiscount();
+			$quotationLine->qty = $quotationLineDTO->getQuantity();
 
 			$quotation->lines[] = $quotationLine;
 		}
@@ -51,18 +79,20 @@ class QuotationDTOMapper
 		return $quotation;
 	}
 
-	public function toSupplierQuotation(\Albatross\QuotationDTO $quotationDTO): propal
+	/**
+	 * @param \Albatross\QuotationDTO $quotationDTO
+	 */
+	public function toSupplierQuotation(QuotationDTO $quotationDTO): Propal
 	{
 		global $db;
 
 		$quotation = new propal($db);
 
 		$quotation->date = $quotationDTO->getDate()->getTimestamp();
-		$quotation->statut = $quotationDTO->getStatus();
 		$quotation->ref_customer = $quotationDTO->getCustomerId();
 		$quotation->socid = $quotationDTO->getSupplierId();
 
-		foreach ($quotationDTO->getInvoiceLines() as $quotationLineDTO) {
+		foreach ($quotationDTO->getQuotationLines() as $quotationLineDTO) {
 			$quotationLine = new FactureLigne($db);
 
 			$quotationLine->fk_product = $quotationLineDTO->getProductId();
