@@ -2,32 +2,41 @@
 
 namespace Albatross;
 
+require_once dirname(__DIR__) . "/models/QuotationDTO.class.php";
+require_once dirname(__DIR__, 4) . "/comm/propal/class/propal.class.php";
+require_once dirname(__DIR__, 4) . '/fourn/class/fournisseur.facture.class.php';
+require_once dirname(__DIR__, 4) . '/compta/facture/class/facture.class.php';
+require_once dirname(__DIR__, 4) . '/supplier_proposal/class/supplier_proposal.class.php';
+
 use Albatross\QuotationDTO;
 use DateTime;
 use FactureLigne;
 use Propal;
+use SupplierProposal;
 
 
-include_once dirname(__DIR__) . "/models/QuotationDTO.class.php";
-require_once dirname(__DIR__, 4) . "/comm/propal/class/propal.class.php";
-require_once dirname(__DIR__, 4) . '/fourn/class/fournisseur.facture.class.php';
-require_once dirname(__DIR__, 4) . '/compta/facture/class/facture.class.php';
 
 
 class QuotationDTOMapper
 {
 
 	/**
-	 * @param Propal $quotation
+	 * @param Propal|SupplierProposal $quotation
 	 */
 	public function toQuotationDTO($quotation): QuotationDTO
 	{
 		$quotationDTO = new QuotationDTO();
 		$quotationDTO
 			->setDate((new DateTime())->setTimestamp($quotation->date))
-			->setStatus($quotation->statut ?? InvoiceStatus::DRAFT)
-			->setCustomerId($quotation->ref_customer ?? 0)
-			->setSupplierId($quotation->socid ?? 0);
+			->setStatus($quotation->statut ?? InvoiceStatus::DRAFT);
+
+		if ($quotation instanceof Propal) {
+			$quotationDTO->setCustomerId($quotation->socid);
+		}
+
+		if ($quotation instanceof SupplierProposal) {
+			$quotationDTO->setSupplierId($quotation->socid);
+		}
 
 		// optional
 		if ($quotation->fk_project > 0) {
@@ -62,14 +71,14 @@ class QuotationDTOMapper
 		$quotation = new Propal($db);
 
 		$quotation->date = $quotationDTO->getDate()->getTimestamp();
-		$quotation->socid = $quotationDTO->getSupplierId();
-		$quotation->ref_customer = $quotationDTO->getCustomerId();
+		$quotation->socid = $quotationDTO->getCustomerId();
 		$quotation->statut = $quotationDTO->getStatus();
+		$quotation->status = $quotationDTO->getStatus();
 		$quotation->entity = 1;
 
 		// optional
 		foreach ($quotationDTO->getQuotationLines() as $quotationLineDTO) {
-			$quotationLine = new FactureLigne($db);
+			$quotationLine = new \PropaleLigne($db);
 
 			$quotationLine->fk_product = $quotationLineDTO->getProductId();
 			$quotationLine->desc = $quotationLineDTO->getDescription();
@@ -86,18 +95,18 @@ class QuotationDTOMapper
 	/**
 	 * @param \QuotationDTO $quotationDTO
 	 */
-	public function toSupplierQuotation($quotationDTO): Propal
+	public function toSupplierQuotation($quotationDTO): SupplierProposal
 	{
 		global $db;
 
-		$quotation = new propal($db);
+		$quotation = new SupplierProposal($db);
 
 		$quotation->date = $quotationDTO->getDate()->getTimestamp();
-		$quotation->ref_customer = $quotationDTO->getCustomerId();
 		$quotation->socid = $quotationDTO->getSupplierId();
+		$quotation->entity = 1;
 
 		foreach ($quotationDTO->getQuotationLines() as $quotationLineDTO) {
-			$quotationLine = new FactureLigne($db);
+			$quotationLine = new \SupplierProposalLine($db);
 
 			$quotationLine->fk_product = $quotationLineDTO->getProductId();
 			$quotationLine->desc = $quotationLineDTO->getDescription();
