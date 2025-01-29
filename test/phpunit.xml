@@ -9,9 +9,15 @@
         processIsolation="false"
         stopOnFailure="false">
     <testsuites>
-        <testsuite name="Albatross Test Suite">
-            <directory>./functionnal/</directory>
-        </testsuite>
+		<testsuite name="Albatross Architecture">
+			<directory>./functionnal/architecture/</directory>
+		</testsuite>
+		<testsuite name="Albatross Mappers">
+			<directory>./functionnal/Mappers/</directory>
+		</testsuite>
+		<testsuite name="Albatross Tools">
+			<directory>./functionnal/Tools/</directory>
+		</testsuite>
     </testsuites>
     <coverage>
         <include>
