@@ -55,6 +55,7 @@ class ProductDTOMapper
 		$product->status = 1;
 		$product->status_buy = 1;
 		$product->type = \Product::TYPE_SERVICE;
+
 		return $product;
 	}
 }

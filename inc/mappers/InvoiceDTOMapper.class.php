@@ -84,6 +84,12 @@ class InvoiceDTOMapper
 			$invoiceLine->remise_percent = $invoiceLineDTO->getDiscount();
 			$invoiceLine->qty = $invoiceLineDTO->getQuantity();
 
+			// FIXME: avoid hardcoded values
+			$invoiceLine->tva_tx = 0.2;
+			$invoiceLine->total_ht = $invoiceLine->subprice * $invoiceLine->qty;
+			$invoiceLine->total_tva = $invoiceLine->total_ht * $invoiceLine->tva_tx;
+			$invoiceLine->total_ttc = $invoiceLine->total_ht + $invoiceLine->total_tva;
+
 			$invoice->lines[] = $invoiceLine;
 		}
 

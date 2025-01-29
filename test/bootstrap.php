@@ -10,3 +10,6 @@ require_once ROOT . '/core/lib/admin.lib.php';
 
 // Require tested class
 const MODULE_ROOT = ROOT . '/custom/albatross';
+
+// Override configuration
+$dolibarr_main_prod = 0;

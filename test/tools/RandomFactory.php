@@ -39,7 +39,7 @@ class RandomFactory
 	{
 		$userGroupDTO = new UserGroupDTO();
 		$userGroupDTO
-			->setLabel('Admin');
+			->setLabel('Admin' . uniqid());
 
 		return $userGroupDTO;
 	}
@@ -73,7 +73,7 @@ class RandomFactory
 	public static function getRandomProduct(): ProductDTO
 	{
 		$productDTO = new ProductDTO();
-		$productDTO->setLabel('Test Product');
+		$productDTO->setLabel('Test Product' . uniqid());
 		$productDTO->setTaxFreePrice(100.0);
 
 		return $productDTO;
