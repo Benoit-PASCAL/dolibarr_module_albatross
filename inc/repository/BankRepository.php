@@ -30,7 +30,7 @@ class BankRepository
 	{
 		$sql = "SELECT rowid, name, rib, address, zip, city
                 FROM ".MAIN_DB_PREFIX."bank_account
-                WHERE rowid = ".(int)$id;
+                WHERE rowid = ".(int) $id;
 
 		$resql = $this->db->query($sql);
 
@@ -67,7 +67,7 @@ class BankRepository
 			throw new Exception("Erreur lors de la création de la banque : " . $this->db->lasterror());
 		}
 
-		return (int)$this->db->last_insert_id(MAIN_DB_PREFIX."bank_account");
+		return (int) $this->db->last_insert_id(MAIN_DB_PREFIX."bank_account");
 	}
 
 	/**
@@ -86,7 +86,7 @@ class BankRepository
                     address = '".$this->db->escape($data['address'])."',
                     zip = '".$this->db->escape($data['zip'])."',
                     city = '".$this->db->escape($data['city'])."'
-                WHERE rowid = ".(int)$id;
+                WHERE rowid = ".(int) $id;
 
 		if (!$this->db->query($sql)) {
 			throw new Exception("Erreur lors de la mise à jour : " . $this->db->lasterror());
@@ -104,7 +104,7 @@ class BankRepository
 	 */
 	public function delete(int $id): bool
 	{
-		$sql = "DELETE FROM ".MAIN_DB_PREFIX."bank_account WHERE rowid = ".(int)$id;
+		$sql = "DELETE FROM ".MAIN_DB_PREFIX."bank_account WHERE rowid = ".(int) $id;
 
 		if (!$this->db->query($sql)) {
 			throw new Exception("Erreur lors de la suppression : " . $this->db->lasterror());
@@ -113,4 +113,3 @@ class BankRepository
 		return true;
 	}
 }
-

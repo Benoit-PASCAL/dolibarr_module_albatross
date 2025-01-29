@@ -47,8 +47,8 @@ class InvoiceMapperTest extends TestCase
 		global $db;
 		$invoice = new FactureFournisseur($db);
 		$invoice->lines = [
-			(object)['qty' => 10, 'product' => (object)['id' => 1]],
-			(object)['qty' => 5, 'product' => (object)['id' => 2]]
+			(object) ['qty' => 10, 'product' => (object) ['id' => 1]],
+			(object) ['qty' => 5, 'product' => (object) ['id' => 2]]
 		];
 		$invoice->socid = 200;
 		$invoice->date = time();

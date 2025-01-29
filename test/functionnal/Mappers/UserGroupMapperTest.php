@@ -41,17 +41,17 @@ class UserGroupMapperTest extends TestCase
 		$this->assertEquals('Admin', $userGroup->name);
 	}
 
-//	public function testUserGroupDTOMapperHandlesEmptyUserGroup()
-//	{
-//		// Errors are not managed in Mappers anymore
-//		global $db;
-//
-//		$userGroup = new UserGroup($db);
-//
-//		$mapper = new UserGroupDTOMapper();
-//		$this->expectException('Throwable');
-//		$userGroupDTO = $mapper->toUserGroupDTO($userGroup);
-//	}
+	//  public function testUserGroupDTOMapperHandlesEmptyUserGroup()
+	//  {
+	//      // Errors are not managed in Mappers anymore
+	//      global $db;
+	//
+	//      $userGroup = new UserGroup($db);
+	//
+	//      $mapper = new UserGroupDTOMapper();
+	//      $this->expectException('Throwable');
+	//      $userGroupDTO = $mapper->toUserGroupDTO($userGroup);
+	//  }
 
 	public function testUserGroupDTOMapperHandlesEmptyUserGroupDTO()
 	{
