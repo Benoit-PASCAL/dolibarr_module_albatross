@@ -28,6 +28,11 @@ class OrderDTO
 	 */
 	private $orderLines;
 
+	/**
+	 * @var ?string
+	 */
+	private $status;
+
 	public function __construct()
 	{
 		$this->date = new \DateTime();
@@ -92,6 +97,20 @@ class OrderDTO
 	public function addOrderLine($orderLine): OrderDTO
 	{
 		$this->orderLines[] = $orderLine;
+		return $this;
+	}
+
+	public function getStatus(): ?string
+	{
+		return $this->status;
+	}
+
+	/**
+	 * @param ?string $status
+	 */
+	public function setStatus($status): OrderDTO
+	{
+		$this->status = $status;
 		return $this;
 	}
 }
