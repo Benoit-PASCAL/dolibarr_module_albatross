@@ -4,23 +4,33 @@ namespace Albatross;
 
 
 use FactureLigne;
+use Commande;
+use CommandeFournisseur;
+use CommandeFournisseurLigne;
 
 include_once dirname(__DIR__) . '/models/OrderDTO.class.php';
 require_once dirname(__DIR__, 4) . '/commande/class/commande.class.php';
+require_once dirname(__DIR__, 4) . '/fourn/class/fournisseur.commande.class.php';
 
 
 class OrderDTOMapper
 {
 	/**
-	 * @param \Commande $order
+	 * @param Commande|CommandeFournisseur $order
 	 */
 	public function toOrderDTO($order): OrderDTO
 	{
 		$orderDTO = new OrderDTO();
 		$orderDTO
-			->setDate((new \DateTime())->setTimestamp($order->date))
-			->setCustomerId($order->ref_customer ?? 0)
-			->setSupplierId($order->socid ?? 0);
+			->setDate((new \DateTime())->setTimestamp($order->date));
+
+		if ($order instanceof CommandeFournisseur) {
+			$orderDTO->setSupplierId($order->socid);
+		}
+
+		if ($order instanceof Commande) {
+			$orderDTO->setCustomerId($order->socid);
+		}
 
 		foreach ($order->lines ?? [] as $line) {
 			$orderLineDTO = new OrderLineDTO();
@@ -50,8 +60,7 @@ class OrderDTOMapper
 		$order = new \Commande($db);
 
 		$order->date = $orderDTO->getDate()->getTimestamp();
-		$order->socid = $orderDTO->getSupplierId();
-		$order->ref_customer = $orderDTO->getCustomerId();
+		$order->socid = $orderDTO->getCustomerId();
 
 		foreach ($orderDTO->getOrderLines() as $orderLineDTO) {
 			$orderLine = new \OrderLine($db);
@@ -72,18 +81,18 @@ class OrderDTOMapper
 	/**
 	 * @param OrderDTO $orderDTO
 	 */
-	public function toSupplierOrder($orderDTO): \Commande
+	public function toSupplierOrder($orderDTO): \CommandeFournisseur
 	{
 		global $db;
 
-		$order = new \Commande($db);
+		$order = new \CommandeFournisseur($db);
 
 		$order->date = $orderDTO->getDate()->getTimestamp();
 		$order->ref_customer = $orderDTO->getCustomerId();
 		$order->socid = $orderDTO->getSupplierId();
 
 		foreach ($orderDTO->getOrderLines() as $orderLineDTO) {
-			$orderLine = new FactureLigne($db);
+			$orderLine = new \CommandeFournisseurLigne($db);
 
 			$orderLine->fk_product = $orderLineDTO->getProductId();
 			$orderLine->desc = $orderLineDTO->getDescription();
