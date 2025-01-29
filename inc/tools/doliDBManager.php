@@ -625,12 +625,17 @@ class DoliDBManager implements intDBManager
 		];
 
 		foreach ($toDrop as $table) {
-			$sql = 'DELETE FROM ' . MAIN_DB_PREFIX . $table;
-			$resql = $db->query($sql);
-			if (!$resql) {
-				dol_syslog(get_class($this) . '::removeFixtures ' . $db->lasterror(), LOG_ERR);
-				dol_print_error($db);
-				return -1;
+			$tableName = MAIN_DB_PREFIX . $table;
+			$sqlCheck = 'SELECT 1 FROM information_schema.tables WHERE table_schema = DATABASE() AND table_name = "' . $tableName . '"';
+			$resqlCheck = $db->query($sqlCheck);
+			if ($resqlCheck && $db->num_rows($resqlCheck) > 0) {
+				$sqlDelete = 'DELETE FROM ' . $tableName;
+				$resqlDelete = $db->query($sqlDelete);
+				if (!$resqlDelete) {
+					dol_syslog(get_class($this) . '::removeFixtures ' . $db->lasterror(), LOG_ERR);
+					dol_print_error($db);
+					return -1;
+				}
 			}
 		}
 
@@ -665,7 +670,7 @@ class DoliDBManager implements intDBManager
 		// remove 'mod' and set only lower case from $moduleClassname
 		$moduleName = strtolower(preg_replace('/^mod/', '', $moduleClassname));
 
-		$isModEnabled = (int)DOL_VERSION >= 16 ? isModEnabled($moduleName) : $conf->$moduleName->enabled;
+		$isModEnabled = (int) DOL_VERSION >= 16 ? isModEnabled($moduleName) : $conf->$moduleName->enabled;
 		if (!$isModEnabled) {
 			// We enable the module
 			require_once DOL_DOCUMENT_ROOT . '/core/modules/' . $moduleClassname . '.class.php';

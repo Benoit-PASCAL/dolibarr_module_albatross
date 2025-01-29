@@ -26,6 +26,9 @@ class DolibarrEntityManagerTest extends TestCase
 	{
 		$this->entityManager = new DoliDBManager();
 		$this->entityManager->removeFixtures();
+
+		global $user;
+		$user->fetch(1);
 	}
 
 	public function testCreateUser()
