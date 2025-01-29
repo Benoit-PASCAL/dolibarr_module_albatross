@@ -16,16 +16,24 @@ require_once dirname(__DIR__, 4) . '/fourn/class/fournisseur.facture.class.php';
 class InvoiceDTOMapper
 {
 	/**
-	 * @param \Facture $invoice
+	 * @param Facture|FactureFournisseur $invoice
 	 */
 	public function toInvoiceDTO($invoice): InvoiceDTO
 	{
 		$invoiceDTO = new InvoiceDTO();
 		$invoiceDTO
 			->setDate((new DateTime())->setTimestamp($invoice->date))
-			->setStatus($invoice->statut ?? InvoiceStatus::DRAFT)
-			->setCustomerId($invoice->ref_customer ?? 0)
-			->setSupplierId($invoice->socid ?? 0);
+			->setStatus($invoice->statut ?? InvoiceStatus::DRAFT);
+
+		if ($invoice instanceof FactureFournisseur) {
+			$invoiceDTO
+				->setSupplierId($invoice->socid)
+				->setNumber($invoice->ref_supplier);
+		}
+
+		if ($invoice instanceof Facture) {
+			$invoiceDTO->setCustomerId($invoice->socid);
+		}
 
 		// optional
 		if ($invoice->fk_project > 0) {
@@ -60,7 +68,7 @@ class InvoiceDTOMapper
 		$invoice = new Facture($db);
 
 		$invoice->date = $invoiceDTO->getDate()->getTimestamp();
-		$invoice->socid = $invoiceDTO->getSupplierId();
+		$invoice->socid = $invoiceDTO->getCustomerId();
 		$invoice->ref_customer = $invoiceDTO->getCustomerId();
 		$invoice->statut = $invoiceDTO->getStatus();
 		$invoice->entity = 1;
@@ -86,7 +94,7 @@ class InvoiceDTOMapper
 	 * @param InvoiceDTO $invoiceDTO
 	 * @return FactureFournisseur
 	 */
-	public function toSupplierInvoice(\Albatross\InvoiceDTO $invoiceDTO): FactureFournisseur
+	public function toSupplierInvoice($invoiceDTO): FactureFournisseur
 	{
 		global $db;
 
@@ -94,8 +102,9 @@ class InvoiceDTOMapper
 
 		$invoice->date = $invoiceDTO->getDate()->getTimestamp();
 		$invoice->statut = $invoiceDTO->getStatus();
-		$invoice->ref_customer = $invoiceDTO->getCustomerId();
 		$invoice->socid = $invoiceDTO->getSupplierId();
+		$invoice->ref_supplier = $invoiceDTO->getNumber();
+
 
 		foreach ($invoiceDTO->getInvoiceLines() as $invoiceLineDTO) {
 			$invoiceLine = new FactureLigne($db);
@@ -105,6 +114,7 @@ class InvoiceDTOMapper
 			$invoiceLine->subprice = $invoiceLineDTO->getUnitprice();
 			$invoiceLine->remise_percent = $invoiceLineDTO->getDiscount();
 			$invoiceLine->qty = $invoiceLineDTO->getQuantity();
+			$invoiceLine->ref_supplier = $invoiceDTO->getNumber();
 
 			$invoice->lines[] = $invoiceLine;
 		}

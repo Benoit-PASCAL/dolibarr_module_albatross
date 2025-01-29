@@ -48,6 +48,11 @@ class InvoiceDTO
 	 */
 	private $project;
 
+	/**
+	 * @var ?string $number
+	 */
+	private $number;
+
 	public function __construct()
 	{
 		$this->date = new \DateTime();
@@ -144,6 +149,20 @@ class InvoiceDTO
 	public function setProject($project): InvoiceDTO
 	{
 		$this->project = $project;
+		return $this;
+	}
+
+	public function getNumber(): ?string
+	{
+		return $this->number;
+	}
+
+	/**
+	 * @param string $number
+	 */
+	public function setNumber($number): InvoiceDTO
+	{
+		$this->number = $number;
 		return $this;
 	}
 }

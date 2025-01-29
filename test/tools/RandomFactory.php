@@ -249,6 +249,7 @@ class RandomFactory
 		$date = new DateTime();
 		$invoiceDTO = new InvoiceDTO();
 		$invoiceDTO
+			->setNumber('FAC-2025-0001')
 			->setCustomerId(100)
 			->setSupplierId(200)
 			->setDate($date);
