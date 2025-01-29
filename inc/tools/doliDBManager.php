@@ -30,6 +30,7 @@ use Albatross\UserGroupDTOMapper;
 use Exception;
 use modBanque;
 use modCommande;
+use modPropale;
 use modFacture;
 use modProjet;
 use modTicket;
@@ -165,15 +166,28 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createQuotation($quotationDTO): int
 	{
-		dol_syslog(get_class($this) . 'createQuotation', LOG_INFO);
+		dol_syslog(__METHOD__);
 		global $db, $user;
 
-		//$isModEnabled = (int) DOL_VERSION <= 14 ? isModEnabled('devis') : $conf->commande->enabled;
+		$isModEnabled = (int) DOL_VERSION >= 16 ? isModEnabled('propale') : $conf->propale->enabled;
+		if (!$isModEnabled) {
+			// We enable the module
+			require_once DOL_DOCUMENT_ROOT . '/core/modules/modPropale.class.php';
+			$mod = new modPropale($db);
+			$mod->init();
+		}
+
 		$quotationDTOMapper = new QuotationDTOMapper();
 		$quotation = $quotationDTOMapper->toQuotation($quotationDTO);
-		$quotation->create($user);
+		$res = $quotation->create($user);
 
-		return $quotation->id ?? 0;
+		if ($res <= 0) {
+			$query = new Exception($db->lastqueryerror());
+			$dbError = new Exception($db->lasterror(), 500, $query);
+			throw new Exception($res . $quotation->error, 500, $dbError);
+		}
+
+		return $quotation->id;
 	}
 
 	/**

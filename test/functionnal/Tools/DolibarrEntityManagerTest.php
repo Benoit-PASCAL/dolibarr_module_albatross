@@ -280,6 +280,4 @@ class DolibarrEntityManagerTest extends TestCase
 		$entityID = $this->entityManager->createEntity($entityDTO);
 		$this->assertGreaterThan(0, $entityID);
 	}
-
-
 }
