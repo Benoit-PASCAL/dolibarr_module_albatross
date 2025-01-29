@@ -69,7 +69,10 @@ class OrderDTOMapper
 	}
 
 
-	public function toSupplierOrder(OrderDTO $orderDTO): \Commande
+	/**
+	 * @param OrderDTO $orderDTO
+	 */
+	public function toSupplierOrder($orderDTO): \Commande
 	{
 		global $db;
 

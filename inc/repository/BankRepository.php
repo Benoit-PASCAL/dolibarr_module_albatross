@@ -26,7 +26,7 @@ class BankRepository
 	 * @return object|null Retourne un objet représentant la banque ou null si non trouvé.
 	 * @throws Exception Si une erreur SQL survient.
 	 */
-	public function find(int $id): ?object
+	public function find($id)
 	{
 		$sql = "SELECT rowid, name, rib, address, zip, city
                 FROM ".MAIN_DB_PREFIX."bank_account
@@ -52,7 +52,7 @@ class BankRepository
 	 * @return int ID de la banque créée.
 	 * @throws Exception Si une erreur SQL survient.
 	 */
-	public function create(array $data): int
+	public function create($data): int
 	{
 		$sql = "INSERT INTO ".MAIN_DB_PREFIX."bank_account (name, rib, address, zip, city)
                 VALUES (
@@ -78,7 +78,7 @@ class BankRepository
 	 * @return bool True si la mise à jour réussit.
 	 * @throws Exception Si une erreur SQL survient.
 	 */
-	public function update(int $id, array $data): bool
+	public function update($id, $data): bool
 	{
 		$sql = "UPDATE ".MAIN_DB_PREFIX."bank_account
                 SET name = '".$this->db->escape($data['name'])."',
@@ -102,7 +102,7 @@ class BankRepository
 	 * @return bool True si la suppression réussit.
 	 * @throws Exception Si une erreur SQL survient.
 	 */
-	public function delete(int $id): bool
+	public function delete($id): bool
 	{
 		$sql = "DELETE FROM ".MAIN_DB_PREFIX."bank_account WHERE rowid = ".(int) $id;
 
