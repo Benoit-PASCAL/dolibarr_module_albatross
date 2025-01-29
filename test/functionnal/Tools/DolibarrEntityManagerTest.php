@@ -81,20 +81,28 @@ class DolibarrEntityManagerTest extends TestCase
 
 	public function testCreateOrder()
 	{
-		// Prepare needed entities
+		$productDTO_1 = RandomFactory::getRandomProduct();
+		$productID_1 = $this->entityManager->createProduct($productDTO_1);
+		$productDTO_2 = RandomFactory::getRandomProduct();
+		$productID_2 = $this->entityManager->createProduct($productDTO_2);
+
 		$customerDTO = RandomFactory::getRandomCustomer();
-		$supplierDTO = RandomFactory::getRandomSupplier();
-		$productDTO = RandomFactory::getRandomProduct();
 
 		$customerID = $this->entityManager->createCustomer($customerDTO);
-		$supplierID = $this->entityManager->createSupplier($supplierDTO);
-		$productID = $this->entityManager->createProduct($productDTO);
 
 		// Test
 		$orderDTO = RandomFactory::getRandomOrder();
 		$orderDTO
-			->setCustomerId($customerID)
-			->setSupplierId($supplierID);
+			->setCustomerId($customerID);
+
+		// Add lines
+		$orderDTO
+			->getOrderLines()[0]
+			->setProductId($productID_1);
+
+		$orderDTO
+			->getOrderLines()[1]
+			->setProductId($productID_2);
 
 		$orderID = $this->entityManager->createOrder($orderDTO);
 		$this->assertGreaterThan(0, $orderID);
@@ -108,15 +116,12 @@ class DolibarrEntityManagerTest extends TestCase
 		$productID_2 = $this->entityManager->createProduct($productDTO_2);
 
 		$supplierDTO = RandomFactory::getRandomSupplier();
-		$customerDTO = RandomFactory::getRandomCustomer();
 
 		$supplierID = $this->entityManager->createSupplier($supplierDTO);
-		$customerID = $this->entityManager->createCustomer($customerDTO);
 
 		$orderDTO = RandomFactory::getSupplierOrder();
 		$orderDTO
-			->setSupplierId($supplierID)
-			->setCustomerId($customerID);
+			->setSupplierId($supplierID);
 
 		$orderDTO
 			->getOrderLines()[0]
@@ -136,14 +141,11 @@ class DolibarrEntityManagerTest extends TestCase
 		$productDTO_2 = RandomFactory::getRandomProduct();
 		$productID_2 = $this->entityManager->createProduct($productDTO_2);
 
-		$supplierDTO = RandomFactory::getRandomSupplier();
 		$customerDTO = RandomFactory::getRandomCustomer();
-		$supplierID = $this->entityManager->createSupplier($supplierDTO);
 		$customerID = $this->entityManager->createCustomer($customerDTO);
 
 		$invoiceDTO = RandomFactory::getRandomInvoice();
 		$invoiceDTO
-			->setSupplierId($supplierID)
 			->setCustomerId($customerID);
 
 		$invoiceDTO
@@ -157,7 +159,6 @@ class DolibarrEntityManagerTest extends TestCase
 		$this->assertGreaterThan(0, $invoiceID);
 	}
 
-
 	public function testCreateSupplierInvoice()
 	{
 		$productDTO_1 = RandomFactory::getRandomProduct();
@@ -166,15 +167,12 @@ class DolibarrEntityManagerTest extends TestCase
 		$productID_2 = $this->entityManager->createProduct($productDTO_2);
 
 		$supplierDTO = RandomFactory::getRandomSupplier();
-		$customerDTO = RandomFactory::getRandomCustomer();
 
 		$supplierID = $this->entityManager->createSupplier($supplierDTO);
-		$customerID = $this->entityManager->createCustomer($customerDTO);
 
 		$invoiceDTO = RandomFactory::getSupplierInvoice();
 		$invoiceDTO
-			->setSupplierId($supplierID)
-			->setCustomerId($customerID);
+			->setSupplierId($supplierID);
 
 		$invoiceDTO
 			->getInvoiceLines()[0]
@@ -189,20 +187,24 @@ class DolibarrEntityManagerTest extends TestCase
 
 	public function testCreateQuotation()
 	{
-		// Prepare needed entities
-		$customerDTO = RandomFactory::getRandomCustomer();
-		$supplierDTO = RandomFactory::getRandomSupplier();
-		$productDTO = RandomFactory::getRandomProduct();
+		$productDTO_1 = RandomFactory::getRandomProduct();
+		$productID_1 = $this->entityManager->createProduct($productDTO_1);
+		$productDTO_2 = RandomFactory::getRandomProduct();
+		$productID_2 = $this->entityManager->createProduct($productDTO_2);
 
+		$customerDTO = RandomFactory::getRandomCustomer();
 		$customerID = $this->entityManager->createCustomer($customerDTO);
-		$supplierID = $this->entityManager->createSupplier($supplierDTO);
-		$productID = $this->entityManager->createProduct($productDTO);
 
 		// Test
 		$quotationDTO = RandomFactory::getRandomQuotation();
 		$quotationDTO
-			->setCustomerId($customerID)
-			->setSupplierId($supplierID);
+			->setCustomerId($customerID);
+
+		$quotationDTO->getQuotationLines()[0]
+			->setProductId($productID_1);
+
+		$quotationDTO->getQuotationLines()[1]
+			->setProductId($productID_2);
 
 		$orderID = $this->entityManager->createQuotation($quotationDTO);
 		$this->assertGreaterThan(0, $orderID);
@@ -216,15 +218,12 @@ class DolibarrEntityManagerTest extends TestCase
 		$productID_2 = $this->entityManager->createProduct($productDTO_2);
 
 		$supplierDTO = RandomFactory::getRandomSupplier();
-		$customerDTO = RandomFactory::getRandomCustomer();
 
 		$supplierID = $this->entityManager->createSupplier($supplierDTO);
-		$customerID = $this->entityManager->createCustomer($customerDTO);
 
 		$quotationDTO = RandomFactory::getSupplierQuotation();
 		$quotationDTO
-			->setSupplierId($supplierID)
-			->setCustomerId($customerID);
+			->setSupplierId($supplierID);
 
 		$quotationDTO
 			->getQuotationLines()[0]
@@ -281,4 +280,6 @@ class DolibarrEntityManagerTest extends TestCase
 		$entityID = $this->entityManager->createEntity($entityDTO);
 		$this->assertGreaterThan(0, $entityID);
 	}
+
+
 }
