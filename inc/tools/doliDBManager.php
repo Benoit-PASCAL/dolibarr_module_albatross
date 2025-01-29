@@ -330,7 +330,7 @@ class DoliDBManager implements intDBManager
 		dol_syslog(__METHOD__, LOG_INFO);
 		global $conf, $db, $user;
 
-		$isModEnabled = (int)DOL_VERSION >= 16 ? isModEnabled('bank') : $conf->bank->enabled;
+		$isModEnabled = (int) DOL_VERSION >= 16 ? isModEnabled('bank') : $conf->bank->enabled;
 		if (!$isModEnabled) {
 			// We enable the module
 			require_once DOL_DOCUMENT_ROOT . '/core/modules/modBanque.class.php';

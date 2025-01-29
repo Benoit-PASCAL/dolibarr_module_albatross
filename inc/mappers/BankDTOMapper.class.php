@@ -65,6 +65,3 @@ class BankDTOMapper
 		return $bankDTO;
 	}
 }
-
-
-

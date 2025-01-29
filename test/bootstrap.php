@@ -10,4 +10,3 @@ require_once ROOT . '/core/lib/admin.lib.php';
 
 // Require tested class
 const MODULE_ROOT = ROOT . '/custom/albatross';
-

@@ -18,8 +18,8 @@ class QuotationMapperTest extends TestCase
 		global $db;
 		$quotation = new Propal($db);
 		$quotation->lines = [
-			(object)['qty' => 10, 'product' => (object)['id' => 1]],
-			(object)['qty' => 5, 'product' => (object)['id' => 2]]
+			(object) ['qty' => 10, 'product' => (object) ['id' => 1]],
+			(object) ['qty' => 5, 'product' => (object) ['id' => 2]]
 		];
 		$quotation->ref_customer = 100;
 		$quotation->socid = 200;
@@ -125,7 +125,7 @@ class QuotationMapperTest extends TestCase
 	{
 		global $db;
 		$quotation = new Propal($db);
-		$quotation->lines = [(object)['qty' => null, 'product' => null]];
+		$quotation->lines = [(object) ['qty' => null, 'product' => null]];
 		$quotation->ref_customer = 100;
 		$quotation->socid = 200;
 		$quotation->date = time();

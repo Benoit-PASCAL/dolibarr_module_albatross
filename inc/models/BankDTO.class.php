@@ -38,7 +38,7 @@ class BankDTO
 	/**
   * @param string $name
   */
- public function setName($name): BankDTO
+	public function setName($name): BankDTO
 	{
 		$this->name = $name;
 		return $this;
@@ -52,7 +52,7 @@ class BankDTO
 	/**
   * @param string $rib
   */
- public function setRib($rib): BankDTO
+	public function setRib($rib): BankDTO
 	{
 		$this->rib = $rib;
 		return $this;
@@ -66,7 +66,7 @@ class BankDTO
 	/**
   * @param string $address
   */
- public function setAddress($address): BankDTO
+	public function setAddress($address): BankDTO
 	{
 		$this->address = $address;
 		return $this;
@@ -80,7 +80,7 @@ class BankDTO
 	/**
   * @param string $zipCode
   */
- public function setZipCode($zipCode): BankDTO
+	public function setZipCode($zipCode): BankDTO
 	{
 		$this->zipCode = $zipCode;
 		return $this;
@@ -94,11 +94,9 @@ class BankDTO
 	/**
   * @param string $city
   */
- public function setCity($city): BankDTO
+	public function setCity($city): BankDTO
 	{
 		$this->city = $city;
 		return $this;
 	}
-
-
 }
