@@ -1,6 +1,7 @@
 <?php
 
 // Prepare the environment
+namespace Tools;
 if (!defined('TEST_ENV_SETUP')) {
 	require_once dirname(__FILE__) . '/_setup.php';
 }
@@ -15,6 +16,7 @@ require_once MODULE_ROOT . '/test/tools/RandomFactory.php';
 
 use Albatross\Tools\DoliDBManager;
 use PHPUnit\Framework\TestCase;
+use RandomFactory;
 
 class DolibarrEntityManagerTest extends TestCase
 {
