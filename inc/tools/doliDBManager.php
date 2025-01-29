@@ -167,24 +167,19 @@ class DoliDBManager implements intDBManager
 	public function createQuotation($quotationDTO): int
 	{
 		dol_syslog(__METHOD__);
-		global $db, $user;
+		global $conf, $db, $user;
 
-		$isModEnabled = (int) DOL_VERSION >= 16 ? isModEnabled('propale') : $conf->propale->enabled;
-		if (!$isModEnabled) {
-			// We enable the module
-			require_once DOL_DOCUMENT_ROOT . '/core/modules/modPropale.class.php';
-			$mod = new modPropale($db);
-			$mod->init();
-		}
+		$this->enableModule('modPropale');
 
 		$quotationDTOMapper = new QuotationDTOMapper();
 		$quotation = $quotationDTOMapper->toQuotation($quotationDTO);
 		$res = $quotation->create($user);
 
-		if ($res <= 0) {
-			$query = new Exception($db->lastqueryerror());
-			$dbError = new Exception($db->lasterror(), 500, $query);
-			throw new Exception($res . $quotation->error, 500, $dbError);
+		$this->controlException($res, $db, $quotation);
+
+		if ($quotationDTO->getStatus() === InvoiceStatus::VALIDATED) {
+			$res = $quotation->valid($user);
+			$this->controlException($res, $db, $quotation);
 		}
 
 		return $quotation->id;
@@ -195,18 +190,22 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createSupplierQuotation($quotationDTO): int
 	{
-		dol_syslog(get_class($this) . 'createSupplierQuotation', LOG_INFO);
-		global $db, $user;
+		dol_syslog(__METHOD__);
+		global $conf, $db, $user;
 
+		$this->enableModule('modFournisseur');
 		$quotationDTOMapper = new QuotationDTOMapper();
-		$quotationSupplier = $quotationDTOMapper->toSupplierQuotation($quotationDTO);
-		$res = $quotationSupplier->create($user);
+		$quotation = $quotationDTOMapper->toSupplierQuotation($quotationDTO);
+		$res = $quotation->create($user);
 
-		if ($res <= 0) {
-			throw new Exception($res . $quotationSupplier->error);
+		$this->controlException($res, $db, $quotation);
+
+		if ($quotationDTO->getStatus() === InvoiceStatus::VALIDATED) {
+			$res = $quotation->valid($user);
+			$this->controlException($res, $db, $quotation);
 		}
 
-		return $quotationSupplier->id;
+		return $quotation->id;
 	}
 
 
@@ -215,17 +214,11 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createOrder($orderDTO): int
 	{
-		dol_syslog(get_class($this) . 'createOrder', LOG_INFO);
+		dol_syslog(__METHOD__);
 		global $conf, $db, $user;
 		$user->id = 1;
 
-		$isModEnabled = (int) DOL_VERSION >= 16 ? isModEnabled('commande') : $conf->commande->enabled;
-		if (!$isModEnabled) {
-			// We enable the module
-			require_once DOL_DOCUMENT_ROOT . '/core/modules/modCommande.class.php';
-			$mod = new modCommande($db);
-			$mod->init();
-		}
+		$this->enableModule('modCommande');
 
 		$orderDTOMapper = new OrderDTOMapper();
 		$order = $orderDTOMapper->toOrder($orderDTO);
@@ -234,12 +227,14 @@ class DoliDBManager implements intDBManager
 		if ($res <= 0) {
 			throw new Exception($res . $order->error);
 		}
+		$this->controlException($res, $db, $order);
 
-		// TODO: Move to fixtures
-		if (rand(0, 1)) {
-			$order->valid($user);
+		if ($orderDTO->getStatus() === InvoiceStatus::VALIDATED) {
+			$res = $order->valid($user);
+			$this->controlException($res, $db, $order);
 		}
-		return $order->id ?? 0;
+
+		return $order->id;
 	}
 
 	/**
@@ -247,18 +242,22 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createSupplierOrder($orderDTO): int
 	{
-		dol_syslog(get_class($this) . 'createSupplierOrder', LOG_INFO);
-		global $db, $user;
+		dol_syslog(__METHOD__);
+		global $conf, $db, $user;
 
+		$this->enableModule('modFournisseur');
 		$orderDTOMapper = new OrderDTOMapper();
-		$orderSupplier = $orderDTOMapper->toSupplierOrder($orderDTO);
-		$res = $orderSupplier->create($user);
+		$order = $orderDTOMapper->toSupplierOrder($orderDTO);
+		$res = $order->create($user);
 
-		if ($res <= 0) {
-			throw new Exception($res . $orderSupplier->error);
+		$this->controlException($res, $db, $order);
+
+		if ($orderDTO->getStatus() === InvoiceStatus::VALIDATED) {
+			$res = $order->valid($user);
+			$this->controlException($res, $db, $order);
 		}
 
-		return $orderSupplier->id;
+		return $order->id;
 	}
 
 	/**
@@ -266,30 +265,21 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createInvoice($invoiceDTO): int
 	{
-		dol_syslog(get_class($this) . 'createInvoice', LOG_INFO);
+		dol_syslog(__METHOD__);
 		global $conf, $db, $user;
 		$user->id = 1;
 
-		$isModEnabled = (int) DOL_VERSION >= 16 ? isModEnabled('facture') : $conf->facture->enabled;
-		if (!$isModEnabled) {
-			// We enable the module
-			require_once DOL_DOCUMENT_ROOT . '/core/modules/modFacture.class.php';
-			$mod = new modFacture($db);
-			$mod->init();
-		}
+		$this->enableModule('modFacture');
 
 		$invoiceDTOMapper = new InvoiceDTOMapper();
 		$invoice = $invoiceDTOMapper->toInvoice($invoiceDTO);
 		$res = $invoice->create($user);
 
-		if ($res <= 0) {
-			$query = new Exception($db->lastqueryerror());
-			$dbError = new Exception($db->lasterror(), 500, $query);
-			throw new Exception($res . $invoice->error, 500, $dbError);
-		}
+		$this->controlException($res, $db, $invoice);
 
 		if ($invoiceDTO->getStatus() === InvoiceStatus::VALIDATED) {
-			$invoice->validate($user);
+			$res = $invoice->validate($user);
+			$this->controlException($res, $db, $invoice);
 		}
 
 		// TODO: Move to fixtures
@@ -301,18 +291,22 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createSupplierInvoice($invoiceDTO): int
 	{
-		dol_syslog(__METHOD__, LOG_INFO);
-		global $db, $user;
+		dol_syslog(__METHOD__);
+		global $conf, $db, $user;
 
+		$this->enableModule('modFournisseur');
 		$invoiceDTOMapper = new InvoiceDTOMapper();
-		$tmpSupplier = $invoiceDTOMapper->toSupplierInvoice($invoiceDTO);
-		$res = $tmpSupplier->create($user);
+		$invoice = $invoiceDTOMapper->toSupplierInvoice($invoiceDTO);
+		$res = $invoice->create($user);
 
-		if ($res <= 0) {
-			throw new Exception($res . $tmpSupplier->error);
+		$this->controlException($res, $db, $invoice);
+
+		if ($invoiceDTO->getStatus() === InvoiceStatus::VALIDATED) {
+			$res = $invoice->validate($user);
+			$this->controlException($res, $db, $invoice);
 		}
 
-		return $tmpSupplier->id;
+		return $invoice->id;
 	}
 
 
@@ -444,7 +438,7 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createEntity($entityDTO, $params = []): int
 	{
-		dol_syslog(get_class($this) . '::createEntity entity:' . $entityDTO->getName(), LOG_INFO);
+		dol_syslog(__METHOD__ . ' entity:' . $entityDTO->getName(), LOG_INFO);
 		global $db, $user;
 
 		$entityDTOMapper = new EntityDTOMapper();
@@ -464,7 +458,7 @@ class DoliDBManager implements intDBManager
 		$action = 'view';
 
 		if (is_null($id) || $id <= 1) {
-			return 0;
+			throw new Exception('Entity ' . $entityDTO->getName() . ' not created');
 		}
 
 		if ($entityDTO->isEndPatternsWithId()) {
@@ -626,7 +620,8 @@ class DoliDBManager implements intDBManager
 			'projet_task_extrafields',
 			'projet_task',
 			'projet_extrafields',
-			'projet'
+			'projet',
+			'bank',
 		];
 
 		foreach ($toDrop as $table) {
@@ -662,5 +657,36 @@ class DoliDBManager implements intDBManager
 		}
 
 		return 1;
+	}
+
+	private function enableModule($moduleClassname): void
+	{
+		global $conf, $db;
+		// remove 'mod' and set only lower case from $moduleClassname
+		$moduleName = strtolower(preg_replace('/^mod/', '', $moduleClassname));
+
+		$isModEnabled = (int)DOL_VERSION >= 16 ? isModEnabled($moduleName) : $conf->$moduleName->enabled;
+		if (!$isModEnabled) {
+			// We enable the module
+			require_once DOL_DOCUMENT_ROOT . '/core/modules/' . $moduleClassname . '.class.php';
+			$mod = new $moduleClassname($db);
+			$mod->init();
+		}
+	}
+
+	/**
+	 * @param int $res
+	 * @param ?\DoliDB $db
+	 * @param ?\CommonObject $invoice
+	 * @return void
+	 * @throws Exception
+	 */
+	public function controlException($res, $db, $obj): void
+	{
+		if ($res <= 0) {
+			$query = new Exception($db->lastqueryerror());
+			$dbError = new Exception($db->lasterror(), 500, $query);
+			throw new Exception($res . $obj->error, 500, $dbError);
+		}
 	}
 }
