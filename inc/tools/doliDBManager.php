@@ -90,7 +90,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
+	 * @param ThirdpartyDTO $thirdpartyDTO
 	 */
 	public function createCustomer($thirdpartyDTO): int
 	{
@@ -110,7 +110,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\ThirdpartyDTO $thirdpartyDTO
+	 * @param ThirdpartyDTO $thirdpartyDTO
 	 */
 	public function createSupplier($thirdpartyDTO): int
 	{
@@ -131,7 +131,7 @@ class DoliDBManager implements intDBManager
 
 
 	/**
-	 * @param \Albatross\ProductDTO $productDTO
+	 * @param ProductDTO $productDTO
 	 */
 	public function createProduct($productDTO): int
 	{
@@ -146,7 +146,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\ServiceDTO $serviceDTO
+	 * @param ServiceDTO $serviceDTO
 	 */
 	public function createService($serviceDTO): int
 	{
@@ -160,6 +160,9 @@ class DoliDBManager implements intDBManager
 		return $product->id ?? 0;
 	}
 
+	/**
+	 * @param QuotationDTO $quotationDTO
+	 */
 	public function createQuotation($quotationDTO): int
 	{
 		dol_syslog(get_class($this) . 'createQuotation', LOG_INFO);
@@ -174,9 +177,9 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\models\QuotationDTO $quotationDTO
+	 * @param QuotationDTO $quotationDTO
 	 */
-	public function createSupplierQuotation(QuotationDTO $quotationDTO): int
+	public function createSupplierQuotation($quotationDTO): int
 	{
 		dol_syslog(get_class($this) . 'createSupplierQuotation', LOG_INFO);
 		global $db, $user;
@@ -194,7 +197,7 @@ class DoliDBManager implements intDBManager
 
 
 	/**
-	 * @param \Albatross\OrderDTO $orderDTO
+	 * @param OrderDTO $orderDTO
 	 */
 	public function createOrder($orderDTO): int
 	{
@@ -226,7 +229,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\OrderDTO $orderDTO
+	 * @param OrderDTO $orderDTO
 	 */
 	public function createSupplierOrder($orderDTO): int
 	{
@@ -245,7 +248,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\InvoiceDTO $invoiceDTO
+	 * @param InvoiceDTO $invoiceDTO
 	 */
 	public function createInvoice($invoiceDTO): int
 	{
@@ -280,7 +283,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\InvoiceDTO $invoiceDTO
+	 * @param InvoiceDTO $invoiceDTO
 	 */
 	public function createSupplierInvoice($invoiceDTO): int
 	{
@@ -300,7 +303,7 @@ class DoliDBManager implements intDBManager
 
 
 	/**
-	 * @param \Albatross\TicketDTO $ticketDTO
+	 * @param TicketDTO $ticketDTO
 	 */
 	public function createTicket($ticketDTO): int
 	{
@@ -323,7 +326,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\BankDTO $bankDTO
+	 * @param BankDTO $bankDTO
 	 */
 	public function createBank($bankDTO): int
 	{
@@ -361,7 +364,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\ProjectDTO $projectDTO
+	 * @param ProjectDTO $projectDTO
 	 */
 	public function createProject($projectDTO): int
 	{
@@ -393,7 +396,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\TaskDTO $taskDTO
+	 * @param TaskDTO $taskDTO
 	 */
 	public function createTask($taskDTO): int
 	{
@@ -422,7 +425,7 @@ class DoliDBManager implements intDBManager
 	}
 
 	/**
-	 * @param \Albatross\EntityDTO $entityDTO
+	 * @param EntityDTO $entityDTO
 	 * @param mixed[] $params
 	 */
 	public function createEntity($entityDTO, $params = []): int
