@@ -17,6 +17,9 @@ require_once dirname(__DIR__, 4) . '/compta/facture/class/facture.class.php';
 class QuotationDTOMapper
 {
 
+	/**
+	 * @param Propal $quotation
+	 */
 	public function toQuotationDTO($quotation): QuotationDTO
 	{
 		$quotationDTO = new QuotationDTO();
@@ -43,12 +46,15 @@ class QuotationDTOMapper
 				$quotationLineDTO->setProductId($line->product->id);
 			}
 
-			$quotationDTO->addInvoiceLine($quotationLineDTO);
+			$quotationDTO->addQuotationLine($quotationLineDTO);
 		}
 
 		return $quotationDTO;
 	}
 
+	/**
+	 * @param QuotationDTO $quotationDTO
+	 */
 	public function toQuotation($quotationDTO): Propal
 	{
 		global $db;
@@ -62,8 +68,7 @@ class QuotationDTOMapper
 		$quotation->entity = 1;
 
 		// optional
-		$quotation->fk_project = $quotationDTO->getProject();
-		foreach ($quotationDTO->getInvoiceLines() as $quotationLineDTO) {
+		foreach ($quotationDTO->getQuotationLines() as $quotationLineDTO) {
 			$quotationLine = new FactureLigne($db);
 
 			$quotationLine->fk_product = $quotationLineDTO->getProductId();
@@ -75,14 +80,13 @@ class QuotationDTOMapper
 			$quotation->lines[] = $quotationLine;
 		}
 
-
 		return $quotation;
 	}
 
 	/**
-	 * @param \Albatross\QuotationDTO $quotationDTO
+	 * @param \QuotationDTO $quotationDTO
 	 */
-	public function toSupplierQuotation(QuotationDTO $quotationDTO): Propal
+	public function toSupplierQuotation($quotationDTO): Propal
 	{
 		global $db;
 
@@ -106,5 +110,4 @@ class QuotationDTOMapper
 
 		return $quotation;
 	}
-
 }

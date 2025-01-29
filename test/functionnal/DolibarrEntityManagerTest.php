@@ -197,12 +197,12 @@ class DolibarrEntityManagerTest extends TestCase
 		$productID = $this->entityManager->createProduct($productDTO);
 
 		// Test
-		$quotationDTO = RandomFactory::getRandomOrder();
+		$quotationDTO = RandomFactory::getRandomQuotation();
 		$quotationDTO
 			->setCustomerId($customerID)
 			->setSupplierId($supplierID);
 
-		$orderID = $this->entityManager->createOrder($quotationDTO);
+		$orderID = $this->entityManager->createQuotation($quotationDTO);
 		$this->assertGreaterThan(0, $orderID);
 	}
 

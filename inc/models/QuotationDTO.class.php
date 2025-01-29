@@ -28,6 +28,11 @@ class QuotationDTO
 	 */
 	private $quotationLines;
 
+	/**
+	 * @var ?string
+	 */
+	private $status;
+
 	public function __construct()
 	{
 		$this->date = new \DateTime();
@@ -92,6 +97,20 @@ class QuotationDTO
 	public function addQuotationLine($quotationLine): QuotationDTO
 	{
 		$this->quotationLines[] = $quotationLine;
+		return $this;
+	}
+
+	public function getStatus(): ?string
+	{
+		return $this->status;
+	}
+
+	/**
+	 * @param string $status
+	 */
+	public function setStatus($status): QuotationDTO
+	{
+		$this->status = $status;
 		return $this;
 	}
 }

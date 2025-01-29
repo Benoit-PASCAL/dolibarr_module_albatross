@@ -1,99 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="59" assertions="239" errors="0" warnings="0" failures="2" skipped="0" time="0.540199">
-    <testsuite name="Albatross Test Suite" tests="59" assertions="239" errors="0" warnings="0" failures="2" skipped="0" time="0.540199">
-      <testsuite name="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" tests="17" assertions="17" errors="0" warnings="0" failures="1" skipped="0" time="0.528695">
-        <testcase name="testCreateUser" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="29" assertions="1" time="0.049363"/>
-        <testcase name="testCreateUserGroup" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="44" assertions="1" time="0.026593"/>
-        <testcase name="testCreateCustomer" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="52" assertions="1" time="0.025334"/>
-        <testcase name="testCreateSupplier" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="59" assertions="1" time="0.022529"/>
-        <testcase name="testCreateProduct" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="66" assertions="1" time="0.016879"/>
-        <testcase name="testCreateService" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="73" assertions="1" time="0.018957"/>
-        <testcase name="testCreateOrder" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="80" assertions="1" time="0.055978"/>
-        <testcase name="testCreateSupplierOrder" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="101" assertions="1" time="0.047402"/>
-        <testcase name="testCreateInvoice" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="130" assertions="1" time="0.047532"/>
-        <testcase name="testCreateSupplierInvoice" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="159" assertions="1" time="0.050726"/>
-        <testcase name="testCreateQuotation" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="188" assertions="1" time="0.049516"/>
-        <testcase name="testCreateSupplierQuotation" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="209" assertions="1" time="0.049332"/>
-        <testcase name="testCreateProject" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="238" assertions="1" time="0.020718"/>
-        <testcase name="testCreateTask" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="246" assertions="1" time="0.016214"/>
-        <testcase name="testCreateTicket" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="259" assertions="1" time="0.011271"/>
-        <testcase name="testCreateBank" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="267" assertions="1" time="0.014123"/>
-        <testcase name="testCreateEntity" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="276" assertions="1" time="0.006229">
+  <testsuite name="" tests="64" assertions="272" errors="2" warnings="0" failures="2" skipped="0" time="0.292786">
+    <testsuite name="Albatross Test Suite" tests="64" assertions="272" errors="2" warnings="0" failures="2" skipped="0" time="0.292786">
+      <testsuite name="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" tests="17" assertions="15" errors="2" warnings="0" failures="1" skipped="0" time="0.289396">
+        <testcase name="testCreateUser" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="29" assertions="1" time="0.044294"/>
+        <testcase name="testCreateUserGroup" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="44" assertions="1" time="0.012804"/>
+        <testcase name="testCreateCustomer" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="52" assertions="1" time="0.011925"/>
+        <testcase name="testCreateSupplier" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="59" assertions="1" time="0.013832"/>
+        <testcase name="testCreateProduct" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="66" assertions="1" time="0.010517"/>
+        <testcase name="testCreateService" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="73" assertions="1" time="0.007741"/>
+        <testcase name="testCreateOrder" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="80" assertions="0" time="0.021617">
+          <error type="Exception">DolibarrEntityManagerTest::testCreateOrder
+Exception: -1
+
+/var/www/html/custom/albatross/inc/tools/doliDBManager.php:218
+/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php:97</error>
+          <system-out>&gt; Error detected:
+/var/www/utils/phpunit/vendor/phpunit/phpunit/phpunit
+&lt;b&gt;Modules/Applications:&lt;/b&gt; syslog, user, api, multicompany, albatross, societe, fournisseur, stock, service, facture, projet, supplier_proposal, productbatch, expedition, artificialagent, agenda, fullcalendar, sparks, scrumproject, commande, banque, recurringevent, userswitcher, debugbar, margin, propal, ticket, product, fixtures&lt;br&gt;
+&gt; Database type manager:
+mysqli
+&gt; Latest database access request error:
+No request in error
+&gt; Return code for latest database access request error:
+No request in error
+&gt; Information for latest database access request error:
+No request in error
+</system-out>
+        </testcase>
+        <testcase name="testCreateSupplierOrder" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="101" assertions="1" time="0.040038"/>
+        <testcase name="testCreateInvoice" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="130" assertions="1" time="0.052366"/>
+        <testcase name="testCreateSupplierInvoice" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="159" assertions="0" time="0.022758">
+          <error type="PHPUnit\Framework\Error\Warning">DolibarrEntityManagerTest::testCreateSupplierInvoice
+Undefined property: FactureLigne::$ref_supplier
+
+/var/www/html/fourn/class/fournisseur.facture.class.php:658
+/var/www/html/custom/albatross/inc/tools/doliDBManager.php:292
+/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php:184</error>
+        </testcase>
+        <testcase name="testCreateQuotation" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="188" assertions="1" time="0.013111">
+          <system-out>&gt; Error detected:
+/var/www/utils/phpunit/vendor/phpunit/phpunit/phpunit
+&lt;b&gt;Modules/Applications:&lt;/b&gt; syslog, user, api, multicompany, albatross, societe, fournisseur, stock, service, facture, projet, supplier_proposal, productbatch, expedition, artificialagent, agenda, fullcalendar, sparks, scrumproject, commande, banque, recurringevent, userswitcher, debugbar, margin, propal, ticket, product, fixtures&lt;br&gt;
+&gt; Database type manager:
+mysqli
+&gt; Latest database access request error:
+No request in error
+&gt; Return code for latest database access request error:
+No request in error
+&gt; Information for latest database access request error:
+No request in error
+</system-out>
+        </testcase>
+        <testcase name="testCreateSupplierQuotation" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="209" assertions="1" time="0.014893"/>
+        <testcase name="testCreateProject" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="238" assertions="1" time="0.005671"/>
+        <testcase name="testCreateTask" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="246" assertions="1" time="0.004412"/>
+        <testcase name="testCreateTicket" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="259" assertions="1" time="0.006418"/>
+        <testcase name="testCreateBank" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="267" assertions="1" time="0.005401"/>
+        <testcase name="testCreateEntity" class="DolibarrEntityManagerTest" classname="DolibarrEntityManagerTest" file="/var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php" line="276" assertions="1" time="0.001598">
           <failure type="PHPUnit\Framework\ExpectationFailedException">DolibarrEntityManagerTest::testCreateEntity
 Failed asserting that 0 is greater than 0.
 
 /var/www/html/custom/albatross/test/functionnal/DolibarrEntityManagerTest.php:280</failure>
         </testcase>
       </testsuite>
-      <testsuite name="test\functional\BankMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/BankMapperTest.php" tests="2" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.000810">
-        <testcase name="testBankDTOMapperConvertsToBankDTO" class="test\functional\BankMapperTest" classname="test.functional.BankMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/BankMapperTest.php" line="30" assertions="1" time="0.000525"/>
-        <testcase name="testBankDTOMapperConvertsToBank" class="test\functional\BankMapperTest" classname="test.functional.BankMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/BankMapperTest.php" line="41" assertions="2" time="0.000285"/>
+      <testsuite name="test\functional\BankMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/BankMapperTest.php" tests="2" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.000205">
+        <testcase name="testBankDTOMapperConvertsToBankDTO" class="test\functional\BankMapperTest" classname="test.functional.BankMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/BankMapperTest.php" line="30" assertions="1" time="0.000153"/>
+        <testcase name="testBankDTOMapperConvertsToBank" class="test\functional\BankMapperTest" classname="test.functional.BankMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/BankMapperTest.php" line="41" assertions="2" time="0.000052"/>
       </testsuite>
-      <testsuite name="test\functional\EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" tests="4" assertions="13" errors="0" warnings="0" failures="0" skipped="0" time="0.001461">
-        <testcase name="testEntityMapperConvertsToEntity" class="test\functional\EntityMapperTest" classname="test.functional.EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" line="17" assertions="6" time="0.000272"/>
-        <testcase name="testEntityDTOMapperHandlesEmptyEntity" class="test\functional\EntityMapperTest" classname="test.functional.EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" line="39" assertions="1" time="0.000364"/>
-        <testcase name="testEntityDTOMapperHandlesEmptyEntityDTO" class="test\functional\EntityMapperTest" classname="test.functional.EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" line="50" assertions="1" time="0.000410"/>
-        <testcase name="testEntityDTOMapperHandlesEntityDTOWithMinimumValue" class="test\functional\EntityMapperTest" classname="test.functional.EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" line="68" assertions="5" time="0.000414"/>
+      <testsuite name="test\functional\EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" tests="4" assertions="13" errors="0" warnings="0" failures="0" skipped="0" time="0.000338">
+        <testcase name="testEntityMapperConvertsToEntity" class="test\functional\EntityMapperTest" classname="test.functional.EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" line="17" assertions="6" time="0.000049"/>
+        <testcase name="testEntityDTOMapperHandlesEmptyEntity" class="test\functional\EntityMapperTest" classname="test.functional.EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" line="39" assertions="1" time="0.000101"/>
+        <testcase name="testEntityDTOMapperHandlesEmptyEntityDTO" class="test\functional\EntityMapperTest" classname="test.functional.EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" line="50" assertions="1" time="0.000098"/>
+        <testcase name="testEntityDTOMapperHandlesEntityDTOWithMinimumValue" class="test\functional\EntityMapperTest" classname="test.functional.EntityMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/EntityMapperTest.php" line="68" assertions="5" time="0.000090"/>
       </testsuite>
-      <testsuite name="test\functional\InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" tests="5" assertions="35" errors="0" warnings="0" failures="0" skipped="0" time="0.001437">
-        <testcase name="testInvoiceDTOMapperConvertsToInvoiceDTO" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="19" assertions="7" time="0.000341"/>
-        <testcase name="testInvoiceDTOMapperConvertsToInvoice" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="46" assertions="13" time="0.000230"/>
-        <testcase name="testInvoiceDTOMapperHandlesNullInvoice" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="95" assertions="3" time="0.000183"/>
-        <testcase name="testInvoiceDTOMapperHandlesNullInvoiceDTO" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="117" assertions="4" time="0.000174"/>
-        <testcase name="testInvoiceDTOMapperHandlesInvalidInvoiceLine" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="131" assertions="8" time="0.000510"/>
+      <testsuite name="test\functional\InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" tests="5" assertions="35" errors="0" warnings="0" failures="0" skipped="0" time="0.000302">
+        <testcase name="testInvoiceDTOMapperConvertsToInvoiceDTO" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="19" assertions="7" time="0.000079"/>
+        <testcase name="testInvoiceDTOMapperConvertsToInvoice" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="46" assertions="13" time="0.000049"/>
+        <testcase name="testInvoiceDTOMapperHandlesNullInvoice" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="95" assertions="3" time="0.000033"/>
+        <testcase name="testInvoiceDTOMapperHandlesNullInvoiceDTO" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="117" assertions="4" time="0.000034"/>
+        <testcase name="testInvoiceDTOMapperHandlesInvalidInvoiceLine" class="test\functional\InvoiceMapperTest" classname="test.functional.InvoiceMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/InvoiceMapperTest.php" line="131" assertions="8" time="0.000107"/>
       </testsuite>
-      <testsuite name="test\functional\IsolationTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/IsolationTest.php" tests="2" assertions="23" errors="0" warnings="0" failures="0" skipped="0" time="0.001136">
-        <testcase name="testDTOIsolation" class="test\functional\IsolationTest" classname="test.functional.IsolationTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/IsolationTest.php" line="9" assertions="17" time="0.000685"/>
-        <testcase name="testToolsIsolation" class="test\functional\IsolationTest" classname="test.functional.IsolationTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/IsolationTest.php" line="37" assertions="6" time="0.000451"/>
+      <testsuite name="test\functional\IsolationTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/IsolationTest.php" tests="2" assertions="23" errors="0" warnings="0" failures="0" skipped="0" time="0.000765">
+        <testcase name="testDTOIsolation" class="test\functional\IsolationTest" classname="test.functional.IsolationTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/IsolationTest.php" line="9" assertions="17" time="0.000660"/>
+        <testcase name="testToolsIsolation" class="test\functional\IsolationTest" classname="test.functional.IsolationTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/IsolationTest.php" line="37" assertions="6" time="0.000105"/>
       </testsuite>
-      <testsuite name="MapperListingTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/MapperListingTest.php" tests="2" assertions="19" errors="0" warnings="0" failures="0" skipped="0" time="0.000562">
-        <testcase name="testMappersIsolation" class="MapperListingTest" classname="MapperListingTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/MapperListingTest.php" line="12" assertions="13" time="0.000348"/>
-        <testcase name="testToolsIsolation" class="MapperListingTest" classname="MapperListingTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/MapperListingTest.php" line="41" assertions="6" time="0.000214"/>
+      <testsuite name="MapperListingTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/MapperListingTest.php" tests="2" assertions="19" errors="0" warnings="0" failures="0" skipped="0" time="0.000429">
+        <testcase name="testMappersIsolation" class="MapperListingTest" classname="MapperListingTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/MapperListingTest.php" line="12" assertions="13" time="0.000390"/>
+        <testcase name="testToolsIsolation" class="MapperListingTest" classname="MapperListingTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/MapperListingTest.php" line="41" assertions="6" time="0.000039"/>
       </testsuite>
-      <testsuite name="test\functional\OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" tests="5" assertions="35" errors="0" warnings="0" failures="0" skipped="0" time="0.001407">
-        <testcase name="testOrderDTOMapperConvertsToOrderDTO" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="18" assertions="7" time="0.000363"/>
-        <testcase name="testOrderDTOMapperConvertsToOrder" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="45" assertions="13" time="0.000316"/>
-        <testcase name="testOrderDTOMapperHandlesNullOrder" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="94" assertions="3" time="0.000206"/>
-        <testcase name="testOrderDTOMapperHandlesNullOrderDTO" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="116" assertions="4" time="0.000201"/>
-        <testcase name="testOrderDTOMapperHandlesInvalidOrderLine" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="130" assertions="8" time="0.000321"/>
+      <testsuite name="test\functional\OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" tests="5" assertions="35" errors="0" warnings="0" failures="0" skipped="0" time="0.000236">
+        <testcase name="testOrderDTOMapperConvertsToOrderDTO" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="18" assertions="7" time="0.000062"/>
+        <testcase name="testOrderDTOMapperConvertsToOrder" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="45" assertions="13" time="0.000052"/>
+        <testcase name="testOrderDTOMapperHandlesNullOrder" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="94" assertions="3" time="0.000031"/>
+        <testcase name="testOrderDTOMapperHandlesNullOrderDTO" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="116" assertions="4" time="0.000031"/>
+        <testcase name="testOrderDTOMapperHandlesInvalidOrderLine" class="test\functional\OrderMapperTest" classname="test.functional.OrderMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/OrderMapperTest.php" line="130" assertions="8" time="0.000059"/>
       </testsuite>
-      <testsuite name="test\functional\ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" tests="4" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="0.000616">
-        <testcase name="testProductDTOMapperConvertsToProductDTO" class="test\functional\ProductMapperTest" classname="test.functional.ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" line="19" assertions="2" time="0.000172"/>
-        <testcase name="testProductDTOMapperConvertsToProduct" class="test\functional\ProductMapperTest" classname="test.functional.ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" line="33" assertions="2" time="0.000149"/>
-        <testcase name="testProductDTOMapperHandlesEmptyProduct" class="test\functional\ProductMapperTest" classname="test.functional.ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" line="47" assertions="1" time="0.000141"/>
-        <testcase name="testProductDTOMapperConvertsToService" class="test\functional\ProductMapperTest" classname="test.functional.ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" line="60" assertions="3" time="0.000153"/>
+      <testsuite name="test\functional\ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" tests="4" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="0.000108">
+        <testcase name="testProductDTOMapperConvertsToProductDTO" class="test\functional\ProductMapperTest" classname="test.functional.ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" line="19" assertions="2" time="0.000031"/>
+        <testcase name="testProductDTOMapperConvertsToProduct" class="test\functional\ProductMapperTest" classname="test.functional.ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" line="33" assertions="2" time="0.000024"/>
+        <testcase name="testProductDTOMapperHandlesEmptyProduct" class="test\functional\ProductMapperTest" classname="test.functional.ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" line="47" assertions="1" time="0.000025"/>
+        <testcase name="testProductDTOMapperConvertsToService" class="test\functional\ProductMapperTest" classname="test.functional.ProductMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ProductMapperTest.php" line="60" assertions="3" time="0.000029"/>
       </testsuite>
-      <testsuite name="test\functional\TaskMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TaskMapperTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.000551">
-        <testcase name="testTaskDTOMapperConvertsToTaskDTO" class="test\functional\TaskMapperTest" classname="test.functional.TaskMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TaskMapperTest.php" line="25" assertions="2" time="0.000217"/>
-        <testcase name="testTaskDTOMapperConvertsToTask" class="test\functional\TaskMapperTest" classname="test.functional.TaskMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TaskMapperTest.php" line="38" assertions="2" time="0.000160"/>
-        <testcase name="testTaskDTOMapperHandlesEmptyTask" class="test\functional\TaskMapperTest" classname="test.functional.TaskMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TaskMapperTest.php" line="51" assertions="1" time="0.000173"/>
+      <testsuite name="test\functional\QuotationMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/QuotationMapperTest.php" tests="5" assertions="35" errors="0" warnings="0" failures="0" skipped="0" time="0.000227">
+        <testcase name="testQuotationDTOMapperConvertsToQuotationDTO" class="test\functional\QuotationMapperTest" classname="test.functional.QuotationMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/QuotationMapperTest.php" line="16" assertions="7" time="0.000062"/>
+        <testcase name="testQuotationDTOMapperConvertsToQuotation" class="test\functional\QuotationMapperTest" classname="test.functional.QuotationMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/QuotationMapperTest.php" line="43" assertions="13" time="0.000051"/>
+        <testcase name="testQuotationDTOMapperHandlesNullQuotation" class="test\functional\QuotationMapperTest" classname="test.functional.QuotationMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/QuotationMapperTest.php" line="92" assertions="3" time="0.000035"/>
+        <testcase name="testQuotationDTOMapperHandlesNullQuotationDTO" class="test\functional\QuotationMapperTest" classname="test.functional.QuotationMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/QuotationMapperTest.php" line="110" assertions="4" time="0.000027"/>
+        <testcase name="testQuotationDTOMapperHandlesInvalidQuotationLine" class="test\functional\QuotationMapperTest" classname="test.functional.QuotationMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/QuotationMapperTest.php" line="124" assertions="8" time="0.000052"/>
       </testsuite>
-      <testsuite name="test\functional\ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" tests="5" assertions="43" errors="0" warnings="0" failures="0" skipped="0" time="0.001459">
-        <testcase name="testThirdpartyDTOMapperConvertsToThirdpartyDTO" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="15" assertions="8" time="0.000439"/>
-        <testcase name="testThirdpartyDTOMapperConvertsToSupplier" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="41" assertions="9" time="0.000252"/>
-        <testcase name="testThirdpartyDTOMapperConvertsToCustomer" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="67" assertions="9" time="0.000249"/>
-        <testcase name="testThirdpartyDTOMapperHandlesEmptyThirdparty" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="93" assertions="8" time="0.000248"/>
-        <testcase name="testThirdpartyDTOMapperHandlesEmptyThirdpartyDTO" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="111" assertions="9" time="0.000270"/>
+      <testsuite name="test\functional\TaskMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TaskMapperTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.000091">
+        <testcase name="testTaskDTOMapperConvertsToTaskDTO" class="test\functional\TaskMapperTest" classname="test.functional.TaskMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TaskMapperTest.php" line="25" assertions="2" time="0.000031"/>
+        <testcase name="testTaskDTOMapperConvertsToTask" class="test\functional\TaskMapperTest" classname="test.functional.TaskMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TaskMapperTest.php" line="38" assertions="2" time="0.000023"/>
+        <testcase name="testTaskDTOMapperHandlesEmptyTask" class="test\functional\TaskMapperTest" classname="test.functional.TaskMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TaskMapperTest.php" line="51" assertions="1" time="0.000037"/>
       </testsuite>
-      <testsuite name="test\functional\TicketMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TicketMapperTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.000499">
-        <testcase name="testTicketDTOMapperConvertsToTicketDTO" class="test\functional\TicketMapperTest" classname="test.functional.TicketMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TicketMapperTest.php" line="16" assertions="3" time="0.000320"/>
-        <testcase name="testTicketDTOMapperHandlesEmptyTicket" class="test\functional\TicketMapperTest" classname="test.functional.TicketMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TicketMapperTest.php" line="32" assertions="1" time="0.000180"/>
+      <testsuite name="test\functional\ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" tests="5" assertions="43" errors="0" warnings="0" failures="0" skipped="0" time="0.000334">
+        <testcase name="testThirdpartyDTOMapperConvertsToThirdpartyDTO" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="15" assertions="8" time="0.000181"/>
+        <testcase name="testThirdpartyDTOMapperConvertsToSupplier" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="41" assertions="9" time="0.000052"/>
+        <testcase name="testThirdpartyDTOMapperConvertsToCustomer" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="67" assertions="9" time="0.000034"/>
+        <testcase name="testThirdpartyDTOMapperHandlesEmptyThirdparty" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="93" assertions="8" time="0.000033"/>
+        <testcase name="testThirdpartyDTOMapperHandlesEmptyThirdpartyDTO" class="test\functional\ThirdpartyMapperTest" classname="test.functional.ThirdpartyMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/ThirdpartyMapperTest.php" line="111" assertions="9" time="0.000034"/>
       </testsuite>
-      <testsuite name="test\functional\UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" tests="4" assertions="6" errors="0" warnings="0" failures="1" skipped="0" time="0.000696">
-        <testcase name="testUserGroupDTOMapperConvertsToUserGroupDTO" class="test\functional\UserGroupMapperTest" classname="test.functional.UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" line="15" assertions="2" time="0.000160"/>
-        <testcase name="testUserGroupDTOMapperConvertsToUserGroup" class="test\functional\UserGroupMapperTest" classname="test.functional.UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" line="30" assertions="2" time="0.000160"/>
-        <testcase name="testUserGroupDTOMapperHandlesEmptyUserGroup" class="test\functional\UserGroupMapperTest" classname="test.functional.UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" line="44" assertions="1" time="0.000179">
+      <testsuite name="test\functional\TicketMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TicketMapperTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.000085">
+        <testcase name="testTicketDTOMapperConvertsToTicketDTO" class="test\functional\TicketMapperTest" classname="test.functional.TicketMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TicketMapperTest.php" line="16" assertions="3" time="0.000054"/>
+        <testcase name="testTicketDTOMapperHandlesEmptyTicket" class="test\functional\TicketMapperTest" classname="test.functional.TicketMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/TicketMapperTest.php" line="32" assertions="1" time="0.000031"/>
+      </testsuite>
+      <testsuite name="test\functional\UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" tests="4" assertions="6" errors="0" warnings="0" failures="1" skipped="0" time="0.000128">
+        <testcase name="testUserGroupDTOMapperConvertsToUserGroupDTO" class="test\functional\UserGroupMapperTest" classname="test.functional.UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" line="15" assertions="2" time="0.000031"/>
+        <testcase name="testUserGroupDTOMapperConvertsToUserGroup" class="test\functional\UserGroupMapperTest" classname="test.functional.UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" line="30" assertions="2" time="0.000023"/>
+        <testcase name="testUserGroupDTOMapperHandlesEmptyUserGroup" class="test\functional\UserGroupMapperTest" classname="test.functional.UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" line="44" assertions="1" time="0.000042">
           <failure type="PHPUnit\Framework\ExpectationFailedException">test\functional\UserGroupMapperTest::testUserGroupDTOMapperHandlesEmptyUserGroup
 Failed asserting that exception of type "Throwable" is thrown.</failure>
         </testcase>
-        <testcase name="testUserGroupDTOMapperHandlesEmptyUserGroupDTO" class="test\functional\UserGroupMapperTest" classname="test.functional.UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" line="55" assertions="1" time="0.000197"/>
+        <testcase name="testUserGroupDTOMapperHandlesEmptyUserGroupDTO" class="test\functional\UserGroupMapperTest" classname="test.functional.UserGroupMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserGroupMapperTest.php" line="55" assertions="1" time="0.000033"/>
       </testsuite>
-      <testsuite name="test\functional\UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" tests="4" assertions="28" errors="0" warnings="0" failures="0" skipped="0" time="0.000871">
-        <testcase name="testUserDTOMapperConvertsToUserDTO" class="test\functional\UserMapperTest" classname="test.functional.UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" line="15" assertions="7" time="0.000238"/>
-        <testcase name="testUserDTOMapperConvertsToUser" class="test\functional\UserMapperTest" classname="test.functional.UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" line="39" assertions="7" time="0.000206"/>
-        <testcase name="testUserDTOMapperHandlesEmptyUser" class="test\functional\UserMapperTest" classname="test.functional.UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" line="62" assertions="7" time="0.000208"/>
-        <testcase name="testUserDTOMapperHandlesEmptyUserDTO" class="test\functional\UserMapperTest" classname="test.functional.UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" line="79" assertions="7" time="0.000219"/>
+      <testsuite name="test\functional\UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" tests="4" assertions="28" errors="0" warnings="0" failures="0" skipped="0" time="0.000142">
+        <testcase name="testUserDTOMapperConvertsToUserDTO" class="test\functional\UserMapperTest" classname="test.functional.UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" line="15" assertions="7" time="0.000043"/>
+        <testcase name="testUserDTOMapperConvertsToUser" class="test\functional\UserMapperTest" classname="test.functional.UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" line="39" assertions="7" time="0.000038"/>
+        <testcase name="testUserDTOMapperHandlesEmptyUser" class="test\functional\UserMapperTest" classname="test.functional.UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" line="62" assertions="7" time="0.000033"/>
+        <testcase name="testUserDTOMapperHandlesEmptyUserDTO" class="test\functional\UserMapperTest" classname="test.functional.UserMapperTest" file="/var/www/html/custom/albatross/test/functionnal/Mappers/UserMapperTest.php" line="79" assertions="7" time="0.000029"/>
       </testsuite>
     </testsuite>
   </testsuite>
