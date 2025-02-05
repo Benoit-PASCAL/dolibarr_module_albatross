@@ -611,6 +611,8 @@ class DoliDBManager implements intDBManager
 			'product',
 			'commande_fournisseur',
 			'socpeople',
+			'expeditiondet',
+			'expedition',
 			'societe_extrafields',
 			'societe_commerciaux',
 			'societe_contacts',
