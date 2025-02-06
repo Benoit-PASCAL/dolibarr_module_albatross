@@ -218,7 +218,6 @@ class RandomFactory
 		$invoiceDTO = new InvoiceDTO();
 		$invoiceDTO
 			->setCustomerId(100)
-			->setSupplierId(200)
 			->setDate($date);
 
 		$invoiceLineDTO1 = new InvoiceLineDTO();
@@ -249,7 +248,7 @@ class RandomFactory
 		$date = new DateTime();
 		$invoiceDTO = new InvoiceDTO();
 		$invoiceDTO
-			->setNumber('FAC-2025-0001')
+			->setNumber(self::getRandomHash())
 			->setCustomerId(100)
 			->setSupplierId(200)
 			->setDate($date);
@@ -322,5 +321,23 @@ class RandomFactory
 			->setName('Test Bank' . rand(1, 100));
 
 		return $bankDTO;
+	}
+
+	private static function getRandomHash(): string
+	{
+		// create hash type "8725bf00-8ae0-11ef-a410-bd213232ba91"
+		$hash = sprintf(
+			'%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+			mt_rand(0, 0xffff),
+			mt_rand(0, 0xffff),
+			mt_rand(0, 0xffff),
+			mt_rand(0, 0x0fff) | 0x4000,
+			mt_rand(0, 0x3fff) | 0x8000,
+			mt_rand(0, 0xffff),
+			mt_rand(0, 0xffff),
+			mt_rand(0, 0xffff)
+		);
+
+		return $hash;
 	}
 }

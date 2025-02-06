@@ -4,6 +4,7 @@ namespace Albatross\Tools;
 
 require_once dirname(__DIR__) . '/models/index.php';
 //require_once dirname(__DIR__) . '/mappers/index.php';
+require_once __DIR__ . '/LogManager.php';
 
 use Albatross\BankDTO;
 use Albatross\InvoiceDTO;
@@ -20,6 +21,10 @@ use Albatross\TaskDTO;
 
 interface intDBManager
 {
+	/**
+	 * @param ?LogManager $log
+	 */
+	public function __construct($log = null);
 
 	/**
 	 * @param \Albatross\UserDTO $userDTO
