@@ -3,6 +3,9 @@
 namespace Albatross\Tools;
 
 require_once __DIR__ . '/intDBManager.php';
+require_once __DIR__ . '/LogManager.php';
+require_once __DIR__ . '/DoliLogManager.php';
+require_once __DIR__ . '/DebugLogManager.php';
 require_once DOL_DOCUMENT_ROOT . '/user/class/user.class.php';
 //require_once DOL_DOCUMENT_ROOT . '/societe/class/societe.class.php';
 require_once DOL_DOCUMENT_ROOT . '/core/lib/admin.lib.php';
@@ -11,6 +14,7 @@ require_once DOL_DOCUMENT_ROOT . '/custom/albatross/inc/mappers/index.php';
 require_once DOL_DOCUMENT_ROOT . '/custom/multicompany/class/dao_multicompany.class.php';
 require_once DOL_DOCUMENT_ROOT . '/custom/multicompany/class/actions_multicompany.class.php';
 
+
 use ActionsMulticompany;
 use Albatross\BankDTOMapper;
 use Albatross\EntityDTO;
@@ -18,6 +22,7 @@ use Albatross\EntityDTOMapper;
 use Albatross\InvoiceDTOMapper;
 use Albatross\InvoiceStatus;
 use Albatross\QuotationDTO;
+use Albatross\OrderDTO;
 use Albatross\OrderDTOMapper;
 use Albatross\ProductDTOMapper;
 use Albatross\ProjectDTOMapper;
@@ -43,9 +48,28 @@ class DoliDBManager implements intDBManager
 	 */
 	private $currentEntityId;
 
-	public function __construct()
+	/**
+	 * @var LogManager $log
+	 */
+	private $log;
+
+	/**
+	 * @param ?LogManager $log
+	 */
+	public function __construct($log = null)
 	{
+		global $dolibarr_main_prod;
+		switch ($dolibarr_main_prod) {
+			case 1:
+				$defaultLog = new DoliLogManager();
+				break;
+			case 0:
+				$defaultLog = new DebugLogManager();
+				break;
+		}
+
 		$this->currentEntityId = 0;
+		$this->log = $log ?? $defaultLog;
 	}
 
 	/**
@@ -53,7 +77,7 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createUser($userDTO): int
 	{
-		dol_syslog(get_class($this) . '::createUser lastname:' . $userDTO->getLastname(), LOG_INFO);
+		$this->log::log(__METHOD__ . ' lastname:' . $userDTO->getLastname(), LOG_INFO);
 		global $db, $user;
 
 		$userDTOMapper = new UserDTOMapper();
@@ -72,7 +96,7 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createUserGroup($userGroupDTO): int
 	{
-		dol_syslog(get_class($this) . '::createUserGroup label:' . $userGroupDTO->getLabel(), LOG_INFO);
+		$this->log::log(__METHOD__ . ' label:' . $userGroupDTO->getLabel(), LOG_INFO);
 		global $user;
 
 		$userGroupDTOMapper = new UserGroupDTOMapper();
@@ -95,7 +119,7 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createCustomer($thirdpartyDTO): int
 	{
-		dol_syslog(get_class($this) . '::createCustomer', LOG_INFO);
+		$this->log::log(__METHOD__);
 
 		global $db, $user;
 
@@ -115,7 +139,7 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createSupplier($thirdpartyDTO): int
 	{
-		dol_syslog(get_class($this) . '::createSupplier', LOG_INFO);
+		$this->log::log(__METHOD__);
 
 		global $db, $user;
 
@@ -136,7 +160,7 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createProduct($productDTO): int
 	{
-		dol_syslog(get_class($this) . 'createProduct', LOG_INFO);
+		$this->log::log(__METHOD__);
 		global $db, $user;
 
 		$productDTOMapper = new ProductDTOMapper();
@@ -151,7 +175,7 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createService($serviceDTO): int
 	{
-		dol_syslog(get_class($this) . 'createService', LOG_INFO);
+		$this->log::log(__METHOD__);
 		global $db, $user;
 
 		$productDTOMapper = new ProductDTOMapper();
@@ -166,18 +190,22 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createQuotation($quotationDTO): int
 	{
-		dol_syslog(__METHOD__);
+		$this->log::log(__METHOD__);
 		global $conf, $db, $user;
 
 		$this->enableModule('modPropale');
 
 		$quotationDTOMapper = new QuotationDTOMapper();
 		$quotation = $quotationDTOMapper->toQuotation($quotationDTO);
+
+		$quotation->statut = $quotation->status = 0;
 		$res = $quotation->create($user);
 
 		$this->controlException($res, $db, $quotation);
 
-		if ($quotationDTO->getStatus() === InvoiceStatus::VALIDATED) {
+		if ($quotationDTO->getStatus() == InvoiceStatus::VALIDATED) {
+			$this->log::log('Validating document');
+			$quotation->statut = $quotation->status = 0;
 			$res = $quotation->valid($user);
 			$this->controlException($res, $db, $quotation);
 		}
@@ -190,7 +218,7 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createSupplierQuotation($quotationDTO): int
 	{
-		dol_syslog(__METHOD__);
+		$this->log::log(__METHOD__);
 		global $conf, $db, $user;
 
 		$this->enableModule('modFournisseur');
@@ -200,7 +228,9 @@ class DoliDBManager implements intDBManager
 
 		$this->controlException($res, $db, $quotation);
 
-		if ($quotationDTO->getStatus() === InvoiceStatus::VALIDATED) {
+		if ($quotationDTO->getStatus() == InvoiceStatus::VALIDATED) {
+			$this->log::log('Validating document');
+			$quotation->statut = $quotation->status = 0;
 			$res = $quotation->valid($user);
 			$this->controlException($res, $db, $quotation);
 		}
@@ -214,7 +244,7 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createOrder($orderDTO): int
 	{
-		dol_syslog(__METHOD__);
+		$this->log::log(__METHOD__);
 		global $conf, $db, $user;
 		$user->id = 1;
 
@@ -229,7 +259,9 @@ class DoliDBManager implements intDBManager
 		}
 		$this->controlException($res, $db, $order);
 
-		if ($orderDTO->getStatus() === InvoiceStatus::VALIDATED) {
+		if ($orderDTO->getStatus() == InvoiceStatus::VALIDATED) {
+			$this->log::log('Validating document');
+			$order->statut = $order->status = 0;
 			$res = $order->valid($user);
 			$this->controlException($res, $db, $order);
 		}
@@ -242,7 +274,7 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createSupplierOrder($orderDTO): int
 	{
-		dol_syslog(__METHOD__);
+		$this->log::log(__METHOD__);
 		global $conf, $db, $user;
 
 		$this->enableModule('modFournisseur');
@@ -252,7 +284,9 @@ class DoliDBManager implements intDBManager
 
 		$this->controlException($res, $db, $order);
 
-		if ($orderDTO->getStatus() === InvoiceStatus::VALIDATED) {
+		if ($orderDTO->getStatus() == InvoiceStatus::VALIDATED) {
+			$this->log::log('Validating document');
+			$order->statut = $order->status = 0;
 			$res = $order->valid($user);
 			$this->controlException($res, $db, $order);
 		}
@@ -265,7 +299,7 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createInvoice($invoiceDTO): int
 	{
-		dol_syslog(__METHOD__);
+		$this->log::log(__METHOD__);
 		global $conf, $db, $user;
 		$user->id = 1;
 
@@ -277,7 +311,9 @@ class DoliDBManager implements intDBManager
 
 		$this->controlException($res, $db, $invoice);
 
-		if ($invoiceDTO->getStatus() === InvoiceStatus::VALIDATED) {
+		if ($invoiceDTO->getStatus() == InvoiceStatus::VALIDATED) {
+			$this->log::log('Validating document');
+			$invoice->statut = 0;
 			$res = $invoice->validate($user);
 			$this->controlException($res, $db, $invoice);
 		}
@@ -288,10 +324,11 @@ class DoliDBManager implements intDBManager
 
 	/**
 	 * @param InvoiceDTO $invoiceDTO
+	 * @throws Exception
 	 */
 	public function createSupplierInvoice($invoiceDTO): int
 	{
-		dol_syslog(__METHOD__);
+		$this->log::log(__METHOD__);
 		global $conf, $db, $user;
 
 		$this->enableModule('modFournisseur');
@@ -301,7 +338,9 @@ class DoliDBManager implements intDBManager
 
 		$this->controlException($res, $db, $invoice);
 
-		if ($invoiceDTO->getStatus() === InvoiceStatus::VALIDATED) {
+		if ($invoiceDTO->getStatus() == InvoiceStatus::VALIDATED) {
+			$this->log::log('Validating document');
+			$invoice->statut = 0;
 			$res = $invoice->validate($user);
 			$this->controlException($res, $db, $invoice);
 		}
@@ -315,7 +354,7 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createTicket($ticketDTO): int
 	{
-		dol_syslog(get_class($this) . '::createTicket', LOG_INFO);
+		$this->log::log(__METHOD__);
 		global $conf, $db, $user;
 
 		$isModEnabled = (int) DOL_VERSION >= 16 ? isModEnabled('ticket') : $conf->ticket->enabled;
@@ -338,7 +377,7 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createBank($bankDTO): int
 	{
-		dol_syslog(__METHOD__, LOG_INFO);
+		$this->log::log(__METHOD__);
 		global $conf, $db, $user;
 
 		$isModEnabled = (int) DOL_VERSION >= 16 ? isModEnabled('bank') : $conf->bank->enabled;
@@ -376,7 +415,7 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createProject($projectDTO): int
 	{
-		dol_syslog(__METHOD__, LOG_INFO);
+		$this->log::log(__METHOD__);
 
 		global $conf, $db, $user;
 
@@ -408,7 +447,7 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createTask($taskDTO): int
 	{
-		dol_syslog(__METHOD__, LOG_INFO);
+		$this->log::log(__METHOD__);
 
 		global $conf, $db, $user;
 
@@ -438,7 +477,7 @@ class DoliDBManager implements intDBManager
 	 */
 	public function createEntity($entityDTO, $params = []): int
 	{
-		dol_syslog(__METHOD__ . ' entity:' . $entityDTO->getName(), LOG_INFO);
+		$this->log::log(__METHOD__ . ' entity:' . $entityDTO->getName(), LOG_INFO);
 		global $db, $user;
 
 		$entityDTOMapper = new EntityDTOMapper();
@@ -476,7 +515,7 @@ class DoliDBManager implements intDBManager
 
 	private function configEntity(int $entityId, EntityDTO $entityDTO)
 	{
-		dol_syslog(get_class($this) . '::configEntity entity:' . $entityDTO->getName(), LOG_INFO);
+		$this->log::log(__METHOD__ . ' entity:' . $entityDTO->getName());
 		global $db;
 
 		if ($entityDTO->getInvoicePattern() !== null) {
@@ -565,14 +604,14 @@ class DoliDBManager implements intDBManager
 	 */
 	public function setupEntity($entityId = 0, $params = []): bool
 	{
-		dol_syslog(get_class($this) . '::setupEntity $entityId:' . $entityId, LOG_INFO);
+		$this->log::log(__METHOD__ . ' $entityId:' . $entityId);
 		// TODO: Move to fixtures as it is a specific setup
 		return true;
 	}
 
 	public function removeFixtures(): bool
 	{
-		dol_syslog(get_class($this) . '::removeFixtures', LOG_INFO);
+		$this->log::log(__METHOD__);
 		global $db, $user;
 
 		$tmpUser = new User($db);
@@ -634,7 +673,7 @@ class DoliDBManager implements intDBManager
 				$sqlDelete = 'DELETE FROM ' . $tableName;
 				$resqlDelete = $db->query($sqlDelete);
 				if (!$resqlDelete) {
-					dol_syslog(get_class($this) . '::removeFixtures ' . $db->lasterror(), LOG_ERR);
+					$this->log::error(__METHOD__ . ' ' . $db->lasterror());
 					dol_print_error($db);
 					return -1;
 				}
@@ -648,7 +687,7 @@ class DoliDBManager implements intDBManager
 			$sql .= ' WHERE fk_object > 1';
 			$resql = $db->query($sql);
 			if (!$resql) {
-				dol_syslog(get_class($this) . '::removeFixtures ' . $db->lasterror(), LOG_ERR);
+				$this->log::error(__METHOD__ . ' ' . $db->lasterror());
 				dol_print_error($db);
 				return -1;
 			}
@@ -657,7 +696,7 @@ class DoliDBManager implements intDBManager
 			$sql .= ' WHERE rowid > 1';
 			$resql = $db->query($sql);
 			if (!$resql) {
-				dol_syslog(get_class($this) . '::removeFixtures ' . $db->lasterror(), LOG_ERR);
+				$this->log::error(__METHOD__ . ' ' . $db->lasterror());
 				dol_print_error($db);
 				return -1;
 			}
@@ -691,9 +730,17 @@ class DoliDBManager implements intDBManager
 	public function controlException($res, $db, $obj): void
 	{
 		if ($res <= 0) {
+			$errorMessage = $obj->error ?? $obj->errors[0] ?? 'Uncatched error';
 			$query = new Exception($db->lastqueryerror());
 			$dbError = new Exception($db->lasterror(), 500, $query);
-			throw new Exception($res . $obj->error, 500, $dbError);
+			throw new Exception($res . $errorMessage, 500, $dbError);
 		}
 	}
 }
+
+
+
+
+
+
+

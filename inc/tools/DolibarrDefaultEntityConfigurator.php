@@ -42,7 +42,7 @@ class DolibarrDefaultEntityConfigurator implements EntityConfiguratorInterface
 		dol_syslog(get_class($this) . '::setSecurity', LOG_INFO);
 		global $db;
 
-		$tokenLevel = '3';
+		$tokenLevel = '0';
 		$tokenLevel = (int) DOL_VERSION < 17 ? '2' : $tokenLevel;
 		$tokenLevel = (int) DOL_VERSION < 15 ? '0' : $tokenLevel;
 
