@@ -24,6 +24,12 @@ require_once __DIR__ . '/intDBManager.php';
 class dbManagerStub implements intDBManager
 {
 	/**
+	 * @param ?LogManager $log
+	 */
+	public function __construct($log = null)
+	{	}
+
+	/**
 	 * @param \Albatross\UserDTO $userDTO
 	 */
 	public function createUser($userDTO): int
@@ -140,10 +146,6 @@ class dbManagerStub implements intDBManager
 	public function createBank($bankDTO): int
 	{
 		return 1;
-	}
-
-	public function __construct($log = null)
-	{
 	}
 
 	/**
