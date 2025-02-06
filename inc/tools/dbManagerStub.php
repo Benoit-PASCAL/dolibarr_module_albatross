@@ -8,6 +8,7 @@ use Albatross\BankDTO;
 use Albatross\InvoiceDTO;
 use Albatross\OrderDTO;
 use Albatross\ProjectDTO;
+use Albatross\QuotationDTO;
 use Albatross\ServiceDTO;
 use Albatross\TaskDTO;
 use Albatross\ThirdpartyDTO;
@@ -137,6 +138,43 @@ class dbManagerStub implements intDBManager
 	 * @return int
 	 */
 	public function createBank($bankDTO): int
+	{
+		return 1;
+	}
+
+	public function __construct($log = null)
+	{
+	}
+
+	/**
+	 * @param QuotationDTO $quotationDTO
+	 */
+	public function createQuotation($quotationDTO): int
+	{
+		return 1;
+	}
+
+	/**
+	 * @param QuotationDTO $quotationDTO
+	 */
+	public function createSupplierQuotation($quotationDTO): int
+	{
+		return 1;
+	}
+
+	/**
+	 * @param OrderDTO $orderDTO
+	 */
+	public function createSupplierOrder($orderDTO): int
+	{
+		return 1;
+	}
+
+	/**
+	 * @param InvoiceDTO $invoiceDTO
+	 * @throws Exception
+	 */
+	public function createSupplierInvoice($invoice): int
 	{
 		return 1;
 	}
