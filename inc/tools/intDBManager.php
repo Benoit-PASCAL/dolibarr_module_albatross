@@ -20,6 +20,7 @@ use Albatross\TaskDTO;
 
 interface intDBManager
 {
+
 	/**
 	 * @param \Albatross\UserDTO $userDTO
 	 */
@@ -51,14 +52,34 @@ interface intDBManager
 	public function createService($serviceDTO): int;
 
 	/**
+	 * @param \Albatross\QuotationDTO $quotationDTO
+	 */
+	public function createQuotation($quotationDTO): int;
+
+	/**
+	 * @param \Albatross\QuotationDTO $quotationDTO
+	 */
+	public function createSupplierQuotation($quotationDTO): int;
+
+	/**
 	 * @param \Albatross\OrderDTO $orderDTO
 	 */
 	public function createOrder($orderDTO): int;
 
 	/**
+	 * @param \Albatross\OrderDTO $orderDTO
+	 */
+	public function createSupplierOrder($orderDTO): int;
+
+	/**
 	 * @param \Albatross\InvoiceDTO $invoice
 	 */
 	public function createInvoice($invoice): int;
+
+	/**
+	 * @param \Albatross\InvoiceDTO $invoice
+	 */
+	public function createSupplierInvoice($invoice): int;
 
 	/**
 	 * @param \Albatross\TicketDTO $ticketDTO
